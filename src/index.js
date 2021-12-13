@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {Provider} from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Store from './store';
+import landing from "./Pages/Landing/landing";
+import post from "./Pages/PublicPost/index";
+import AuthLayout from "../src/layouts/Auths";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={Store}>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={landing} />
+        <Route path="/auth" component={AuthLayout} />
+        <Route  path="/post" component={post} />
+      </Switch>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
