@@ -6,7 +6,7 @@ import { MdPassword } from "react-icons/md";
 
 function Register() {
   return (
-    <div className='mt-5'>
+    <div className='mt-5 mb-5'>
        <div className='d-flex justify-content-center'>
         <Col lg="5" md="7">
           <Card className="bg-light shadow border-0">

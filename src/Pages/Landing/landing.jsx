@@ -1,10 +1,12 @@
 import React from 'react'
 import { Button, Input, InputGroup } from 'reactstrap';
 import LandingNavbar from '../../components/Navbars/LandingNavbar';
+import PublicFooter from "../../components/Footers/publicfooter"
 import './landing.css';
 import sample from "../../components/Images/sample.jpg";
-import { Row, Col, Card } from 'reactstrap';
-import { BsFillEmojiSunglassesFill, BsCreditCardFill, BsPersonFill, BsFillEyeFill } from 'react-icons/bs';
+import { Row, Col, Card, Container } from 'reactstrap';
+import { BsFillEmojiSunglassesFill, BsCreditCardFill, BsPersonFill, BsFillEyeFill, BsPeopleFill,BsArrowRight
+} from 'react-icons/bs';
 
 const Landing= () => {
   return (
@@ -37,7 +39,182 @@ const Landing= () => {
           </InputGroup>
         </div>
       </div>
-      <Row className="justify-content-md-center mt-4 mx-5">
+
+      <section className="section-services section-t8 pt-5">
+        <Container>
+          <Row>
+            <div className="col-md-12">
+              <div className="title-wrap d-flex justify-content-between">
+                <div className="title-box">
+                  <h2 className="title-a">Our Services</h2>
+                </div>
+              </div>
+            </div>
+          </Row>
+          <Row className='mt-3'>
+            <div className="col-md-4">
+              <div className="card-box-c foo">
+                <div className="card-header-c d-flex">
+                  <div className="card-box-ico">
+                    <span>
+                      <BsPeopleFill />
+                    </span>
+                  </div>
+                  <div className="card-title-c align-self-center">
+                    <h2 className="title-c">Lifestyle</h2>
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <p className="content-c">
+                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                    convallis a pellentesque
+                    nec, egestas non nisi.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="card-box-c foo">
+                <div className="card-header-c d-flex">
+                  <div className="card-box-ico">
+                    <span>
+                      <BsPeopleFill />
+                    </span>
+                  </div>
+                  <div className="card-title-c align-self-center">
+                    <h2 className="title-c">Lifestyle</h2>
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <p className="content-c">
+                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                    convallis a pellentesque
+                    nec, egestas non nisi.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="card-box-c foo">
+                <div className="card-header-c d-flex">
+                  <div className="card-box-ico">
+                    <span>
+                      <BsPeopleFill />
+                    </span>
+                  </div>
+                  <div className="card-title-c align-self-center">
+                    <h2 className="title-c">Lifestyle</h2>
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <p className="content-c">
+                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                    convallis a pellentesque
+                    nec, egestas non nisi.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Row>
+        </Container>
+      </section>
+
+      <Container>
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title-wrap d-flex justify-content-between">
+                <div class="title-box">
+                  <h2 class="title-a">Latest Properties</h2>
+                </div>
+                <div class="title-link">
+                  <a href="property-grid.html">All Property
+                    <BsArrowRight className='' />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <div className='mt-2'>
+          <Row className='mx-4 p-4'>
+            <Col>
+              <div class="item explode">
+                <img src={sample}  alt="image" />
+                <div class="overlay">
+                  <span>#5000</span>
+                  <span className=''>This is self contain...</span>
+                  {/* <span></span> */}
+                </div>
+              </div>
+            </Col>
+            <Col>
+              <div class="item explode">
+                <img src={sample}  alt="image" />
+                <div class="overlay">
+                  <span>#5000</span>
+                  <span className=''>This is self contain...</span>
+                  {/* <span></span> */}
+                </div>
+              </div>
+            </Col>
+            {/* <Col>
+              <div class="item explode">
+                <img src={sample}  alt="image" />
+                <div class="overlay">
+                  <span>#5000</span>
+                  <span className=''>This is self contain...</span>
+                </div>
+              </div>
+            </Col> */}
+          </Row>
+        </div>
+      </Container>
+
+      <Container>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="title-wrap d-flex justify-content-between">
+                <div className="title-box">
+                  <h2 className="title-a">Testimonials</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="carousel-item-a swiper-slide">
+          <div className="testimonials-box">
+            <div className="row">
+              <div className="col-sm-12 col-md-6">
+                <div className="testimonial-img">
+                  <img src={sample} className="img-fluid" />
+                </div>
+              </div>
+              <div className="col-sm-12 col-md-6">
+                <div className="testimonial-ico">
+                  <i className="bi bi-chat-quote-fill" />
+                </div>
+                <div className="testimonials-content">
+                  <p className="testimonial-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+                    debitis hic ber quibusdam
+                    voluptatibus officia expedita corpori.
+                  </p>
+                </div>
+                <div className="testimonial-author-box">
+                  <img src="assets/img/mini-testimonial-1.jpg" alt className="testimonial-avatar" />
+                  <h5 className="testimonial-author">Albert &amp; Erika</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+
+      {/* <Row className="justify-content-md-center mt-4 mx-5">
         <Col className='text-center my-3'>
           <div className='bg-info text-center emojis' style={{ width:"62px", height:"50px", borderRadius:"10%", 
             border:"1px solid white", color:"white" }}
@@ -75,50 +252,14 @@ const Landing= () => {
           <div>lorem ipsum facto lorem ipsum</div>
         </Col>
       </Row>
-      <div className='d-flex justify-content-between mx-5 mt-4'>
-        <div className='fw-bold h5'>Latest Posts</div>
-        <Button>See all</Button> 
-      </div>
-      <div className='mt-2' style={{background:"#e4e7ed"}}>
-        <Row className='mx-4 p-4'>
-          <Col>
-            <div className="card" style={{width: '18rem'}}>
-              <img src={sample} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Two Bed Flat</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </Col>
-          <Col>
-            <div className="card" style={{width: '18rem'}}>
-              <img src={sample} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Self Con</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </Col>
-          <Col>
-            <div className="card" style={{width: '18rem'}}>
-              <img src={sample} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Two bed</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </div>
       
-      <div className='text-center mt-3'>
+       */}
+      
+      <div className='text-center my-5'>
         <div className='fw-bold h5'>
-          Popular Categories
+          See the <span className='fw-bold'>stats</span>
         </div>
-        <Row>
+        {/* <Row>
           <Col>
             <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
             <div className='mt-2'>Single Room</div>
@@ -145,19 +286,9 @@ const Landing= () => {
             <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
             <div className='mt-2'>Shop To Let</div>
           </Col>
-        </Row>
+        </Row> */}
       </div>
-      
-      <div style={{background:"#e4e7ed"}} className='mt-3'>
-        <div className='d-flex justify-content-between p-4'>
-          <div className=''>
-            RilyEstate copyright 2021
-          </div>
-          <div>
-            GitHub
-          </div>
-        </div>
-      </div>
+      <PublicFooter />
     </>
   )
 }
