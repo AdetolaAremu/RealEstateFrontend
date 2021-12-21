@@ -11,9 +11,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-import '../../components/css/style.css'
 
-export default class Example extends React.Component {
+export default class UserNav extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,23 +21,6 @@ export default class Example extends React.Component {
       isOpen: false
     };
   }
-
-  // componentDidMount() {
-  //   window.addEventListener("scroll", this.handleScroll);
-  // }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener("scroll", this.handleScroll);
-  // }
-
-  // handleScroll = () => {
-  //   if (window.scrollY > 20) {
-  //     document.querySelector(".navbar").className = "navbar scroll";
-  //   } else {
-  //     document.querySelector(".navbar").className = "navbar";
-  //   }
-  // };
-
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -47,20 +29,23 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixed="top" light expand="md">
+        <Navbar color="light" fixed='top' light expand="lg">
           <NavbarBrand href="/">RealEstate</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ms-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/components/">Dashboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href="/components/">My Posts</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">Profile</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  Name
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>

@@ -3,7 +3,9 @@ import Publicfooter from '../../components/Footers/publicfooter';
 import { Container, Row, Col, Form, Button } from 'reactstrap';
 import sample from "../../components/Images/sample.jpg";
 import pix from "../../components/Images/author-2.jpg";
+import { BsCash } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
+import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 
 function ViewProperty() {
   return (
@@ -23,24 +25,31 @@ function ViewProperty() {
         </div>
 
         <div className='d-flex justify-content-between'>
-          <div className='d-flex mt-5'>
-            <div className='border border-4 border-success' style={{ height:"6.5rem", width:"11rem" }}>
-              
-            </div>
-            <span className='mt-4'>
-              <h2>Price</h2>
+          <div className=''>
+            <BsCash style={{ width:"13rem", height:"7rem", marginLeft:"-3rem", color:"#2eca6a" }} />
+            <span className=''>
+              <h4 className='text-muted'>Price</h4>
+            </span>
+          </div>
+
+          <div className=''>
+            <Button color="none">
+              <AiOutlineLike style={{ width:"13rem", height:"7rem", marginLeft:"-3rem", color:"#2eca6a" }} />
+            </Button>
+            <span>
+              <h4 className='text-muted'>Like</h4>
             </span>
           </div>
           
           <div>
-            <HiLocationMarker style={{ width:"13rem", height:"7rem", marginLeft:"-3rem" }} />
-            <div>City Name here</div>
+            <HiLocationMarker style={{ width:"13rem", height:"7rem", marginLeft:"-3rem", color:"#2eca6a" }} />
+            <h5 className='text-muted'>City Name</h5>
           </div>
         </div>
 
         <div className='d-flex justify-content-between'>
           <div className='mt-5 mb-3'>
-            <h2>Quick Summary</h2>
+            <h2>Description</h2>
             <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
           </div>
           <div className='mt-5 mb-3'>
@@ -71,12 +80,12 @@ function ViewProperty() {
           <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
         </div>
 
-        <div className='mb-5'>
-          <div className='rounded mb-3 p-2' style={{ minHeight:"3.7rem", background:"gray" }}>
-            hello
-          </div>
-          <div className='rounded mb-3 p-2' style={{ minHeight:"3.7rem", background:"gray" }}>
-            hello
+        <div className='mb-3'>
+          <div className='rounded mb-3 p-2 border border-secondary' 
+            style={{ minHeight:"3.7rem", background:"#f7fcf9" }}
+          >
+            <div className="fw-bold">Name here</div>
+            <div>The comment will appear here</div>
           </div>
         </div>
 

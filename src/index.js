@@ -7,6 +7,7 @@ import Store from './store';
 import landing from "./Pages/Landing/landing";
 import post from "./Pages/PublicPost/index";
 import AuthLayout from "../src/layouts/Auths";
+import AdminLayout from "../src/layouts/Admin";
 import viewProperty from "./Pages/PublicPost/viewProperty"
 
 
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={landing} />
         <Route path="/auth" component={AuthLayout} />
+        <Route path="/user" component={AdminLayout} />
         <Route path="/post" component={post} />
         <Route path="/view-post" component={viewProperty} />
       </Switch>

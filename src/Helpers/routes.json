@@ -2,5 +2,8 @@
   "HOME":"/",
   "AUTH":"/auth",
   "LOGIN":"/auth/login",
-  "REGISTER":"/auth/register"
+  "REGISTER":"/auth/register",
+  "ALL_PROPERTIES":"/all-properties",
+  "VIEW_PROPERTY":"/view-property",
+  "DASHBOARD_HOME":"/user/dashboard"
 }
