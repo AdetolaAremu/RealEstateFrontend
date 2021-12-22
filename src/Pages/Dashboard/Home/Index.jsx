@@ -1,9 +1,52 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
+import { Container, Table, Media } from 'reactstrap';
+import { BsPlusSquare } from "react-icons/bs";
+import ROUTE from "../../../Helpers/routes.json"
 
-function Index() {
+const  Index = () => {
   return (
-    <div className='mt-5'>
-      this is the home of logged in users
+    <div>
+      <div className='my-3'>
+        <h2>Liked Posts</h2>
+        <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
+      </div>
+
+      <div className='py-5 px-5 text-center'>
+        No content to display
+      </div>
+      
+      <div className='text-center mt-3'>
+        <Link to={ROUTE.CREATE_POST}>
+          <button className='border border-none bg-none'>
+            <BsPlusSquare style={{ fontSize:"7rem" }} />
+          </button>
+        </Link>
+        <div className='text-muted mt-2'>Create Post</div>
+      </div>
+      <div className='my-3'>
+        <h2>Description</h2>
+        <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
+      </div>
+
+      <Table striped>
+        <thead className='bg-secondary text-white'>
+          <tr>
+            <th>#</th>
+            <th>Topic</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </Table>
     </div>
   )
 }

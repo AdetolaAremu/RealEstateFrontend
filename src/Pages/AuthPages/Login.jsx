@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Card, CardBody, FormGroup, Form,
-  Input, InputGroupAddon, InputGroupText,InputGroup, Col 
+import { Button, Card, CardBody, FormGroup, Form, Input, InputGroupText, InputGroup, Col 
 } from "reactstrap";
 import { MdPassword } from "react-icons/md";
 

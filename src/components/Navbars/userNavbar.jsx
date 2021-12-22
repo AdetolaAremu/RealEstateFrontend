@@ -38,12 +38,12 @@ export default class UserNav extends React.Component {
                 <NavLink href="/components/">Dashboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/components/">My Posts</NavLink>
+                <NavLink href="/components/">Profile</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Profile</NavLink>
+                <NavLink className='bg-danger py-2 px-2 rounded text-white'>Logout</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Name
                 </DropdownToggle>
@@ -59,7 +59,7 @@ export default class UserNav extends React.Component {
                     Reset
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </Navbar>

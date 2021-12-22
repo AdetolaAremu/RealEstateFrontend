@@ -1,0 +1,23 @@
+.first-header {
+  height: 13rem;
+  width: 19rem;
+  background: #c0392b;
+  background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);
+  background: linear-gradient(to right, #8e44ad, #c0392b); 
+}
+
+.second-header {
+  height: 13rem;
+  width: 19rem;
+  background: #8E2DE2;
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);
+  background: linear-gradient(to right, #4A00E0, #8E2DE2);
+}
+
+.third-header {
+  height: 13rem;
+  width: 19rem;
+  background: #159957;
+  background: -webkit-linear-gradient(to right, #155799, #159957);
+  background: linear-gradient(to right, #155799, #159957);
+}
