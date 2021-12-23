@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Container, Table, Media } from 'reactstrap';
+import { Table, Card, CardBody } from 'reactstrap';
 import { BsPlusSquare } from "react-icons/bs";
-import ROUTE from "../../../Helpers/routes.json"
+import ROUTE from "../../../Helpers/routes.json";
 
 const  Index = () => {
   return (
@@ -25,28 +25,34 @@ const  Index = () => {
         <div className='text-muted mt-2'>Create Post</div>
       </div>
       <div className='my-3'>
-        <h2>Description</h2>
+        <h2>All Posts</h2>
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
       </div>
 
-      <Table striped>
-        <thead className='bg-secondary text-white'>
-          <tr>
-            <th>#</th>
-            <th>Topic</th>
-            <th>Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </Table>
+      <div className='mb-3'>
+        <Card className="bg-light shadow border-0">
+          <CardBody className="px-lg-5 py-lg-5">
+            <Table className="align-items-center table-flush" responsive striped>
+              <thead className='bg-secondary text-white'>
+                <tr>
+                  <th>#</th>
+                  <th>Topic</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+              </tbody>
+            </Table>
+          </CardBody>
+        </Card>
+      </div>
     </div>
   )
 }

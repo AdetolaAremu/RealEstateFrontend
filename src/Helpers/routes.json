@@ -6,5 +6,7 @@
   "ALL_PROPERTIES":"/all-properties",
   "VIEW_PROPERTY":"/view-property",
   "DASHBOARD_HOME":"/user/dashboard",
-  "CREATE_POST":"/user/create-post"
+  "CREATE_POST":"/user/create-post",
+  "VIEW_PROFILE":"/user/profile",
+  "EDIT_PROFILE":"/user/edit-profile"
 }

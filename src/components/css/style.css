@@ -1,7 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+
+body {
+  font-family: Poppins;
+}
+
 .navbar {
   background-color: white;
 }
 
 .scroll {
   background-color: green;
+}
+
+.navLogo {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+}
+
+.navLogo:hover {
+  color: #2eca6a !important;
+  transition: 0.3s color;
+}
+
+.navLogoSecond {
+  color: #2eca6a !important;
+}
+
+
+
+.nav-linkk {
+  font-weight: 700 !important;
+  font-size: 1.1rem;
+}
+
+.nav-linkk:hover {
+  color:rgb(75, 71, 71) !important;
+}
+
+.nav-linkk::after {
+  content: '' !important;
+    display: block !important;
+    width: 0 !important;
+    height: 4px !important;
+    background: #2eca6a !important;
+}
+
+.nav-linkk:hover:after {
+  width: 100% !important;
+  transition: width .3s !important;
 }
