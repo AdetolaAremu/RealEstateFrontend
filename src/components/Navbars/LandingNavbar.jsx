@@ -63,6 +63,11 @@ export default class Example extends React.Component {
               </NavItem>
               <NavItem class="nav-item">
                 <NavLink className='nav-linkk fw-bold text-black' 
+                  tag={Link} to={ROUTE.ALL_PROPERTIES}
+                >Posts</NavLink>
+              </NavItem>
+              <NavItem class="nav-item">
+                <NavLink className='nav-linkk fw-bold text-black' 
                   tag={Link} to={ROUTE.LOGIN}
                 >Login</NavLink>
               </NavItem>

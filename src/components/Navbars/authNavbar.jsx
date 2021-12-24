@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import ROUTE from '../../Helpers/routes.json';
+import '../css/style.css';
 import {
   Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown,
   DropdownToggle, DropdownMenu, DropdownItem 
@@ -21,34 +24,34 @@ export default class AuthNavbar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <Navbar fixed="top" light expand="md">
+          <NavbarBrand className='navLogo' href="/">
+            <span className='navLogoFirst'>Deal</span><span className='navLogoSecond'>Estate</span>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+            <Nav className="ms-auto" navbar>
+              <NavItem class="nav-item">
+                <NavLink className='nav-linkk fw-bold text-black' 
+                  tag={Link} to={ROUTE.HOME}
+                >Home</NavLink>
+              </NavItem>
+              <NavItem class="nav-item">
+                <NavLink className='nav-linkk fw-bold text-black' 
+                  tag={Link} to={ROUTE.LOGIN}
+                >Login</NavLink>
+              </NavItem>
+              <NavItem class="nav-item">
+                <NavLink className='nav-linkk fw-bold text-black' 
+                  tag={Link} to={ROUTE.REGISTER}
+                >Register</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">RealEstate</NavLink>
+                <NavLink className='nav-linkk fw-bold text-black' 
+                  href="https://github.com/reactstrap/reactstrap"
+                >GitHub</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              
             </Nav>
           </Collapse>
         </Navbar>

@@ -4,6 +4,7 @@ import LandingNavbar from '../../components/Navbars/LandingNavbar';
 import PublicFooter from "../../components/Footers/publicfooter"
 import './landing.css';
 import sample from "../../components/Images/sample.jpg";
+import sample2 from "../../components/Images/post-3.jpg"
 import { Row, Col, Card, Container } from 'reactstrap';
 import { BsFillEmojiSunglassesFill, BsCreditCardFill, BsPersonFill, BsFillEyeFill, BsPeopleFill,BsArrowRight
 } from 'react-icons/bs';
@@ -27,16 +28,16 @@ const Landing= () => {
           }}
         >
         </div>
-        <div className='text-center text-white' 
-          style={{ position:"absolute", top:"50%", left:"35%", fontSize:"32px", fontWeight:"bolder" }}
+        <div className='text-white' 
+          style={{ position:"absolute", top:"40%", left:"10%" }}
         >
-          <div>
-            The best of the best of Real Estate
+          <div className='mb-5'>Ikorodu</div>
+          <div className='text-uppercase mb-5' style={{ fontSize:"50px", fontWeight:"bolder" }}>
+            two bed room flat
           </div>
-          <InputGroup className='mt-4'>
-            <Input type="text" />
-            <Button className='bg-danger border border-danger'>Submit</Button>
-          </InputGroup>
+          <p class="intro-subtitle intro-price">
+            <a href="#"><span class="price-a">rent | # 12.000</span></a>
+          </p>
         </div>
       </div>
 
@@ -128,9 +129,8 @@ const Landing= () => {
                   <h2 class="title-a">Latest Properties</h2>
                 </div>
                 <div class="title-link">
-                  <a href="property-grid.html">All Property
-                    <BsArrowRight className='' />
-                  </a>
+                  <a href="/">All Property</a>
+                  <span className='ml-4'><BsArrowRight className='arrowAll' /></span>
                 </div>
               </div>
             </div>
@@ -138,82 +138,101 @@ const Landing= () => {
         </div>
        
         <div className='mt-2'>
-          <Row className='mx-4 p-4'>
+          <Row>
             <Col>
-              <div class="item explode">
-                <img src={sample}  alt="image" />
-                <div class="overlay">
-                  <span>#5000</span>
-                  <span className=''>This is self contain...</span>
-                  {/* <span></span> */}
+              <div class="item explode" style={{ position:"relative" }}>
+                <img src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase latest-header'>two bedroom flat</div>
+                  <p class="tolatest mt-3">
+                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
+                  </p>
                 </div>
               </div>
             </Col>
             <Col>
-              <div class="item explode">
-                <img src={sample}  alt="image" />
-                <div class="overlay">
-                  <span>#5000</span>
-                  <span className=''>This is self contain...</span>
-                  {/* <span></span> */}
+              <div class="item explode" style={{ position:"relative" }}>
+                <img src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase latest-header'>two bedroom flat</div>
+                  <p class="tolatest mt-3">
+                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
+                  </p>
                 </div>
               </div>
             </Col>
-            {/* <Col>
-              <div class="item explode">
-                <img src={sample}  alt="image" />
-                <div class="overlay">
-                  <span>#5000</span>
-                  <span className=''>This is self contain...</span>
+            <Col>
+              <div class="item explode" style={{ position:"relative" }}>
+                <img src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase latest-header'>two bedroom flat</div>
+                  <p class="tolatest mt-3">
+                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
+                  </p>
                 </div>
               </div>
-            </Col> */}
+            </Col>
           </Row>
         </div>
       </Container>
 
       <Container>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="title-wrap d-flex justify-content-between">
-                <div className="title-box">
-                  <h2 className="title-a">Testimonials</h2>
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title-wrap d-flex justify-content-between">
+                <div class="title-box">
+                  <h2 class="title-a">Latest News</h2>
+                </div>
+                <div class="title-link">
+                  <a href="/">All News</a>
+                  <span className='ml-4'><BsArrowRight className='arrowAll' /></span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="carousel-item-a swiper-slide">
-          <div className="testimonials-box">
-            <div className="row">
-              <div className="col-sm-12 col-md-6">
-                <div className="testimonial-img">
-                  <img src={sample} className="img-fluid" />
+        <div className='mt-2'>
+          <Row>
+            <Col>
+              <div class="item explode" style={{ position:"relative" }}>
+                <img src={sample2} style={{ width:"100%", height:"100%", filter:"brightness(95%)" }} alt="image" 
+              />
+                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase genre-header'>travel</div>
+                  <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
+                  <div className='text-white mt-2'>18, December, 2022</div>
                 </div>
               </div>
-              <div className="col-sm-12 col-md-6">
-                <div className="testimonial-ico">
-                  <i className="bi bi-chat-quote-fill" />
-                </div>
-                <div className="testimonials-content">
-                  <p className="testimonial-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                    debitis hic ber quibusdam
-                    voluptatibus officia expedita corpori.
-                  </p>
-                </div>
-                <div className="testimonial-author-box">
-                  <img src="assets/img/mini-testimonial-1.jpg" alt className="testimonial-avatar" />
-                  <h5 className="testimonial-author">Albert &amp; Erika</h5>
+            </Col>
+            <Col>
+              <div class="item explode" style={{ position:"relative" }}>
+                <img src={sample2} style={{ width:"100%", height:"100%", filter:"brightness(95%)" }} 
+                  alt="image" 
+                />
+                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase genre-header'>tourism</div>
+                  <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
+                  <div className='text-white mt-2'>18, December, 2022</div>
                 </div>
               </div>
-            </div>
-          </div>
+            </Col>
+            <Col>
+              <div class="item explode" style={{ position:"relative" }}>
+                <img src={sample2} style={{ width:"100%", height:"100%", filter:"brightness(95%)" }} 
+                  alt="image" 
+                />
+                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase genre-header'>park</div>
+                  <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
+                  <div className='text-white mt-2'>18, December, 2022</div>
+                </div>
+              </div>
+            </Col>
+          </Row>
         </div>
       </Container>
-
       {/* <Row className="justify-content-md-center mt-4 mx-5">
         <Col className='text-center my-3'>
           <div className='bg-info text-center emojis' style={{ width:"62px", height:"50px", borderRadius:"10%", 
@@ -253,41 +272,8 @@ const Landing= () => {
         </Col>
       </Row>
       
-       */}
-      
-      <div className='text-center my-5'>
-        <div className='fw-bold h5'>
-          See the <span className='fw-bold'>stats</span>
-        </div>
-        {/* <Row>
-          <Col>
-            <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
-            <div className='mt-2'>Single Room</div>
-          </Col>
-          <Col>
-            <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
-            <div className='mt-2'>Room and Parlour</div>
-          </Col>
-          <Col>
-            <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
-            <div className='mt-2'>2 Bed Flat</div>
-          </Col>
-          <Col>
-            <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
-            <div className='mt-2'>3 Bed Flat</div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
-            <div className='mt-2'>Duplex</div>
-          </Col>
-          <Col>
-            <BsFillEmojiSunglassesFill style={{ fontSize:"35px" }} />
-            <div className='mt-2'>Shop To Let</div>
-          </Col>
-        </Row> */}
-      </div>
+       */} 
+     
       <PublicFooter />
     </>
   )

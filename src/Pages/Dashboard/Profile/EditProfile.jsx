@@ -170,7 +170,7 @@ const EditProfile = () => {
                   </Col>
                   <Col md="6">
                     <Label>
-                      Confirm Password
+                      Confirm New Password
                     </Label>
                     <Input
                       className={`form-control-alternative`}

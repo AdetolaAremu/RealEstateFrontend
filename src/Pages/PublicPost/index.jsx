@@ -17,8 +17,9 @@ const Index = () => {
   
   return (
     <>
+      <LandingNavBar />
       <Container>
-        <div className='my-4'>
+        <div style={{ marginTop:"6rem" }}>
           <div className='' style={{ borderLeft:"3px solid #2eca6a" }}>
             <div className='p-3'>
               <h3 className=''>This is to test this shit</h3>

@@ -10,6 +10,8 @@ import AuthLayout from "../src/layouts/Auths";
 import AdminLayout from "../src/layouts/Admin";
 import viewProperty from "./Pages/PublicPost/viewProperty"
 
+import ROUTE from "./Helpers/routes.json"
+
 
 ReactDOM.render(
   <Provider store={Store}>
@@ -18,7 +20,7 @@ ReactDOM.render(
         <Route exact path="/" component={landing} />
         <Route path="/auth" component={AuthLayout} />
         <Route path="/user" component={AdminLayout} />
-        <Route path="/post" component={post} />
+        <Route path={ROUTE.ALL_PROPERTIES} component={post} />
         <Route path="/view-post" component={viewProperty} />
       </Switch>
     </BrowserRouter>
