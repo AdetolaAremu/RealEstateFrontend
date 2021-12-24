@@ -5,16 +5,65 @@ import PublicFooter from "../../components/Footers/publicfooter"
 import './landing.css';
 import sample from "../../components/Images/sample.jpg";
 import sample2 from "../../components/Images/post-3.jpg"
+import landingbg from "../../components/Images/landingbg.webp"
 import { Row, Col, Card, Container } from 'reactstrap';
 import { BsFillEmojiSunglassesFill, BsCreditCardFill, BsPersonFill, BsFillEyeFill, BsPeopleFill,BsArrowRight
 } from 'react-icons/bs';
+import { CarouselControl, Carousel, CarouselItem, CarouselIndicators } from 'reactstrap';
 
 const Landing= () => {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  
+    // State for Animation
+  const [animating, setAnimating] = React.useState(false);
+  
+    // Sample items for Carousel
+  const items = [
+        {
+          src:landingbg,
+        },
+        // {
+        //     src: sample2,
+        // }
+    ];
+  
+    // Items array length
+    const itemLength = items.length - 1
+  
+    // Previous button for Carousel
+    const previousButton = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === 0 ?
+            itemLength : activeIndex - 1;
+        setActiveIndex(nextIndex);
+    }
+  
+    // Next button for Carousel
+    const nextButton = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === itemLength ?
+            0 : activeIndex + 1;
+        setActiveIndex(nextIndex);
+    }
+  
+    // Carousel Item Data
+    const carouselItemData = items.map((item) => {
+        return (
+          <CarouselItem
+              key={item.src}
+              onExited={() => setAnimating(false)}
+              onExiting={() => setAnimating(true)}
+          >
+              <img src={item.src} style={{ height:"40rem", width:"100%", minHeight: "600px", }} />
+          </CarouselItem>
+        );
+    });
+
   return (
     <>
       <LandingNavbar />
       <div style={{ position:"relative" }}>
-        <div
+        {/* <div
           className=""
           style={{
             minHeight: "600px",
@@ -26,8 +75,18 @@ const Landing= () => {
             backgroundPosition: "center top",
             color:"white",
           }}
-        >
-        </div>
+        > */}
+            <Carousel previous={previousButton} next={nextButton}
+                activeIndex={activeIndex}>
+                <CarouselIndicators items={items}
+                    activeIndex={activeIndex}
+                    onClickHandler={(newIndex) => {
+                        if (animating) return;
+                        setActiveIndex(newIndex);
+                    }} />
+                {carouselItemData}
+                
+            </Carousel>
         <div className='text-white' 
           style={{ position:"absolute", top:"40%", left:"10%" }}
         >
@@ -40,6 +99,8 @@ const Landing= () => {
           </p>
         </div>
       </div>
+
+      
 
       <section className="section-services section-t8 pt-5">
         <Container>
