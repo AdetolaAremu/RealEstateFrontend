@@ -21,10 +21,22 @@ const Landing= () => {
   const items = [
         {
           src:landingbg,
+          city:"ikorodu",
+          title:"two bed room flat",
+          price:"12,000"
         },
-        // {
-        //     src: sample2,
-        // }
+        {
+          src: sample2,
+          city:"Lagos Island",
+          title:"Self Contain",
+          price:"150,000"
+        },
+        {
+          src: sample,
+          city:"Idumota",
+          title:"Two rooms",
+          price:"100,000"
+        }
     ];
   
     // Items array length
@@ -54,7 +66,18 @@ const Landing= () => {
               onExited={() => setAnimating(false)}
               onExiting={() => setAnimating(true)}
           >
-              <img src={item.src} style={{ height:"40rem", width:"100%", minHeight: "600px", }} />
+              <img src={item.src} style={{ height:"45rem", width:"100%", minHeight: "600px", }} />
+              <div className='text-white' 
+                style={{ position:"absolute", top:"40%", left:"10%" }}
+              >
+                <div className='mb-5'>{ item.city }</div>
+                <div className='text-uppercase mb-5' style={{ fontSize:"50px", fontWeight:"bolder" }}>
+                  { item.title }
+                </div>
+                <p class="intro-subtitle intro-price">
+                  <a href="#"><span class="price-a">rent | # { item.price }</span></a>
+                </p>
+              </div>
           </CarouselItem>
         );
     });
@@ -76,18 +99,17 @@ const Landing= () => {
             color:"white",
           }}
         > */}
-            <Carousel previous={previousButton} next={nextButton}
-                activeIndex={activeIndex}>
-                <CarouselIndicators items={items}
-                    activeIndex={activeIndex}
-                    onClickHandler={(newIndex) => {
-                        if (animating) return;
-                        setActiveIndex(newIndex);
-                    }} />
-                {carouselItemData}
-                
-            </Carousel>
-        <div className='text-white' 
+          <Carousel previous={previousButton} next={nextButton}
+              activeIndex={activeIndex}>
+              <CarouselIndicators items={items}
+                  activeIndex={activeIndex}
+                  onClickHandler={(newIndex) => {
+                      if (animating) return;
+                      setActiveIndex(newIndex);
+                  }} />
+              {carouselItemData}
+          </Carousel>
+        {/* <div className='text-white' 
           style={{ position:"absolute", top:"40%", left:"10%" }}
         >
           <div className='mb-5'>Ikorodu</div>
@@ -97,7 +119,7 @@ const Landing= () => {
           <p class="intro-subtitle intro-price">
             <a href="#"><span class="price-a">rent | # 12.000</span></a>
           </p>
-        </div>
+        </div> */}
       </div>
 
       
@@ -108,7 +130,7 @@ const Landing= () => {
             <div className="col-md-12">
               <div className="title-wrap d-flex justify-content-between">
                 <div className="title-box">
-                  <h2 className="title-a">Our Services</h2>
+                  <h2 className="title-a">What you get</h2>
                 </div>
               </div>
             </div>
@@ -123,7 +145,7 @@ const Landing= () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c">Lifestyle</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Affordability</h2>
                   </div>
                 </div>
                 <div className="mt-3">
@@ -144,7 +166,7 @@ const Landing= () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c">Lifestyle</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Lifestyle</h2>
                   </div>
                 </div>
                 <div className="mt-3">
@@ -165,7 +187,7 @@ const Landing= () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c">Lifestyle</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Credibility</h2>
                   </div>
                 </div>
                 <div className="mt-3">
