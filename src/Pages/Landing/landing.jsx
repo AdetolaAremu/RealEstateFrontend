@@ -7,9 +7,9 @@ import sample from "../../components/Images/sample.jpg";
 import sample2 from "../../components/Images/post-3.jpg"
 import landingbg from "../../components/Images/landingbg.webp"
 import { Row, Col, Card, Container } from 'reactstrap';
-import { BsFillEmojiSunglassesFill, BsCreditCardFill, BsPersonFill, BsFillEyeFill, BsPeopleFill,BsArrowRight
-} from 'react-icons/bs';
-import { CarouselControl, Carousel, CarouselItem, CarouselIndicators } from 'reactstrap';
+import { BsPeopleFill, BsArrowRight, BsFillCartCheckFill, BsCheckCircleFill, BsChevronRight} from 'react-icons/bs';
+import { HiLocationMarker } from "react-icons/hi";
+import { Carousel, CarouselItem, CarouselIndicators } from 'reactstrap';
 
 const Landing= () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
@@ -66,18 +66,20 @@ const Landing= () => {
               onExited={() => setAnimating(false)}
               onExiting={() => setAnimating(true)}
           >
-              <img src={item.src} style={{ height:"45rem", width:"100%", minHeight: "600px", }} />
-              <div className='text-white' 
-                style={{ position:"absolute", top:"40%", left:"10%" }}
-              >
-                <div className='mb-5'>{ item.city }</div>
-                <div className='text-uppercase mb-5' style={{ fontSize:"50px", fontWeight:"bolder" }}>
-                  { item.title }
-                </div>
-                <p class="intro-subtitle intro-price">
-                  <a href="#"><span class="price-a">rent | # { item.price }</span></a>
-                </p>
+            <img src={item.src} style={{ height:"45rem", width:"100%", minHeight: "600px", }} />
+            <div className='text-white' 
+              style={{ position:"absolute", top:"40%", left:"10%" }}
+            >
+              <div className='mb-5 h4 text-capitalize'>
+                <HiLocationMarker style={{ color:"#2eca6a" }} /> { item.city }
               </div>
+              <div className='text-uppercase mb-5' style={{ fontSize:"50px", fontWeight:"bolder" }}>
+                { item.title }
+              </div>
+              <p class="intro-subtitle intro-price">
+                <a href="#"><span class="price-a">rent | # { item.price }</span></a>
+              </p>
+            </div>
           </CarouselItem>
         );
     });
@@ -141,7 +143,7 @@ const Landing= () => {
                 <div className="card-header-c d-flex">
                   <div className="card-box-ico">
                     <span>
-                      <BsPeopleFill />
+                      <BsFillCartCheckFill />
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
@@ -183,7 +185,7 @@ const Landing= () => {
                 <div className="card-header-c d-flex">
                   <div className="card-box-ico">
                     <span>
-                      <BsPeopleFill />
+                      <BsCheckCircleFill />
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
@@ -224,33 +226,42 @@ const Landing= () => {
           <Row>
             <Col>
               <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
                 <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase latest-header'>two bedroom flat</div>
                   <p class="tolatest mt-3">
-                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
+                    <a href="#"><span className="price-latest">rent | # 12.000</span></a>
+                  </p>
+                  <p className='clicktoview'>
+                    <a href="#">Click to view <BsChevronRight /></a>
                   </p>
                 </div>
               </div>
             </Col>
             <Col>
               <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
                 <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase latest-header'>two bedroom flat</div>
                   <p class="tolatest mt-3">
                     <a href="#"><span class="price-latest">rent | # 12.000</span></a>
+                  </p>
+                  <p className='clicktoview'>
+                    <a href="#">Click to view <BsChevronRight /></a>
                   </p>
                 </div>
               </div>
             </Col>
             <Col>
               <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
                 <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase latest-header'>two bedroom flat</div>
                   <p class="tolatest mt-3">
                     <a href="#"><span class="price-latest">rent | # 12.000</span></a>
+                  </p>
+                  <p className='clicktoview'>
+                    <a href="#">Click to view <BsChevronRight /></a>
                   </p>
                 </div>
               </div>
@@ -280,8 +291,7 @@ const Landing= () => {
           <Row>
             <Col>
               <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample2} style={{ width:"100%", height:"100%", filter:"brightness(95%)" }} alt="image" 
-              />
+                <img src={sample2} alt="image" className='home-img' />
                 <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase genre-header'>travel</div>
                   <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
@@ -291,9 +301,7 @@ const Landing= () => {
             </Col>
             <Col>
               <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample2} style={{ width:"100%", height:"100%", filter:"brightness(95%)" }} 
-                  alt="image" 
-                />
+                <img src={sample2} alt="image" className='home-img' />
                 <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase genre-header'>tourism</div>
                   <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
@@ -303,9 +311,7 @@ const Landing= () => {
             </Col>
             <Col>
               <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample2} style={{ width:"100%", height:"100%", filter:"brightness(95%)" }} 
-                  alt="image" 
-                />
+                <img src={sample2} alt="image" className='home-img' />
                 <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase genre-header'>park</div>
                   <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>

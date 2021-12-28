@@ -21,3 +21,43 @@
   background: -webkit-linear-gradient(to right, #155799, #159957);
   background: linear-gradient(to right, #155799, #159957);
 }
+
+@media only screen and (max-width: 600px) {
+  #admincontainer {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  #adminheader {
+    margin: 2px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 840px) {
+  #adminheader {
+    margin-right: 5px !important;
+    max-width: 15rem !important;
+  }
+
+  .therounded {
+    width: 55% !important;
+  }
+  
+  #adminicon {
+    margin-left: -8px !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 640px) {
+  #adminheader {
+    margin: 5px;
+  }
+
+  .third-header {
+    width: 11.3rem;
+  }
+
+  #adminicon {
+    margin-left: -15px;
+  }
+}

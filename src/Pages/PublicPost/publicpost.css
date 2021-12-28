@@ -1,0 +1,42 @@
+.view-property-img {
+  max-height: 40rem;
+}
+
+.viewicons {
+  width: 13rem; 
+  height: 4rem; 
+  margin-left:-3rem; 
+  color: #2eca6a
+}
+
+.buttonLike {
+  margin-top: -8px;
+}
+
+/* media queries */
+@media only screen and (max-width: 600px) {
+  .view-property-img {
+    height: 20rem;
+    width: 20rem;
+    margin-top: 10px;
+  }
+
+  .iconstop {
+    display: flex;
+  }
+
+  .viewicons {
+    width: 2rem !important;
+    margin-left: -4rem;
+  }
+
+  .firsticon {
+    margin-left: 2rem !important;
+  }
+
+  .undericons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+}

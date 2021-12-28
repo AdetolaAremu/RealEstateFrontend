@@ -19,11 +19,11 @@ const Admin = () => {
     <div>
       <NavUser />
       <Container>
-        <div className='d-flex justify-content-between' style={{marginTop:"5rem"}}>
-          <div className='rounded first-header shadow-lg p-3 bg-body'>
+        <div className='d-flex justify-content-between' style={{marginTop:"5rem"}} id="admincontainer">
+          <div className='rounded first-header shadow-lg p-3 bg-body' id="adminheader">
             <div className='d-flex'>
-              <div className='bg-white rounded-circle p-3 w-25 text-center '>
-                <AiOutlineAlignLeft style={{ fontSize:"30px", }} />
+              <div className='bg-white rounded-circle p-3 w-25 text-center therounded'>
+                <AiOutlineAlignLeft style={{ fontSize:"30px", }} id="adminicon" />
               </div>
               <span className='mx-3 pt-3 fw-bold text-white'>Posts</span>
             </div>
@@ -32,10 +32,10 @@ const Admin = () => {
             </div>
           </div>
 
-          <div className='rounded second-header shadow-lg p-3 bg-body'>
+          <div className='rounded second-header shadow-lg p-3 bg-body' id="adminheader">
             <div className='d-flex'>
-              <div className='bg-white rounded-circle p-3 w-25 text-center '>
-                <AiOutlineLike style={{ fontSize:"30px", }} />
+              <div className='bg-white rounded-circle p-3 w-25 text-center therounded'>
+                <AiOutlineLike style={{ fontSize:"30px", }} id="adminicon" />
               </div>
               <span className='mx-3 pt-3 fw-bold text-white'>Liked Posts</span>
             </div>
@@ -44,10 +44,10 @@ const Admin = () => {
             </div>
           </div>
 
-          <div className='rounded third-header shadow-lg p-3 bg-body'>
+          <div className='rounded third-header shadow-lg p-3 bg-body' id="adminheader">
             <div className='d-flex'>
-              <div className='bg-white rounded-circle p-3 w-25 text-center '>
-                <AiOutlineComment style={{ fontSize:"30px", }} />
+              <div className='bg-white rounded-circle p-3 w-25 text-center therounded'>
+                <AiOutlineComment style={{ fontSize:"30px", }} id="adminicon" />
               </div>
               <span className='mx-3 pt-3 fw-bold text-white'>Comments</span>
             </div>

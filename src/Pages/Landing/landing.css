@@ -7,6 +7,15 @@
   text-decoration: none;
 }
 
+.carouselslidetext {
+  /* padding-top: 60px; */
+  /* background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent); */
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 27%, rgba(0, 0, 0, 0.65) 90%);
+}
+
+
+
 .price-a {
   color: #ffffff;
   padding: 0.6rem 0.8rem;
@@ -198,4 +207,23 @@
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
+}
+
+/* image zoom in */
+.home-img {
+  transition: 0.7s;
+  width: 100%;
+  height: 100%; 
+  filter: brightness(0.45);
+}
+
+.home-img:hover {
+  transform: scale(1.1);
+  filter: brightness(0.7);
+}
+
+/* end of image zoom in */
+.clicktoview > a {
+  text-decoration: none;
+  color: #2eca6a;
 }

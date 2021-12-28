@@ -49,3 +49,8 @@ body {
   width: 100% !important;
   transition: width .3s !important;
 }
+
+.footertext > li > a {
+  text-decoration: none;
+  color: black;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaChevronRight } from '@fortawesome/free-solid-svg-icons';
+import '../css/style.css'
+import { BsChevronRight } from 'react-icons/bs';
 
 function Publicfooter() {
   return (
@@ -13,7 +13,7 @@ function Publicfooter() {
               <div className="col-sm-12 col-md-4">
                 <div className="widget-a">
                   <div className="w-header-a">
-                    <h3 className="w-title-a text-brand">EstateAgency</h3>
+                    <h3 className="w-title-a text-brand">DealEstate</h3>
                   </div>
                   <div className="w-body-a">
                     <p className="w-text-a color-text-a">
@@ -42,22 +42,22 @@ function Publicfooter() {
                     <div className="w-body-a">
                       <ul className="list-unstyled">
                         <li className="item-list-a">
-                          <i className="bi bi-chevron-right" /> <a href="#">Site Map</a>
+                          <BsChevronRight /> <a href="#">Site Map</a>
                         </li>
                         <li className="item-list-a">
-                          <i className="bi bi-chevron-right" /> <a href="#">Legal</a>
+                          <BsChevronRight /> <a href="#">Legal</a>
                         </li>
                         <li className="item-list-a">
-                          <i className="bi bi-chevron-right" /> <a href="#">Agent Admin</a>
+                          <BsChevronRight /> <a href="#">Agent Admin</a>
                         </li>
                         <li className="item-list-a">
-                          <i className="bi bi-chevron-right" /> <a href="#">Careers</a>
+                          <BsChevronRight /> <a href="#">Careers</a>
                         </li>
                         <li className="item-list-a">
-                          <i className="bi bi-chevron-right" /> <a href="#">Affiliate</a>
+                          <BsChevronRight /> <a href="#">Affiliate</a>
                         </li>
                         <li className="item-list-a">
-                          <i className="bi bi-chevron-right" /> <a href="#">Privacy Policy</a>
+                          <BsChevronRight /> <a href="#">Privacy Policy</a>
                         </li>
                       </ul>
                     </div>
@@ -72,22 +72,22 @@ function Publicfooter() {
                   <div className="w-body-a">
                     <ul className="list-unstyled">
                       <li className="item-list-a">
-                        <i className="bi bi-chevron-right" /> <a href="#">Venezuela</a>
+                        <BsChevronRight /> <a href="#">Venezuela</a>
                       </li>
                       <li className="item-list-a">
-                        <i className="bi bi-chevron-right" /> <a href="#">China</a>
+                        <BsChevronRight /> <a href="#">China</a>
                       </li>
                       <li className="item-list-a">
-                        <i className="bi bi-chevron-right" /> <a href="#">Hong Kong</a>
+                        <BsChevronRight /> <a href="#">Hong Kong</a>
                       </li>
                       <li className="item-list-a">
-                        <i className="bi bi-chevron-right" /> <a href="#">Argentina</a>
+                        <BsChevronRight /> <a href="#">Argentina</a>
                       </li>
                       <li className="item-list-a">
-                        <i className="bi bi-chevron-right" /> <a href="#">Singapore</a>
+                        <BsChevronRight /> <a href="#">Singapore</a>
                       </li>
                       <li className="item-list-a">
-                        <i className="bi bi-chevron-right" /> <a href="#">Philippines</a>
+                        <BsChevronRight /> <a href="#">Philippines</a>
                       </li>
                     </ul>
                   </div>
@@ -99,9 +99,9 @@ function Publicfooter() {
         <footer>
           <div className="container">
             <div className="row">
-              <div className="col-md-12 text-center">
+              <div className="col-md-12 text-center mt-4">
                 <nav className="nav-footer">
-                  <ul className="list-inline">
+                  <ul className="list-inline footertext">
                     <li className="list-inline-item">
                       <a href="#">Home</a>
                     </li>
@@ -146,7 +146,7 @@ function Publicfooter() {
                 <div className="copyright-footer">
                   <p className="copyright color-text-a">
                     © Copyright
-                    <span className="color-a">EstateAgency</span> All Rights Reserved.
+                    <span className="color-a"> EstateAgency</span> All Rights Reserved.
                   </p>
                 </div>
               </div>
