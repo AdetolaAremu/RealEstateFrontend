@@ -12,7 +12,7 @@ import './publicpost.css'
 
 function ViewProperty() {
   return (
-    <div>
+    <div style={{ overflow:"hidden" }}>
       <LandingNavbar />
       <Container>
         <div style={{ marginTop:"6rem" }}>
@@ -24,7 +24,7 @@ function ViewProperty() {
           </div>
         </div>
         
-        <div className='mb-3 text-center'>
+        <div className='my-3 text-center'>
           <img className='view-property-img' src={sample} />
         </div>
 
@@ -56,11 +56,11 @@ function ViewProperty() {
           <div><h5 className='text-muted text-center' style={{ marginRight:"2.8rem" }}>Lagos</h5></div>
         </div>
 
-        <div className='d-flex justify-content-between'>
+        <Row className='d-flex justify-content-between'>
           <Col className='mt-5 mb-3'>
             <h2>Description</h2>
             <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
-            <div lg="10" className='mt-2'>
+            <div lg="10" className='mt-2 descript'>
               Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus magna justo, 
               lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci 
               luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel,
@@ -68,20 +68,20 @@ function ViewProperty() {
               luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel.
             </div>
           </Col>
-          <Col className='mt-5 mb-3' lg="4" style={{ marginLeft:"2rem" }}>
+          <Col className='mt-5 mb-3 agentcol' lg="4">
             <h2>Agent Details</h2>
             <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
             <div className='d-flex justify-content-between mt-2' >
               <img className='mr-4' src={pix} alt="..." />
-              <div>
+              <div className='contactdetials'>
                 <h3>Tola Aremu</h3>
-                <div><AiTwotoneMail /> Email</div>
-                <div><HiLocationMarker /> City</div>
+                <div className="mb-1"><AiTwotoneMail /> Email</div>
+                <div className="mb-1"><HiLocationMarker /> City</div>
                 <div><AiTwotonePhone /> 09988777667</div>
               </div>
             </div>
           </Col>
-        </div>
+        </Row>
         {/* <Row className='mb-5'>
           <Col lg="8">
             Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus magna justo, 
@@ -121,7 +121,7 @@ function ViewProperty() {
           </div>
         </Form>        
       </Container>
-      <Publicfooter />
+      <Publicfooter style={{ width:"100%" }} />
     </div>
   )
 }

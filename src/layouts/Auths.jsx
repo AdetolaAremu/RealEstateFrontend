@@ -8,16 +8,20 @@ import { Container, Row } from 'reactstrap';
 
 const Auths = () => {
   return (
-    <div className=''>
+    <div className='' 
+      style={{ overflow:"hidden", backgroundImage:
+        "url(" + require("../components/Images/2314950.webp").default + ")",
+      backgroundSize: "cover", }}
+    >
       <AuthNavbar />
-      <Container>
+      {/* <Container> */}
         <Row>
           <Switch>
             <Route path={ROUTE.LOGIN} component={Login} />
             <Route path={ROUTE.REGISTER} component={Register} />
           </Switch>
         </Row>
-      </Container>
+      {/* </Container> */}
     </div>
   )
 }

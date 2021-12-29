@@ -85,7 +85,7 @@ const Landing= () => {
     });
 
   return (
-    <>
+    <div style={{ overflow:"hidden" }}>
       <LandingNavbar />
       <div style={{ position:"relative" }}>
         {/* <div
@@ -147,7 +147,7 @@ const Landing= () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Affordability</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Affordable</h2>
                   </div>
                 </div>
                 <div className="mt-3">
@@ -364,7 +364,7 @@ const Landing= () => {
        */} 
      
       <PublicFooter />
-    </>
+    </div>
   )
 }
 

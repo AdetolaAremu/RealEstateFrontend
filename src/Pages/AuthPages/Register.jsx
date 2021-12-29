@@ -6,13 +6,16 @@ import { MdPassword } from "react-icons/md";
 
 function Register() {
   return (
-    <div className='mt-5 mb-5'>
-       <div className='d-flex justify-content-center'>
+    <div style={{
+      
+    }}
+    >
+       <div className='vh-100 d-flex justify-content-center align-items-center' style={{ marginTop:"5rem" }}>
         <Col lg="5" md="7">
           <Card className="bg-light shadow border-0">
             <CardBody className="px-lg-5 py-lg-5">
-              <div className="text-center text-muted mb-4">
-                <small>Please sign up with correct credentials</small>
+              <div className='mb-5 text-center' style={{ fontSize:"2rem", fontWeight:"600" }}>
+                <span>Deal</span><span style={{ color:"#2eca6a" }}>Estate</span>
               </div>
               <Form role="form">
                 <FormGroup className="mb-3">

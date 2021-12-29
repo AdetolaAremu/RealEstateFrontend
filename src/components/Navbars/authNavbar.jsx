@@ -24,7 +24,7 @@ export default class AuthNavbar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixed="top" light expand="md">
+        <Navbar className='shadow' fixed="top" light expand="md">
           <NavbarBrand className='navLogo' href="/">
             <span className='navLogoFirst'>Deal</span><span className='navLogoSecond'>Estate</span>
           </NavbarBrand>

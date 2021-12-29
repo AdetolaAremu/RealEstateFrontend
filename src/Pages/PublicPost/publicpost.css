@@ -13,7 +13,12 @@
   margin-top: -8px;
 }
 
-/* media queries */
+.agentcol {
+  margin-left: 2rem;
+}
+
+/* media queries starts */
+
 @media only screen and (max-width: 600px) {
   .view-property-img {
     height: 20rem;
@@ -38,5 +43,25 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+  }
+
+  .agentcol {
+    margin-left: 0px !important;
+    margin-top: 1rem !important;
+  }
+
+  .contactdetials {
+    margin-left: -2rem !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 840px) {
+  .view-property-img {
+    width: 100% !important;
+  }
+
+  .agentcol {
+    margin-left: 0px !important;
+    margin-top: 1rem !important;
   }
 }
