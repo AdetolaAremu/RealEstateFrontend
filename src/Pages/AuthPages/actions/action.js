@@ -1,7 +1,9 @@
 import axios from 'axios';
 import jwtdecode from 'jwt-decode';
 import ROUTE from "../../../Helpers/routes.json";
+import { notify } from '../../../utils/notify';
 import setAuthToken from '../../../utils/setAuthToken';
+import process from '../../../env'
 import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, GET_AUTH_ERROR, SET_CURRENT_USER } from './types';
 
 const service_url = process.env.SERVICE_URL
@@ -51,7 +53,7 @@ export const registerNewUser = (userData) => dispatch =>{
   .then(()=>{
     dispatch({ type: AUTH_LOADING_ENDS })
     // notify("Registration successful, you can now login");
-    window.location.href = ROUTES.LOGIN;
+    window.location.href = ROUTE.LOGIN;
   }).catch((error) => {
     dispatch({type: AUTH_LOADING_ENDS});
     if (error.response) {

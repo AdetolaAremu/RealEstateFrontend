@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ROUTE from "../../Helpers/routes.json"
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
+  UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu
+} from 'reactstrap';
 
 export default class UserNav extends React.Component {
   constructor(props) {
@@ -20,7 +22,7 @@ export default class UserNav extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" fixed='top' light expand="lg">
+        <Navbar color="light" fixed='top' light expand="lg" className='p-3'>
           <NavbarBrand className='navLogo' href="/">
             <span className='navLogoFirst'>Deal</span><span className='navLogoSecond'>Estate</span>
           </NavbarBrand>
@@ -48,7 +50,7 @@ export default class UserNav extends React.Component {
                 <DropdownToggle nav caret>
                   Name
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu right="5">
                   <DropdownItem>
                     Option 1
                   </DropdownItem>

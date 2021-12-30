@@ -1,12 +1,12 @@
 {
   "HOME":"/",
-  "AUTH":"/auth",
   "LOGIN":"/auth/login",
   "REGISTER":"/auth/register",
   "ALL_PROPERTIES":"/all-properties",
   "VIEW_PROPERTY":"/view-property",
   "DASHBOARD_HOME":"/user/dashboard",
   "CREATE_POST":"/user/create-post",
+  "EDIT_POST":"/user/edit-post",
   "VIEW_PROFILE":"/user/profile",
   "EDIT_PROFILE":"/user/edit-profile"
 }
