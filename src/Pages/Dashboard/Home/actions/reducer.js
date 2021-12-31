@@ -11,12 +11,12 @@ export default function(state = init, action){
     case INDEX_LOADING_STARTS:
       return {
         ...state,
-        layoutLoading:true
+        indexLoading:true
       }
     case INDEX_LOADING_ENDS:
       return {
         ...state,
-        layoutLoading:false
+        indexLoading:false
       }
     case GET_INDEX_DATA:
       return {

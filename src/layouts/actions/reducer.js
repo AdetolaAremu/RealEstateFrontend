@@ -1,8 +1,9 @@
-import { LAYOUT_LOADING_STARTS, LAYOUT_LOADING_ENDS, GET_LAYOUT_DATA, GET_LAYOUT_ERROR } from './types'
+import { LAYOUT_LOADING_STARTS, LAYOUT_LOADING_ENDS, GET_LAYOUT_DATA, GET_LAYOUT_ERROR, GET_LAYOUT_USER_STATS } from './types'
 
 const init =  {
   layoutData:[],
   layoutLoading:false,
+  layoutsUserStats:[],
   errors: {}
 }
 
@@ -22,6 +23,11 @@ export default function(state = init, action){
       return {
         ...state,
         layoutData:action.payload
+      }
+    case GET_LAYOUT_USER_STATS:
+      return {
+        ...state,
+        layoutsUserStats:action.payload
       }
     case GET_LAYOUT_ERROR:
       return {

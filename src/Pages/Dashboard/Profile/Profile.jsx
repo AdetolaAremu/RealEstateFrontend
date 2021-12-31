@@ -1,9 +1,21 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText } from 'reactstrap';
 import ROUTE from "../../../Helpers/routes.json"
+import { getLoggedInUser } from '../../../layouts/actions/action';
 
 const Profile = () => {
+  
+  const { layouts: { layoutData } } = useSelector(state => state)
+
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(getLoggedInUser())
+  }, [])
+
   return (
     <>
       <div className='my-3'>
@@ -19,44 +31,18 @@ const Profile = () => {
                 Edit Profile
               </Button>
             </div>
-            <Form>
               <Row>
                 <Col>
                   <Label>
                     First Name
                   </Label>
-                  <Input
-                    className={`form-control-alternative`}
-                    placeholder="E.g Duplex for sale"
-                    type="email"
-                    autoComplete="new-email"
-                    name='email'
-                    // onChange={handleChange}
-                    // value={Inputs.email}
-                  />
-                <div className="text-danger text-sm">
-                  {/* {
-                    isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
-                  } */}
-                </div>
+                  <div className='fw-bold text-capitalize h4'>{layoutData?.first_name}</div>
                 </Col>
                 <Col>
                   <Label>
                     Last Name
                   </Label>
-                  <Input
-                    className={`form-control-alternative`}
-                    placeholder="City"
-                    type="text"
-                    name='password'
-                    // onChange={handleChange}
-                    // value={Inputs.password}
-                  />
-                  <div className="text-danger text-sm">
-                    {/* {
-                      isEmpty(errors?.data?.errors?.password) ? null : errors?.data?.errors?.password
-                    } */}
-                  </div>
+                  <div className='fw-bold text-capitalize h4'>{layoutData?.last_name}</div>
                 </Col>
               </Row>
               <Row>
@@ -64,36 +50,13 @@ const Profile = () => {
                 <Label>
                   Middle Name
                 </Label>
-                <Input
-                  className={`form-control-alternative`}
-                  type="text"
-                  name='email'
-                  // onChange={handleChange}
-                  // value={Inputs.email}
-                  />
-                <div className="text-danger text-sm">
-                  {/* {
-                    isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
-                  } */}
-                </div>
+                <div className='fw-bold text-capitalize h4'>{ layoutData?.middle_name == null ? "--" : layoutData?.middle_name }</div>
                 </Col>
                 <Col>
                   <Label>
-                    Email
+                    Username
                   </Label>
-                  <Input
-                    className={`form-control-alternative`}
-                    type="email"
-                    autoComplete="new-email"
-                    name='email'
-                    // onChange={handleChange}
-                    // value={Inputs.email}
-                    />
-                  <div className="text-danger text-sm">
-                    {/* {
-                      isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
-                    } */}
-                  </div>
+                  <div className='fw-bold text-capitalize h4'>{layoutData?.username}</div>
                 </Col>
               </Row>
               <Row>
@@ -101,26 +64,15 @@ const Profile = () => {
                   <Label>
                     Phone Number
                   </Label>
-                  <Input
-                    className={`form-control-alternative`}
-                    type="text"
-                    name='email'
-                    // onChange={handleChange}
-                    // value={Inputs.email}
-                    />
-                  <div className="text-danger text-sm">
-                    {/* {
-                      isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
-                    } */}
-                  </div>
+                  <div className='fw-bold text-capitalize h4'>{layoutData?.phone_number}</div>
+                </Col>
+                <Col>
+                  <Label>
+                    Email
+                  </Label>
+                  <div className='fw-bold text-capitalize h4'>{layoutData?.email}</div>
                 </Col>
               </Row>
-              {/* <div className="text-center">
-                <Button className="my-4" color="primary" type="submit">
-                  Submit
-                </Button>
-              </div> */}
-            </Form>
           </CardBody>
         </Card>
       </div>

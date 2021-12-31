@@ -11,19 +11,20 @@ import { Container, Row, Col } from 'reactstrap';
 import NavUser from "../components/Navbars/userNavbar";
 import UserFooter from '../components/Navbars/userFooter';
 import { AiOutlineAlignLeft, AiOutlineLike, AiOutlineComment } from "react-icons/ai";
-import { getLoggedInUser } from './actions/action';
+import { getLoggedInUser, getUserStats } from './actions/action';
 
 import './layouts.css'
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
 const Admin = () => {
-  const { layoutData, layoutLoading } = useSelector(state => state.layouts)
+  const { layoutData, layoutLoading, layoutsUserStats } = useSelector(state => state.layouts)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getLoggedInUser())
+    dispatch(getUserStats())
   }, [])
 
   return (
@@ -48,7 +49,7 @@ const Admin = () => {
               <span className='mx-3 pt-3 fw-bold text-white'>Posts</span>
             </div>
             <div className='fw-bold text-white' style={{ fontSize:"100px", textAlign:"right" }}>
-              0
+              { layoutsUserStats?.userPosts }
             </div>
           </div>
 
@@ -60,7 +61,7 @@ const Admin = () => {
               <span className='mx-3 pt-3 fw-bold text-white'>Liked Posts</span>
             </div>
             <div className='fw-bold text-white' style={{ fontSize:"100px", textAlign:"right" }}>
-              0
+              { layoutsUserStats?.likedPosts }
             </div>
           </div>
 
@@ -72,7 +73,7 @@ const Admin = () => {
               <span className='mx-3 pt-3 fw-bold text-white'>Comments</span>
             </div>
             <div className='fw-bold text-white' style={{ fontSize:"100px", textAlign:"right" }}>
-              0
+              { layoutsUserStats?.userComments }
             </div>
           </div>
         </div>
