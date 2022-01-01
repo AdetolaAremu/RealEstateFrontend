@@ -9,6 +9,38 @@ import ROUTE from "../../../../Helpers/routes.json";
 
 const service_url = process.env.SERVICE_URL
 
+
+export const createRealEstatePost = (data) => {
+  return async(dispatch) => {
+    try {
+      dispatch({type: PROPERTY_POST_DATA_LOADING_STARTS})
+      const response = await axios.post(`${service_url}/post`, data)
+      .then(() => {
+        dispatch({type: PROPERTY_POST_DATA_LOADING_ENDS})
+        dispatch({type: REDIRECT_TO, payload: ROUTE.DASHBOARD_HOME })
+        dispatch(getUserPosts())
+        notify(response.data.message, 'success')
+        dispatch({type: GET_A_PROPERTY_DATA, payload:response.data})
+        dispatch(clearNetworkStats())
+      })
+    } catch (error) {
+      dispatch({type: PROPERTY_POST_DATA_LOADING_ENDS})
+      dispatch({type: GET_PROPERTY_ERROR, payload:error})
+      if (error.response) {
+        if (error.response.status === 422) {
+          dispatch({type: GET_PROPERTY_ERROR, payload:error.response})
+          return notify('There are errors in your input', 'error')
+        } else if (error.response.status === 500) {
+          dispatch({type: GET_PROPERTY_ERROR, payload:error.response})
+        } else {
+          return notify('Sorry, something went wrong!', 'error')
+        }
+      }
+    }
+  }
+}
+
+
 export const editUserEachPost = (data, id) => {
   return async(dispatch) => {
     try {

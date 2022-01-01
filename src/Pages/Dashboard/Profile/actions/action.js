@@ -24,7 +24,7 @@ export const editProfile = (data) => {
         dispatch(clearNetworkStats())
       })
     } catch (error) {
-      dispatch({type: GET_PROFILE_ERROR, payload:error})
+      dispatch({type: GET_PROFILE_ERROR, payload:error.response})
       if (error.response) {
         if (error.response.status === 422) {
           dispatch({type: GET_PROFILE_ERROR, payload:error})
@@ -55,8 +55,9 @@ export const editPassword = (data) => {
     } catch (error) {
       dispatch({type: GET_PROFILE_ERROR, payload:error})
       if (error.response) {
+        console.log('actions', error.response)
         if (error.response.status === 422) {
-          dispatch({type: GET_PROFILE_ERROR, payload:error})
+          dispatch({type: GET_PROFILE_ERROR, payload:error.response})
           return notify('There are errors in your input', 'error')
         } else if (error.response.status === 500) {
           dispatch({type: GET_PROFILE_ERROR, payload:error.response})

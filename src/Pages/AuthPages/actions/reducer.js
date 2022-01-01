@@ -1,5 +1,5 @@
 import isEmpty from '../../../utils/isEmpty'
-import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, SET_CURRENT_USER } from './types'
+import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, SET_CURRENT_USER, GET_AUTH_ERROR } from './types'
 
 const init = {
   isAuthenticated:false,
@@ -25,6 +25,11 @@ export default function(state = init, action){
       return {
         ...state,
         authLoading:false
+      }
+    case GET_AUTH_ERROR:
+      return {
+        ...state,
+        errors:action.payload
       }
     default:
       return state;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink as RRNavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import ROUTE from "../../Helpers/routes.json"
 import {
@@ -77,9 +77,9 @@ class Example extends React.Component {
             ) : (
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ms-auto" navbar>
-                  <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
-                      tag={Link} to={ROUTE.HOME}
+                  <NavItem class="nav-item" active={window.location.pathname === "/" }>
+                    <NavLink className='nav-linkk fw-bold text-black'
+                      tag={RRNavLink} to={ROUTE.HOME}
                     >Home</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">

@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import  { editProfile } from './actions/action'
+import  { editPassword, editProfile } from './actions/action'
 import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText, Spinner } from 'reactstrap';
 import process from "../../../env";
+import { ToastContainer } from 'react-toastify';
+import isEmpty from "../../../utils/isEmpty";
 
 const service_url = process.env.SERVICE_URL
 
 const EditProfile = () => {
 
   const [Inputs, setInputs] = useState({})
+  const [passwordInputs, setpasswordInputs] = useState({})
 
-  const { layouts: { layoutData } } = useSelector(state => state)
+  const { profile: { errors, profileDataLoading  } } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
@@ -29,6 +32,15 @@ const EditProfile = () => {
     e.preventDefault();
     dispatch(editProfile(Inputs))
   }
+
+  const handlePasswordChange = (e) => {
+    setpasswordInputs({...passwordInputs, [e.target.name]:e.target.value })
+  }
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    dispatch(editPassword(passwordInputs))
+  }
   
   useEffect(() => {
     getProfileData()
@@ -36,6 +48,7 @@ const EditProfile = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className='my-3'>
         <h2>Edit Profile</h2>
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
@@ -66,9 +79,9 @@ const EditProfile = () => {
                           value={Inputs.first_name}
                         />
                       <div className="text-danger text-sm">
-                        {/* {
+                        {
                           isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
-                        } */}
+                        }
                       </div>
                       </Col>
                       <Col>
@@ -83,9 +96,9 @@ const EditProfile = () => {
                           value={Inputs.last_name}
                         />
                         <div className="text-danger text-sm">
-                          {/* {
+                          {
                             isEmpty(errors?.data?.errors?.password) ? null : errors?.data?.errors?.password
-                          } */}
+                          }
                         </div>
                       </Col>
                     </Row>
@@ -102,9 +115,9 @@ const EditProfile = () => {
                         value={Inputs.middle_name}
                         />
                       <div className="text-danger text-sm">
-                        {/* {
+                        {
                           isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
-                        } */}
+                        }
                       </div>
                       </Col>
                       <Col>
@@ -162,7 +175,6 @@ const EditProfile = () => {
                   </Form>
                 )
             }
-            
           </CardBody>
         </Card>
 
@@ -174,23 +186,23 @@ const EditProfile = () => {
         <div className='mb-3'>
           <Card className="bg-light shadow border-0">
             <CardBody className="px-lg-5 py-lg-5">
-              <Form>
+              <Form onSubmit={handlePasswordSubmit}>
                 <Row>
                   <Col md="6">
                     <Label>
                       Current Password
                     </Label>
                     <Input
-                      className={`form-control-alternative`}
+                      className={`form-control-alternative ${isEmpty(errors.data?.errors?.current_password) ? "" : "border border-danger"}`}
                       type="password"
-                      name='password'
-                      // onChange={handleChange}
-                      // value={Inputs.password}
+                      name='current_password'
+                      onChange={handlePasswordChange}
+                      value={passwordInputs.current_password}
                     />
                     <div className="text-danger text-sm">
-                      {/* {
-                        isEmpty(errors?.data?.errors?.password) ? null : errors?.data?.errors?.password
-                      } */}
+                      {
+                        isEmpty(errors?.data?.errors?.current_password) ? null : errors?.data?.errors?.current_password
+                      }
                     </div>
                   </Col>
                   <Col md="6">
@@ -198,16 +210,16 @@ const EditProfile = () => {
                       New Password
                     </Label>
                     <Input
-                      className={`form-control-alternative`}
+                      className={`form-control-alternative ${isEmpty(errors.data?.errors?.new_password) ? "" : "border border-danger"}`}
                       type="password"
-                      name='password'
-                      // onChange={handleChange}
-                      // value={Inputs.password}
+                      name='new_password'
+                      onChange={handlePasswordChange}
+                      value={passwordInputs.new_password}
                     />
                     <div className="text-danger text-sm">
-                      {/* {
-                        isEmpty(errors?.data?.errors?.password) ? null : errors?.data?.errors?.password
-                      } */}
+                      {
+                        isEmpty(errors?.data?.errors?.new_password) ? null : errors?.data?.errors?.new_password
+                      }
                     </div>
                   </Col>
                   <Col md="6">
@@ -215,16 +227,16 @@ const EditProfile = () => {
                       Confirm New Password
                     </Label>
                     <Input
-                      className={`form-control-alternative`}
+                      className={`form-control-alternative ${isEmpty(errors?.data?.errors?.confirm_new_password) ? "" : "border border-danger"}`}
                       type="password"
-                      name='password'
-                      // onChange={handleChange}
-                      // value={Inputs.password}
+                      name='confirm_new_password'
+                      onChange={handlePasswordChange}
+                      value={passwordInputs.confirm_new_password}
                     />
                     <div className="text-danger text-sm">
-                      {/* {
-                        isEmpty(errors?.data?.errors?.password) ? null : errors?.data?.errors?.password
-                      } */}
+                      {
+                        isEmpty(errors?.data?.errors?.confirm_new_password) ? null : errors?.data?.errors?.confirm_new_password
+                      }
                     </div>
                   </Col>
                 </Row>

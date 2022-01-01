@@ -26,7 +26,7 @@ export default function(state = init, action){
     case GET_PROFILE_ERROR:
       return {
         ...state,
-        erros:action.payload
+        errors:action.payload
       }
     default:
       return state

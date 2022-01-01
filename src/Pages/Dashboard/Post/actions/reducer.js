@@ -32,7 +32,7 @@ export default function(state = init, action){
     case GET_PROPERTY_ERROR:
       return {
         ...state,
-        errors:{}
+        errors:action.payload
       }
     default:
       return state;
