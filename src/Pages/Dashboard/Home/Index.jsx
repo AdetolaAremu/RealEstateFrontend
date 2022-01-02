@@ -2,22 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import { Table, Card, CardBody , Spinner, Modal, ModalBody, ModalHeader} from 'reactstrap';
+import { Table, Card, CardBody , Spinner, Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap';
 import { BsPlusSquare } from "react-icons/bs";
 import ROUTE from "../../../Helpers/routes.json";
-import { getUserPosts } from './actions/actions';
-import { BsEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
+import { getEachUserPosts, getUserPosts } from './actions/actions';
+import { BsEyeFill, BsPencilSquare, BsTrashFill, BsFillTrashFill } from "react-icons/bs";
 
 const  Index = () => {
 
   const [viewModal, setviewModal] = useState(false)
+  const [CurrentID, setCurrentID] = useState(null)
 
   const  { dashboard: { indexData, indexLoading },stats } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
-  const toggleModal = () => {
+  const toggleModal = (id) => {
     setviewModal(!viewModal)
+    getEachUserPosts(id)
   }
   
   useEffect(() => {
@@ -83,13 +85,13 @@ const  Index = () => {
                         }
                       </td>
                       <td>
-                        <button onClick={toggleModal} style={{ border:"1px solid #EBECED"}}>
+                        <button style={{ border:"1px solid #EBECED"}}>
                           <BsEyeFill style={{ fontSize:"20px" }} />
                         </button>
                         <Link to={`${ROUTE.EDIT_POST}/${posts.id}`} style={{ border:"1px solid #EBECED"}}>
                           <BsPencilSquare style={{ fontSize:"20px", color:"black" }} />
                         </Link>
-                        <button style={{ border:"1px solid #EBECED"}}>
+                        <button onClick={(e) => toggleModal(posts.id, e)} style={{ border:"1px solid #EBECED"}}>
                           <BsTrashFill style={{ fontSize:"20px" }} />
                         </button>
                       </td>
@@ -102,13 +104,19 @@ const  Index = () => {
         </Card>
       </div>
       <Modal isOpen={viewModal} id='create_loan'>
-        <ModalHeader toggle={toggleModal}>View post</ModalHeader>
+        <ModalHeader toggle={toggleModal}>Delete Post</ModalHeader>
         <ModalBody>
+          <div className='text-center'>
+            <BsFillTrashFill fontSize={100} style={{ color:"red" }} />
+          </div>
           <div className="pl-lg-4">
-            <div>The title will appear</div>
-            <div>Price Here</div>
-            <div>
-              Description will appear here
+            <div>Are you sure you want to delete this post?</div>
+            <div className='text-center mt-2'>
+              <Button color='success'>Delete</Button>
+              <Button color='danger' style={{ marginLeft:"5px" }} onClick={toggleModal}
+              >
+                Cancel
+              </Button>
             </div>
           </div>
         </ModalBody>

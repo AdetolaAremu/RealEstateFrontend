@@ -5,6 +5,7 @@ import AuthNavbar from '../components/Navbars/authNavbar';
 import ROUTE from "../Helpers/routes.json";
 import Login from '../Pages/AuthPages/Login';
 import Register from '../Pages/AuthPages/Register';
+import LoginSuccess from '../Pages/AuthPages/LoginSuccess';
 import ROUTES from '../Helpers/routes.json';
 import { Container, Row } from 'reactstrap';
 
@@ -25,6 +26,7 @@ const Auths = () => {
           <Switch>
             <Route path={ROUTE.LOGIN} component={Login} />
             <Route path={ROUTE.REGISTER} component={Register} />
+            <Route path={ROUTE.LOGIN_SUCCESS} component={LoginSuccess} />
           </Switch>
         </Row>
     </div>

@@ -4,7 +4,7 @@ import { Button, Card, CardBody, FormGroup, Form, Input, InputGroupText, InputGr
 import { MdPassword } from "react-icons/md";
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, registerNewUser } from './actions/action';
+import { loginUser } from './actions/action';
 import isEmpty from '../../utils/isEmpty';
 
 const initialState = {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from "react-router-dom";
 import isEmpty from '../../utils/isEmpty'
 import { Button, Card, CardBody, FormGroup, Form, Input, InputGroupText,InputGroup, Col, Spinner } from "reactstrap";
 import { BsFillPersonBadgeFill, BsEnvelopeFill, BsPersonBoundingBox, BsLockFill, BsFillTelephoneFill } from "react-icons/bs"
@@ -17,7 +18,7 @@ const initialState = {
 
 function Register() {
 
-  const { authLoading, errors } = useSelector(state => state.allAuths)
+  const { allAuths: { authLoading, errors }, stats} = useSelector(state => state)
 
   const dispatch = useDispatch()
 
@@ -30,6 +31,10 @@ function Register() {
 
   const handleChange = (e) => {
     setInputs({...Inputs, [e.target.name]:e.target.value})
+  }
+
+  if (stats?.redirectTo) {
+    return <Redirect to={stats?.redirectTo} />
   }
 
   return (
@@ -118,7 +123,7 @@ function Register() {
                   </InputGroup>
                   <div className="text-danger text-sm">
                     {
-                      isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
+                      isEmpty(errors?.data?.errors?.username) ? null : errors?.data?.errors?.username
                     }
                   </div>
                 </FormGroup>

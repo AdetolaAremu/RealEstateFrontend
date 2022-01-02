@@ -1,6 +1,7 @@
 {
   "HOME":"/",
   "LOGIN":"/auth/login",
+  "LOGIN_SUCCESS":"/auth/login-success",
   "REGISTER":"/auth/register",
   "ALL_PROPERTIES":"/all-properties",
   "VIEW_PROPERTY":"/view-property",

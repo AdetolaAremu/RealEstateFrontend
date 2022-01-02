@@ -44,11 +44,11 @@ export const createRealEstatePost = (data) => {
 export const editUserEachPost = (data, id) => {
   return async(dispatch) => {
     try {
-      dispatch({type: PROPERTY_POST_DATA_LOADING_STARTS})
+      dispatch({ type: PROPERTY_POST_DATA_LOADING_STARTS })
       const response = await axios.put(`${service_url}/post/${id}`, data)
       .then(() => {
-        dispatch({type: PROPERTY_POST_DATA_LOADING_ENDS})
-        dispatch({type: REDIRECT_TO, payload: ROUTE.DASHBOARD_HOME })
+        dispatch({ type: PROPERTY_POST_DATA_LOADING_ENDS})
+        dispatch({ type: REDIRECT_TO, payload: ROUTE.DASHBOARD_HOME })
         dispatch(getUserPosts())
         notify(response.data.message, 'success')
         dispatch({type: GET_A_PROPERTY_DATA, payload:response.data})

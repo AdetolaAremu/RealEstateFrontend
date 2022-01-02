@@ -1,8 +1,9 @@
-import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS } from './types'
+import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS } from './types'
 
 const init =  {
   indexData:[],
   indexLoading:false,
+  indexEachLoading:false,
   errors: {}
 }
 
@@ -17,6 +18,16 @@ export default function(state = init, action){
       return {
         ...state,
         indexLoading:false
+      }
+    case INDEX_EACH_POST_LOADING_STARTS:
+      return {
+        ...state,
+        indexEachLoading:true
+      }
+    case INDEX_EACH_POST_LOADING_ENDS:
+      return {
+        ...state,
+        indexEachLoading:false
       }
     case GET_INDEX_DATA:
       return {
