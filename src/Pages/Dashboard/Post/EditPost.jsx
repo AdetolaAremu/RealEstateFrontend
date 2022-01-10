@@ -16,7 +16,7 @@ const EditPost = (props) => {
   
   const dispatch = useDispatch()
 
-  const stats = useSelector(state => state)
+  const { stats } = useSelector(state => state)
 
   const getPostToUpdate = () => {
     axios.get(`${service_url}/my-each-posts/${props.match.params.id}`)

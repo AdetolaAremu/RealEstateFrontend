@@ -91,9 +91,9 @@ const Admin = () => {
         </div>
          
         <Switch>
-          <Route path={ROUTE.DASHBOARD_HOME} component={Home} />
+          <Route exact path={ROUTE.DASHBOARD_HOME} component={Home} />
           <Route exact path={ROUTE.CREATE_POST} component={CreatePost} />
-          <Route path={`${ROUTE.EDIT_POST}/:id`} component={Editpost} />
+          <Route exact path={`${ROUTE.EDIT_POST}/:id`} component={Editpost} />
           <Route exact path={ROUTE.VIEW_PROFILE} component={Profile} />
           <Route exact path={ROUTE.EDIT_PROFILE} component={EditProfile} />
         </Switch>

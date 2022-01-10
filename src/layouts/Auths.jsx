@@ -13,7 +13,7 @@ const Auths = () => {
 
   const { isAuthenticated } = useSelector(state => state.allAuths)
 
-  if(!isAuthenticated) return <Redirect to={ROUTES.DASHBOARD_HOME} />
+  if(isAuthenticated) return <Redirect to={ROUTES.DASHBOARD_HOME} />
 
   return (
     <div className='' 

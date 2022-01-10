@@ -7,6 +7,7 @@ import { BsPlusSquare } from "react-icons/bs";
 import ROUTE from "../../../Helpers/routes.json";
 import { getEachUserPosts, getUserPosts } from './actions/actions';
 import { BsEyeFill, BsPencilSquare, BsTrashFill, BsFillTrashFill } from "react-icons/bs";
+import { ToastContainer } from 'react-toastify';
 
 const  Index = () => {
 
@@ -27,7 +28,8 @@ const  Index = () => {
   }, [])
 
   return (
-    <div>
+    <>
+      <ToastContainer />
       <div className='my-3'>
         <h2>Liked Posts</h2>
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
@@ -71,9 +73,9 @@ const  Index = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {indexData?.map((posts) => (
+                  {indexData?.map((posts, index) => (
                     <tr key={posts.id}>
-                      <th scope="row">1</th>
+                      <th scope="row">{ index + 1 }</th>
                       <td>
                         { 
                           posts?.title?.length > 35 ? `${posts?.title?.slice(0,35)}...` : posts?.title
@@ -106,12 +108,12 @@ const  Index = () => {
       <Modal isOpen={viewModal} id='create_loan'>
         <ModalHeader toggle={toggleModal}>Delete Post</ModalHeader>
         <ModalBody>
-          <div className='text-center'>
+          <div className='text-center mb-4'>
             <BsFillTrashFill fontSize={100} style={{ color:"red" }} />
           </div>
           <div className="pl-lg-4">
             <div>Are you sure you want to delete this post?</div>
-            <div className='text-center mt-2'>
+            <div className='text-center mt-4'>
               <Button color='success'>Delete</Button>
               <Button color='danger' style={{ marginLeft:"5px" }} onClick={toggleModal}
               >
@@ -121,7 +123,7 @@ const  Index = () => {
           </div>
         </ModalBody>
       </Modal>
-    </div>
+    </>
   )
 }
 

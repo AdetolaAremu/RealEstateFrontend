@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import {Provider} from 'react-redux';
 import jwt_decode from 'jwt-decode';
-import { setCurrentUser } from './Pages/AuthPages/actions/action';
+import { setCurrentUser, logoutUser } from './Pages/AuthPages/actions/action';
 import Store from './store';
 import PrivateRoute from "../src/layouts/PrivateRoute";
 import setAuthToken from './utils/setAuthToken';
@@ -28,7 +28,7 @@ if (localStorage.jwtToken) {
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     // Logout user
-    // store.dispatch(logoutUser());
+    Store.dispatch(logoutUser());
     // Redirect to login
     // window.location.href = CONSTANTS.LOGIN;
   }
@@ -43,7 +43,7 @@ ReactDOM.render(
         <Route path="/auth" component={AuthLayout} />
         <PrivateRoute path="/user" component={AdminLayout} />
         <Route path={ROUTE.ALL_PROPERTIES} component={post} />
-        <Route path="/view-post" component={viewProperty} />
+        <Route path={`${ROUTE.VIEW_PROPERTY}/:id`} component={viewProperty} />
       </Switch>
     </BrowserRouter>
   </Provider>,

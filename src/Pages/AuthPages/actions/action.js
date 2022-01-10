@@ -71,3 +71,14 @@ export const registerNewUser = (userData) => dispatch =>{
     }
   })
 }
+
+export const logoutUser = (userData) => dispatch => {
+  dispatch({ type:AUTH_LOADING_STARTS });
+  axios.post(`${service_url}/logout`, userData)
+  .then(() => {
+    localStorage.clear();
+    window.location.href = ROUTE.LOGIN
+  }).catch(() => {
+    dispatch({type: AUTH_LOADING_ENDS});
+  });
+}

@@ -14,13 +14,12 @@ export const editProfile = (data) => {
   return async(dispatch) => {
     try {
       dispatch({type: PROFILE_LOADING_STARTS})
-      const response = await axios.put(`${service_url}/user/info`, data)
-      .then(() => {
+      await axios.put(`${service_url}/user/info`, data)
+      .then((res) => {
         dispatch({type: PROFILE_LOADING_ENDS})
-        dispatch({type: REDIRECT_TO, payload: ROUTE.EDIT_PROFILE })
+        dispatch({type: REDIRECT_TO, payload: ROUTE.VIEW_PROFILE })
         dispatch(getLoggedInUser())
-        notify(response.data.message, 'success')
-        dispatch({type: GET_PROFILE_DATA, payload:response.data})
+        notify(res.data.message, 'success')
         dispatch(clearNetworkStats())
       })
     } catch (error) {
@@ -49,7 +48,6 @@ export const editPassword = (data) => {
         dispatch({type: PROFILE_LOADING_ENDS})
         dispatch({type: REDIRECT_TO, payload: ROUTE.EDIT_PROFILE })
         notify(response.data.message, 'success')
-        dispatch({type: GET_PROFILE_DATA, payload:response.data})
         dispatch(clearNetworkStats())
       })
     } catch (error) {

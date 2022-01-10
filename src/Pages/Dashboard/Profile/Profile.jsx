@@ -2,22 +2,17 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText } from 'reactstrap';
+import { Form, Button, Card, CardBody, Col, Row, Label, Spinner } from 'reactstrap';
 import ROUTE from "../../../Helpers/routes.json"
-import { getLoggedInUser } from '../../../layouts/actions/action';
+import { ToastContainer } from 'react-toastify';
 
 const Profile = () => {
   
-  const { layouts: { layoutData } } = useSelector(state => state)
-
-  const dispatch = useDispatch()
-  
-  useEffect(() => {
-    dispatch(getLoggedInUser())
-  }, [])
+  const { layouts: { layoutData, layoutLoading } } = useSelector(state => state)
 
   return (
     <>
+      <ToastContainer />
       <div className='my-3'>
         <h2>Profile</h2>
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
@@ -31,48 +26,53 @@ const Profile = () => {
                 Edit Profile
               </Button>
             </div>
-              <Row>
-                <Col>
-                  <Label>
-                    First Name
-                  </Label>
-                  <div className='fw-bold text-capitalize h4'>{layoutData?.first_name}</div>
-                </Col>
-                <Col>
-                  <Label>
-                    Last Name
-                  </Label>
-                  <div className='fw-bold text-capitalize h4'>{layoutData?.last_name}</div>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                <Label>
-                  Middle Name
-                </Label>
-                <div className='fw-bold text-capitalize h4'>{ layoutData?.middle_name == null ? "--" : layoutData?.middle_name }</div>
-                </Col>
-                <Col>
-                  <Label>
-                    Username
-                  </Label>
-                  <div className='fw-bold text-capitalize h4'>{layoutData?.username}</div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md="6">
-                  <Label>
-                    Phone Number
-                  </Label>
-                  <div className='fw-bold text-capitalize h4'>{layoutData?.phone_number}</div>
-                </Col>
-                <Col>
-                  <Label>
-                    Email
-                  </Label>
-                  <div className='fw-bold text-capitalize h4'>{layoutData?.email}</div>
-                </Col>
-              </Row>
+              { layoutLoading ? (<div className='d-flex justify-content-center'><Spinner animation="border" 
+                  style={{ width:"4rem", height:"4rem", color:"#2eca6a" }} /></div>) : (
+                <div>
+                  <Row>
+                    <Col>
+                      <Label>
+                        First Name
+                      </Label>
+                      <div className='fw-bold text-capitalize h4'>{layoutData?.first_name}</div>
+                    </Col>
+                    <Col>
+                      <Label>
+                        Last Name
+                      </Label>
+                      <div className='fw-bold text-capitalize h4'>{layoutData?.last_name}</div>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                    <Label>
+                      Middle Name
+                    </Label>
+                    <div className='fw-bold text-capitalize h4'>{ layoutData?.middle_name == null ? "--" : layoutData?.middle_name }</div>
+                    </Col>
+                    <Col>
+                      <Label>
+                        Username
+                      </Label>
+                      <div className='fw-bold text-capitalize h4'>{layoutData?.username}</div>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="6">
+                      <Label>
+                        Phone Number
+                      </Label>
+                      <div className='fw-bold text-capitalize h4'>{layoutData?.phone_number}</div>
+                    </Col>
+                    <Col>
+                      <Label>
+                        Email
+                      </Label>
+                      <div className='fw-bold h4'>{layoutData?.email}</div>
+                    </Col>
+                  </Row>
+                </div>)
+              }
           </CardBody>
         </Card>
       </div>

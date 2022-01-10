@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 import  { editPassword, editProfile } from './actions/action'
 import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText, Spinner } from 'reactstrap';
 import process from "../../../env";
@@ -14,7 +15,7 @@ const EditProfile = () => {
   const [Inputs, setInputs] = useState({})
   const [passwordInputs, setpasswordInputs] = useState({})
 
-  const { profile: { errors, profileDataLoading  } } = useSelector(state => state)
+  const { profile: { errors, profileDataLoading  }, stats } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
@@ -45,6 +46,10 @@ const EditProfile = () => {
   useEffect(() => {
     getProfileData()
   }, [])
+
+  if (stats?.redirectTo) {
+    return <Redirect to={stats?.redirectTo} />
+  }
 
   return (
     <>
@@ -168,8 +173,10 @@ const EditProfile = () => {
                       </Col>
                     </Row>
                     <div className="text-center">
-                      <Button className="" color="primary" type="submit">
-                        Submit
+                      <Button className="" color="primary" type="submit" disabled={profileDataLoading}>
+                        {
+                          profileDataLoading ? 'Submitting' : 'Submit'
+                        }
                       </Button>
                     </div>
                   </Form>
@@ -193,7 +200,7 @@ const EditProfile = () => {
                       Current Password
                     </Label>
                     <Input
-                      className={`form-control-alternative ${isEmpty(errors.data?.errors?.current_password) ? "" : "border border-danger"}`}
+                      className={`form-control-alternative ${isEmpty(errors?.data?.errors?.current_password) ? "" : "border border-danger"}`}
                       type="password"
                       name='current_password'
                       onChange={handlePasswordChange}
@@ -210,7 +217,7 @@ const EditProfile = () => {
                       New Password
                     </Label>
                     <Input
-                      className={`form-control-alternative ${isEmpty(errors.data?.errors?.new_password) ? "" : "border border-danger"}`}
+                      className={`form-control-alternative ${isEmpty(errors?.data?.errors?.new_password) ? "" : "border border-danger"}`}
                       type="password"
                       name='new_password'
                       onChange={handlePasswordChange}

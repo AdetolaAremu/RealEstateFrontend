@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUsers } from './actions/action';
+import { Link } from 'react-router-dom';
+import { getAllPosts } from './actions/action';
 import LandingNavBar from "../../components/Navbars/LandingNavbar";
-import { Container, Row, Col, FormGroup, Input, Card } from 'reactstrap';
+import ROUTE from '../../Helpers/routes.json';
+import { Container, Row, Col, FormGroup, Input, Spinner, Card } from 'reactstrap';
 import sample from "../../components/Images/sample.jpg";
 import Publicfooter from '../../components/Footers/publicfooter';
 import { BsPeopleFill, BsArrowRight, BsFillCartCheckFill, BsCheckCircleFill, BsChevronRight} from 'react-icons/bs';
+import { HiLocationMarker } from "react-icons/hi";
 
 
 const Index = () => {
-  const { publicDataLoading, publicData } = useSelector(state => state.users)
+  const { publicPosts: { publicDataLoading , publicData } } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getUsers())
+    dispatch(getAllPosts())
   }, [])
   
   return (
@@ -69,82 +72,53 @@ const Index = () => {
             </Col>
           </Row>
         </div>
-        <div className='mt-2'>
-          <Row>
-            <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase latest-header'>two bedroom flat</div>
-                  <p class="tolatest mt-3">
-                    <a href="#"><span className="price-latest">rent | # 12.000</span></a>
-                  </p>
-                  <p className='clicktoview'>
-                    <a href="#">Click to view <BsChevronRight /></a>
-                  </p>
-                </div>
+        {
+          publicDataLoading ? (
+            <div>
+              <div >
+                <Spinner style={{
+                  position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"30",
+                  width:"7rem", height:"7rem", color:"white"
+                  }} 
+                />
               </div>
-            </Col>
-            <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase latest-header'>two bedroom flat</div>
-                  <p class="tolatest mt-3">
-                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
-                  </p>
-                  <p className='clicktoview'>
-                    <a href="#">Click to view <BsChevronRight /></a>
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase latest-header'>two bedroom flat</div>
-                  <p class="tolatest mt-3">
-                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
-                  </p>
-                  <p className='clicktoview'>
-                    <a href="#">Click to view <BsChevronRight /></a>
-                  </p>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </div>
-        {/* <div className="row row-cols-1 row-cols-md-3 g-4">
-          <div className="col">
-            <div className="card">
-              <img src={sample} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
+              <div style={{ zIndex:"0", height:"100%", width:"100%", position:"fixed", 
+                top:"0", left:"0", background:"gray", opacity:"50%"}}
+              ></div>
             </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <img src={sample} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <img src={sample} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-          </div>
-        </div> */}
+          ) : (
+          <div className='mt-2'>
+            <Row>
+              {
+                publicData?.map((item) => (
+                  <Col key={item.id}>
+                    <div class="item explode" style={{ position:"relative" }}>
+                      <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                      <div class="overlay text-white" style={{ position:"absolute", top:"49%", left:"10%" }}>
+                        <div className='mb-3'>
+                          <HiLocationMarker style={{ color:"#2eca6a" }} /> { item?.city }
+                        </div>
+                        <div className='text-uppercase latest-header'>
+                          { 
+                            item?.title.length > 25 ? `${item?.title.slice(0,22)}...` : item?.title 
+                          }
+                        </div>
+                        <p class="tolatest mt-3">
+                          <a href="#"><span className="price-latest">{ item?.type?.name } | # { item?.price }</span></a>
+                        </p>
+                        <p className='clicktoview'>
+                          <Link to={`${ROUTE.VIEW_PROPERTY}/${item.id}`}>Click to view <BsChevronRight /></Link>
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+                ))
+              }
+            </Row>
+          </div>)
+        }
       </Container>
+      
       <Publicfooter />
     </>
   )
