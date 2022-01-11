@@ -134,6 +134,38 @@ export const likePost = (id, data) => {
         dispatch({type: CRUD_LIKE_LOADING_ENDS});
         notify(res?.data?.message);
         dispatch(likeCount(id));
+        dispatch(checkLiked(id));
+      })
+    } catch (error) {
+      dispatch({type: CRUD_LIKE_LOADING_ENDS, payload:error.response})
+      if (error.response) {
+        if (error.response.status === 500) {
+          dispatch({type: PUBLIC_POST_GET_ERROR, payload:error.response})
+         }
+         if (error.response.status === 400) {
+          dispatch({type: PUBLIC_POST_GET_ERROR, payload:error.response})
+          return notify('You have already liked this post', 'error')
+         } else {
+           return notify('Sorry, something went wrong!', 'error')
+         }
+       } else {
+         return notify('Sorry, something went wrong! Check your network', 'error')
+      }
+    }
+  }
+}
+
+// delete or unlike a post
+export const unlikeAPost = (id, data) => {
+  return async(dispatch) => {
+    try {
+      dispatch({type: CRUD_LIKE_LOADING_STARTS})
+      await axios.delete(`${service_url}/likes/${id}/post`)
+      .then((res) => {
+        dispatch({type: CRUD_LIKE_LOADING_ENDS});
+        notify(res?.data?.message);
+        dispatch(checkLiked(id));
+        dispatch(likeCount(id));
       })
     } catch (error) {
       dispatch({type: CRUD_LIKE_LOADING_ENDS, payload:error.response})

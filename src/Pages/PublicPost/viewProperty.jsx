@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSinglePublicPost, getSinglePublicCommentPost, postComment, likeCount, likePost, checkLiked } from './actions/action';
+import { getSinglePublicPost, getSinglePublicCommentPost, postComment, likeCount, likePost, 
+  checkLiked, unlikeAPost } from './actions/action';
 import isEmpty from '../../utils/isEmpty';
 import pix from "../../components/Images/author-2.jpg";
 import sample from "../../components/Images/sample.jpg";
@@ -10,7 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import { Container, Row, Col, Form, Button, Spinner } from 'reactstrap';
 import { BsCash } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import { AiTwotoneMail, AiTwotonePhone, AiFillLike } from "react-icons/ai";
+import { AiTwotoneMail, AiTwotonePhone, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import './publicpost.css';
 
 const initialState = {
@@ -21,13 +22,18 @@ const ViewProperty = (props) => {
   const [Input, setInput] = useState(initialState)
 
   const { publicPosts: { publicDataLoading, singlePublicData, publicCommentData, publicCommentLoading, 
-    commentCrud, likeData, publicDataError } } = useSelector(state => state)
+    commentCrud, likeData, publicDataError, checkLikeData } } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
   const handleLike = (e) => {
     e.preventDefault()
     dispatch(likePost(props.match.params.id))
+  }
+
+  const handleUnlike = (e) => {
+    e.preventDefault();
+    dispatch(unlikeAPost(props.match.params.id))
   }
 
   const handleChange = (e) => {
@@ -47,7 +53,7 @@ const ViewProperty = (props) => {
     dispatch(getSinglePublicPost(props.match.params.id));
     dispatch(getSinglePublicCommentPost(props.match.params.id));
     dispatch(likeCount((props.match.params.id)));
-    dispatch(checkLiked(props.match.params.id))
+    dispatch(checkLiked(props.match.params.id));
   }, [])
 
   return (
@@ -92,9 +98,16 @@ const ViewProperty = (props) => {
               </div>
 
               <div className=''>
-                <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} onClick={handleLike} color="none">
-                  <AiFillLike className='viewicons buttonLike' />
-                </Button>
+                {
+                  checkLikeData != 1 ? (
+                  <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} onClick={handleLike} color="none">
+                    <AiOutlineHeart className='viewicons buttonLike' />
+                  </Button>) : (
+                  <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} onClick={handleUnlike} color="none">
+                    <AiTwotoneHeart className='viewicons buttonLike text-danger' />
+                  </Button>
+                  )
+                }
                 
               </div>
               
@@ -156,7 +169,7 @@ const ViewProperty = (props) => {
                             style={{ minHeight:"3.7rem", background:"#f7fcf9" }}
                           >
                             <div className='d-flex'>
-                              <div className="fw-bold">
+                              <div className="fw-bold text-capitalize">
                                 { comments?.user?.username }
                               </div>
                               <div className='text-muted' style={{ marginLeft:"7px" }}>
