@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink as RRNavLink } from 'react-router-dom';
 import ROUTE from '../../Helpers/routes.json';
 import '../css/style.css';
-import {
-  Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown,
-  DropdownToggle, DropdownMenu, DropdownItem 
-} from 'reactstrap';
-
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import '../../components/css/style.css'
 export default class AuthNavbar extends React.Component {
   constructor(props) {
     super(props);
@@ -32,18 +29,15 @@ export default class AuthNavbar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ms-auto" navbar>
               <NavItem class="nav-item">
-                <NavLink className='nav-linkk fw-bold text-black' 
-                  tag={Link} to={ROUTE.HOME}
+                <NavLink to={ROUTE.HOME} id='nav-linkk' tag={RRNavLink}
                 >Home</NavLink>
               </NavItem>
               <NavItem class="nav-item">
-                <NavLink className='nav-linkk fw-bold text-black' 
-                  tag={Link} to={ROUTE.LOGIN}
+                <NavLink id='nav-linkk' tag={RRNavLink} activeClassName="active" to={ROUTE.LOGIN}
                 >Login</NavLink>
               </NavItem>
               <NavItem class="nav-item">
-                <NavLink className='nav-linkk fw-bold text-black' 
-                  tag={Link} to={ROUTE.REGISTER}
+                <NavLink id='nav-linkk' tag={RRNavLink} activeClassName="active" to={ROUTE.REGISTER}
                 >Register</NavLink>
               </NavItem>
               <NavItem>

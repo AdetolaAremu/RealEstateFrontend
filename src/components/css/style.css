@@ -26,16 +26,17 @@ body {
   color: #2eca6a !important;
 }
 
-.nav-linkk {
-  font-weight: 800 !important;
+#nav-linkk {
+  font-weight: 700 !important;
   font-size: 1.1rem;
+  color:black;
 }
 
-.nav-linkk:hover {
+#nav-linkk:hover {
   color:rgb(75, 71, 71) !important;
 }
 
-.nav-linkk::after {
+#nav-linkk::after {
   content: '' !important;
     display: block !important;
     width: 0 !important;
@@ -43,7 +44,7 @@ body {
     background: #2eca6a !important;
 }
 
-.nav-linkk:hover:after {
+#nav-linkk:hover:after {
   width: 100% !important;
   transition: width .3s !important;
 }
@@ -51,4 +52,14 @@ body {
 .footertext > li > a {
   text-decoration: none;
   color: black;
+}
+
+.active {
+  color:#2eca6a !important;
+}
+
+@media screen and (min-width: 768px) {
+  .giveTopPadding {
+    padding: 0 75px 0 75px !important;
+  }
 }

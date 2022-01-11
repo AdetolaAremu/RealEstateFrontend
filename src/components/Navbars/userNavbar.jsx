@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, NavLink as RRNavLink } from 'react-router-dom';
 import ROUTE from "../../Helpers/routes.json"
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Form, Button} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import { logoutUser } from '../../Pages/AuthPages/actions/action';
-
+import '../../components/css/style.css';
 class UserNav extends Component {
 
   constructor(props) {
@@ -39,14 +39,14 @@ class UserNav extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ms-auto" navbar>
               <NavItem>
-                <NavLink className='nav-linkk fw-bold text-black' tag={Link} 
+                <NavLink id='nav-linkk' tag={RRNavLink} activeClassName="active" 
                   to={ROUTE.DASHBOARD_HOME}
                 >
                   Dashboard
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className='nav-linkk fw-bold text-black' tag={Link} 
+                <NavLink id='nav-linkk' tag={RRNavLink} activeClassName="active" 
                   to={ROUTE.VIEW_PROFILE}
                 >
                   Profile

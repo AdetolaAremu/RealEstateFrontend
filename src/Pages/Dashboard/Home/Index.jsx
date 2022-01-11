@@ -145,12 +145,13 @@ const  Index = () => {
         </Link>
         <div className='text-muted mt-2'>Create Post</div>
       </div>
+      
       <div className='my-3'>
         <h2>All Posts</h2>
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
       </div>
 
-      <div className='mb-3'>
+      <div className='mb-3 fixed'>
         <Card className="bg-light shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
           {

@@ -10,10 +10,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+ } from 'reactstrap';
 import '../../components/css/style.css'
 
 class Example extends React.Component {
@@ -35,9 +32,11 @@ class Example extends React.Component {
 
     const { allAuths } = this.props;
 
+    const { location } = this.props
+
     return (
       <div>
-        <Navbar className='shadow' fixed="top" light expand="md">
+        <Navbar className='shadow giveTopPadding' fixed="top" light expand="md">
           <NavbarBrand className='navLogo' href="/">
             <span className='navLogoFirst'>Deal</span><span className='navLogoSecond'>Estate</span>
           </NavbarBrand>
@@ -48,12 +47,12 @@ class Example extends React.Component {
                 <Nav className="ms-auto" navbar>
                   <NavItem class="nav-item">
                     <NavLink className='nav-linkk fw-bold text-black' 
-                      tag={Link} to={ROUTE.HOME}
+                      to={ROUTE.HOME} tag={RRNavLink} exact activeClassName="active"
                     >Home</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">
                     <NavLink className='nav-linkk fw-bold text-black' 
-                      tag={Link} to={ROUTE.ALL_PROPERTIES}
+                     to={ROUTE.ALL_PROPERTIES} tag={RRNavLink} exact activeClassName="active"
                     >Posts</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">
@@ -71,39 +70,28 @@ class Example extends React.Component {
                       href="https://github.com/reactstrap/reactstrap"
                     >GitHub</NavLink>
                   </NavItem>
-                  
                 </Nav>
               </Collapse>
             ) : (
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ms-auto" navbar>
-                  <NavItem class="nav-item" active={window.location.pathname === "/" }>
-                    <NavLink className='nav-linkk fw-bold text-black'
-                      tag={RRNavLink} to={ROUTE.HOME}
+                  <NavItem class="nav-item">
+                    <NavLink id="nav-linkk" className=''
+                      to="/" tag={RRNavLink} exact activeClassName="active"
                     >Home</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
+                    <NavLink id="nav-linkk" className='' 
                       tag={Link} to={ROUTE.DASHBOARD_HOME}
                     >Dashboard</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
-                      tag={Link} to={ROUTE.ALL_PROPERTIES}
+                    <NavLink id="nav-linkk" activeClassName="active"
+                      tag={RRNavLink} to={ROUTE.ALL_PROPERTIES}
                     >Posts</NavLink>
                   </NavItem>
-                  {/* <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
-                      tag={Link} to={ROUTE.LOGIN}
-                    >Login</NavLink>
-                  </NavItem>
-                  <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
-                      tag={Link} to={ROUTE.REGISTER}
-                    >Register</NavLink>
-                  </NavItem> */}
                   <NavItem>
-                    <NavLink className='nav-linkk fw-bold text-black' 
+                    <NavLink id="nav-linkk" className='' 
                       href="https://github.com/reactstrap/reactstrap"
                     >GitHub</NavLink>
                   </NavItem>

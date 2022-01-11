@@ -8,6 +8,13 @@
   border: 2px solid #159957;
   background: #159957;
   color: white !important;
-  border-radius: 4%;
+  border-radius: 10%;
   padding: 5px;
+  transition: all 1s;
+}
+
+.viewLikedPost:hover {
+  background: white;
+  color: #159957 !important;
+  transition: all 0.5s;
 }

@@ -88,43 +88,17 @@ const Landing= () => {
     <div style={{ overflow:"hidden" }}>
       <LandingNavbar />
       <div style={{ position:"relative" }}>
-        {/* <div
-          className=""
-          style={{
-            minHeight: "600px",
-            backgroundImage:
-              "url(" +
-              require("../../components/Images/landingbg.webp").default +
-              ")",
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
-            color:"white",
-          }}
-        > */}
-          <Carousel previous={previousButton} next={nextButton}
-              activeIndex={activeIndex}>
-              <CarouselIndicators items={items}
-                  activeIndex={activeIndex}
-                  onClickHandler={(newIndex) => {
-                      if (animating) return;
-                      setActiveIndex(newIndex);
-                  }} />
-              {carouselItemData}
-          </Carousel>
-        {/* <div className='text-white' 
-          style={{ position:"absolute", top:"40%", left:"10%" }}
-        >
-          <div className='mb-5'>Ikorodu</div>
-          <div className='text-uppercase mb-5' style={{ fontSize:"50px", fontWeight:"bolder" }}>
-            two bed room flat
-          </div>
-          <p class="intro-subtitle intro-price">
-            <a href="#"><span class="price-a">rent | # 12.000</span></a>
-          </p>
-        </div> */}
+        <Carousel previous={previousButton} next={nextButton}
+            activeIndex={activeIndex}>
+            <CarouselIndicators items={items}
+                activeIndex={activeIndex}
+                onClickHandler={(newIndex) => {
+                    if (animating) return;
+                    setActiveIndex(newIndex);
+                }} />
+            {carouselItemData}
+        </Carousel>
       </div>
-
-      
 
       <section className="section-services section-t8 pt-5">
         <Container>
@@ -138,7 +112,7 @@ const Landing= () => {
             </div>
           </Row>
           <Row className='mt-3'>
-            <div className="col-md-4">
+            <Col lg={4}>
               <div className="card-box-c foo">
                 <div className="card-header-c d-flex">
                   <div className="card-box-ico">
@@ -158,8 +132,8 @@ const Landing= () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="col-md-4">
+            </Col>
+            <Col lg={4}>
               <div className="card-box-c foo">
                 <div className="card-header-c d-flex">
                   <div className="card-box-ico">
@@ -179,8 +153,8 @@ const Landing= () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="col-md-4">
+            </Col>
+            <Col lg={4}>
               <div className="card-box-c foo">
                 <div className="card-header-c d-flex">
                   <div className="card-box-ico">
@@ -200,7 +174,7 @@ const Landing= () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </Col>
           </Row>
         </Container>
       </section>
