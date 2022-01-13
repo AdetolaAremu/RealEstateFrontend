@@ -156,7 +156,8 @@ const Landing= () => {
             </Col>
             <Col lg={4}>
               <div className="card-box-c foo">
-                <div className="card-header-c d-flex">
+                <div className="card-header-c d-flex"
+                >
                   <div className="card-box-ico">
                     <span>
                       <BsCheckCircleFill />

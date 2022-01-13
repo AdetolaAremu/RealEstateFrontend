@@ -13,7 +13,7 @@ function Publicfooter() {
                 <div className="col-sm-12 col-md-4">
                   <div className="widget-a">
                     <div className="w-header-a">
-                      <h3 className="w-title-a text-brand">DealEstate</h3>
+                      <h3 className="w-title-a text-brand">Deal<span style={{color:"#2eca6a"}}>Estate</span></h3>
                     </div>
                     <div className="w-body-a">
                       <p className="w-text-a color-text-a">
@@ -36,7 +36,7 @@ function Publicfooter() {
                 <div className="col-sm-12 col-md-4 section-md-t3">
                   <div className="widget-a">
                     <div className="w-header-a">
-                      <h3 className="w-title-a text-brand">The Company</h3>
+                      <h3 className="w-title-a text-brand">The <span style={{color:"#2eca6a"}}>Company</span></h3>
                     </div>
                     <div className="w-body-a">
                       <div className="w-body-a">
@@ -67,7 +67,7 @@ function Publicfooter() {
                 <div className="col-sm-12 col-md-4 section-md-t3">
                   <div className="widget-a">
                     <div className="w-header-a">
-                      <h3 className="w-title-a text-brand">International sites</h3>
+                      <h3 className="w-title-a text-brand">International <span style={{color:"#2eca6a"}}>sites</span></h3>
                     </div>
                     <div className="w-body-a">
                       <ul className="list-unstyled">

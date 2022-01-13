@@ -1,23 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllPosts } from './actions/action';
+import {useCallback} from 'react';
+import _ from "lodash";
+import _debounce from 'lodash/debounce';
+import { ToastContainer } from 'react-toastify';
+import { getAllPosts, getCitiesInTheDB, searchPost, filterByCity, getAllTypes, filterByType } from './actions/action';
 import LandingNavBar from "../../components/Navbars/LandingNavbar";
 import ROUTE from '../../Helpers/routes.json';
-import { Container, Row, Col, FormGroup, Input, Spinner, Card } from 'reactstrap';
+import { Container, Row, Col, FormGroup, Input, Spinner, Card, InputGroupText } from 'reactstrap';
 import sample from "../../components/Images/sample.jpg";
 import Publicfooter from '../../components/Footers/publicfooter';
-import { BsPeopleFill, BsArrowRight, BsFillCartCheckFill, BsCheckCircleFill, BsChevronRight} from 'react-icons/bs';
+import { BsChevronRight} from 'react-icons/bs';
 import { HiLocationMarker } from "react-icons/hi";
 
-
 const Index = () => {
-  const { publicPosts: { publicDataLoading , publicData } } = useSelector(state => state)
+  const [searchInput, setSearchInput] = useState('');
+  const { publicPosts: { publicDataLoading , publicData, cityData, typeData } } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
+  const handleSearch = (value) => {
+    dispatch(searchPost(value))
+  }
+
+  const handleCityFilter = (value) => {
+    dispatch(filterByCity(value));
+  }
+
+  const handleTypeFilter = (value) => {
+    dispatch(filterByType(value))
+  }
+
   useEffect(() => {
-    dispatch(getAllPosts())
+    dispatch(getAllPosts());
+    dispatch(getCitiesInTheDB());
+    dispatch(getAllTypes());
   }, [])
   
   return (
@@ -32,42 +50,47 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className='bg-secondary my-4 rounded'>
+        <div className='bg-secondary my-4 rounded' style={{ borderBottom:"2px solid #2eca6a" }}>
           <Row className='mx-2 pt-3'>
             <Col md="4">
               <FormGroup>
                 <Input
                   className={`form-control-alternative`}
                   name="address"
-                  // value={Inputs.address}
-                  // onChange={handleChange}
-                  placeholder="search for name, city etc here"
+                  onChange={(e) => handleSearch(e.target.value)}
+                  placeholder="search by title, description, keywords etc"
                   type="text"
                 />
-                <div className="text-danger text-sm">
-                  {/* {
-                    isEmpty(errors?.data?.errors?.address) ? null : errors?.data?.errors?.address
-                  } */}
-                </div>
+              </FormGroup>
+            </Col>
+            <Col md="4">
+              <FormGroup>
+                <Input
+                  className={`form-control-alternative text-capitalize`}
+                  type="select"
+                  onChange={e => handleCityFilter(e.target.value)}
+                >
+                  <option defaultValue value={''}>Filter by city</option>
+                  {
+                    cityData.map((item) => (
+                      <option key={item.id} value={item.city}>{ item.city }</option>
+                    ))
+                  }
+                </Input>
               </FormGroup>
             </Col>
             <Col md="4">
               <FormGroup>
                 <Input
                   className={`form-control-alternative`}
-                  placeholder="Lagos"
                   type="select"
+                  onChange={e => handleTypeFilter(e.target.value)}
                 >
-                  <option defaultValue>Choose city</option>
-                  {/* {states.map((item) => (
-                    <option key={item.id} value={item.id}>{ item.name }</option>
-                  ))} */}
+                  <option defaultValue value={''}>Filter by type</option>
+                  {typeData.map((item) => (
+                    <option key={item.id} value={item.name}>{ item.name }</option>
+                  ))}
                 </Input>
-                <div className="text-danger text-sm">
-                  {/* {
-                    isEmpty(errors?.data?.errors?.state_id) ? null : errors?.data?.errors?.state_id
-                  } */}
-                </div>
               </FormGroup>
             </Col>
           </Row>
@@ -100,7 +123,7 @@ const Index = () => {
                         </div>
                         <div className='text-uppercase latest-header'>
                           { 
-                            item?.title.length > 25 ? `${item?.title.slice(0,22)}...` : item?.title 
+                            item?.title?.length > 25 ? `${item?.title?.slice(0,22)}...` : item?.title 
                           }
                         </div>
                         <p class="tolatest mt-3">

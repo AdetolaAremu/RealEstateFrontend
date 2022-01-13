@@ -18,3 +18,7 @@
   color: #159957 !important;
   transition: all 0.5s;
 }
+
+@media (min-width: 640px) and (max-width: 840px) {
+
+}

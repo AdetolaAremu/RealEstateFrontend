@@ -60,6 +60,6 @@ body {
 
 @media screen and (min-width: 768px) {
   .giveTopPadding {
-    padding: 0 75px 0 75px !important;
+    padding: 15px 75px 15px 75px !important;
   }
 }
