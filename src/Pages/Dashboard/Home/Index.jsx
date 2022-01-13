@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ROUTE from "../../../Helpers/routes.json"
 import { Table, Card, CardBody , Spinner, Modal, ModalBody, ModalHeader, Button, Row, Col} from 'reactstrap';
 import { getEachUserPosts, getUserPosts, getMyLikedPosts } from './actions/actions';
-// import { AiOutlineArrowRight } from 'react-icons/ai'
 import { BsEyeFill, BsPencilSquare, BsTrashFill, BsFillTrashFill, BsPlusSquare, BsArrowRight } from "react-icons/bs";
 import { ToastContainer } from 'react-toastify';
 import './homeIndex.css'
@@ -12,7 +11,7 @@ import './homeIndex.css'
 const  Index = () => {
 
   const [viewModal, setviewModal] = useState(false)
-  const [CurrentID, setCurrentID] = useState(null)
+  // const [CurrentID, setCurrentID] = useState(null)
 
   const  { dashboard: { indexData, indexLoading, myLikedLoading, myLikedData }, stats } 
     = useSelector(state => state)
@@ -33,7 +32,7 @@ const  Index = () => {
     <>
       <ToastContainer />
       <div className='mt-5 mb-3'>
-        <h2>Liked Posts</h2>
+        <h2>My Liked Posts</h2>
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
       </div>
 

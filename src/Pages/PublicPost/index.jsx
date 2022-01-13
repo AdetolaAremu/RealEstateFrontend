@@ -20,9 +20,13 @@ const Index = () => {
 
   const dispatch = useDispatch()
 
-  const handleSearch = (value) => {
+  // const handleSearch = (value) => {
+  //   dispatch(searchPost(value))
+  // }
+
+  const handleSearch = _debounce(function(value) {
     dispatch(searchPost(value))
-  }
+  }, 3000);
 
   const handleCityFilter = (value) => {
     dispatch(filterByCity(value));
