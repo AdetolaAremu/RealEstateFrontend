@@ -9,7 +9,7 @@
 }
 
 .buttonLike {
-  margin-top: -8px;
+  margin-top: -8px ;
 }
 
 .agentcol {
@@ -21,9 +21,36 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.theviewicons {
+  margin-right: 45px;
+  margin-left: 108px;
+}
+
+.viewsubicons {
+  padding-right: 10px;
+}
+
+.undericons {
+  width: 50rem !important;
+}
+
 .likebtn:focus {
   outline: none !important;
   outline-offset: none !important;
+}
+
+.viewwrappericons {
+  padding-left: 97px;
+}
+
+.priceandcity {
+  display: flex;
+  justify-content:space-between;
+  width: 100%;
+}
+
+.likescountview {
+  margin-left: -43px;
 }
 
 /* media queries starts */
@@ -39,20 +66,20 @@
     display: flex;
   }
 
-  .viewicons {
+  /* .viewicons {
     width: 2rem !important;
     margin-left: -4rem;
-  }
+  } */
 
   .firsticon {
     margin-left: 2rem !important;
   }
 
-  .undericons {
+  /* .undericons {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-  }
+  } */
 
   .agentcol {
     margin-left: 0px !important;

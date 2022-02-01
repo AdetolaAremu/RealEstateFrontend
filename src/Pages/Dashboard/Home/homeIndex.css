@@ -19,6 +19,8 @@
   transition: all 0.5s;
 }
 
-@media (min-width: 640px) and (max-width: 840px) {
-
+@media screen and (max-width: 540px) {
+  .thelikecards {
+    width: 57rem !important;
+  }
 }

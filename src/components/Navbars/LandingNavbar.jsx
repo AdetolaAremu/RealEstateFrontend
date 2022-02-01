@@ -46,28 +46,28 @@ class Example extends React.Component {
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ms-auto" navbar>
                   <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
+                    <NavLink id='nav-linkk'
                       to={ROUTE.HOME} tag={RRNavLink} exact activeClassName="active"
                     >Home</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
+                    <NavLink id="nav-linkk" 
                      to={ROUTE.ALL_PROPERTIES} tag={RRNavLink} exact activeClassName="active"
-                    >Posts</NavLink>
+                    >Properties</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
+                    <NavLink id='nav-linkk' 
                       tag={Link} to={ROUTE.LOGIN}
                     >Login</NavLink>
                   </NavItem>
                   <NavItem class="nav-item">
-                    <NavLink className='nav-linkk fw-bold text-black' 
+                    <NavLink id='nav-linkk' 
                       tag={Link} to={ROUTE.REGISTER}
                     >Register</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className='nav-linkk fw-bold text-black' 
-                      href="https://github.com/reactstrap/reactstrap"
+                    <NavLink id='nav-linkk' target="_blank"
+                      href="https://github.com/AdetolaAremu"
                     >GitHub</NavLink>
                   </NavItem>
                 </Nav>
@@ -76,7 +76,7 @@ class Example extends React.Component {
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ms-auto" navbar>
                   <NavItem class="nav-item">
-                    <NavLink id="nav-linkk" className=''
+                    <NavLink id="nav-linkk" 
                       to="/" tag={RRNavLink} exact activeClassName="active"
                     >Home</NavLink>
                   </NavItem>
@@ -88,7 +88,7 @@ class Example extends React.Component {
                   <NavItem class="nav-item">
                     <NavLink id="nav-linkk" activeClassName="active"
                       tag={RRNavLink} to={ROUTE.ALL_PROPERTIES}
-                    >Posts</NavLink>
+                    >Properties</NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink id="nav-linkk" className='' 

@@ -155,6 +155,10 @@ export const likePost = (id, data) => {
          if (error.response.status === 400) {
           dispatch({type: PUBLIC_POST_GET_ERROR, payload:error.response})
           return notify('You have already liked this post', 'error')
+         }
+         if (error.response.status === 401) {
+          dispatch({type: PUBLIC_POST_GET_ERROR, payload:error.response})
+          return notify('Only logged in user can like a post', 'error')
          } else {
            return notify('Sorry, something went wrong!', 'error')
          }
@@ -208,12 +212,8 @@ export const checkLiked = (id) => {
       dispatch({type: LIKE_POST_LOADING_ENDS, payload:error.response})
       if (error.response) {
         if (error.response.status === 500) {
-           dispatch({type: LIKE_POST_LOADING_ENDS, payload:error.response})
-         } else {
-           return notify('Sorry, something went wrong!', 'error')
-         }
-       } else {
-         return notify('Sorry, something went wrong! Check your network', 'error')
+          dispatch({type: LIKE_POST_LOADING_ENDS, payload:error.response})
+        }
       }
     }
   }

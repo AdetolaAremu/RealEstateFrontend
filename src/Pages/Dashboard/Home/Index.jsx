@@ -11,7 +11,6 @@ import './homeIndex.css'
 const  Index = () => {
 
   const [viewModal, setviewModal] = useState(false)
-  // const [CurrentID, setCurrentID] = useState(null)
 
   const  { dashboard: { indexData, indexLoading, myLikedLoading, myLikedData }, stats } 
     = useSelector(state => state)
@@ -36,11 +35,11 @@ const  Index = () => {
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
       </div>
 
-      <div class="container" style={{ overflow:"auto", background:"#eaeef6" }}>
+      <div class="container-fluid" style={{ overflow:"auto", background:"#eaeef6" }}>
         {
           myLikedLoading ? (<Spinner className='m-auto d-flex justify-content-center my-5' animation="border" 
-            style={{ width:"4rem", height:"4rem", color:"#2eca6a" }} />) : myLikedData.length ? (
-            <div class="row flex-nowrap my-2">
+            style={{ minWidth:"4rem", minHeight:"4rem", color:"#2eca6a" }} />) : myLikedData.length ? (
+            <div class="row flex-nowrap my-2 thelikecards">
               { myLikedData.map((item) => (
                   <div class="col-3" key={item.id}>
                     <div class="card card-block p-2">
@@ -49,7 +48,7 @@ const  Index = () => {
                       </div>
                       <div className='mt-3'>
                         {
-                          item?.text?.length > 60 ? (`${item?.text.slice(0,60)}...`) : item?.text
+                          item?.text?.length > 50 ? (`${item?.text.slice(0,50)}...`) : item?.text
                         }
                       </div>
                       <div className='mt-3 text-center' style={{ fontWeight:"500" }}>
@@ -205,7 +204,7 @@ const  Index = () => {
           </CardBody>
         </Card>
       </div>
-      <Modal isOpen={viewModal} id='create_loan'>
+      <Modal isOpen={viewModal} id='create_loan' style={{ overflow:"hidden !important" }}>
         <ModalHeader toggle={toggleModal}>Delete Post</ModalHeader>
         <ModalBody>
           <div className='text-center mb-4'>

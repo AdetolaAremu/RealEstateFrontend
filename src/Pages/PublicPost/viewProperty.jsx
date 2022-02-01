@@ -9,7 +9,7 @@ import Publicfooter from '../../components/Footers/publicfooter';
 import LandingNavbar from "../../components/Navbars/LandingNavbar";
 import { ToastContainer } from 'react-toastify';
 import { Container, Row, Col, Form, Button, Spinner } from 'reactstrap';
-import { BsCash } from "react-icons/bs";
+import { BsCash, BsPeopleFill, BsFillCartCheckFill, BsCheckCircleFill } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiTwotoneMail, AiTwotonePhone, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import './publicpost.css';
@@ -22,7 +22,8 @@ const ViewProperty = (props) => {
   const [Input, setInput] = useState(initialState)
 
   const { publicPosts: { publicDataLoading, singlePublicData, publicCommentData, publicCommentLoading, 
-    commentCrud, likeData, publicDataError, checkLikeData } } = useSelector(state => state)
+    commentCrud, likeData, publicDataError, checkLikeData }, allAuths: { isAuthenticated } } = 
+    useSelector(state => state)
 
   const dispatch = useDispatch()
 
@@ -47,6 +48,7 @@ const ViewProperty = (props) => {
       text:Input.text
     }
     dispatch(postComment(data))
+    Input.text = ''
   }
 
   useEffect(() => {
@@ -64,8 +66,9 @@ const ViewProperty = (props) => {
         <div style={{ marginTop:"6rem" }}>
           <div className='' style={{ borderLeft:"3px solid #2eca6a" }}>
             <div className='p-3'>
-              <h3 className='text-capitalize'>{ singlePublicData?.title }</h3>
-              <div className='text-muted'>{ singlePublicData?.type?.name }</div>
+              <h3 className='text-capitalize'>{ singlePublicData?.title } 
+                <span className="h6 text-muted"> ({ singlePublicData?.type?.name })</span></h3>
+              <div className='text-muted'>{ singlePublicData?.address }</div>
             </div>
           </div>
         </div>
@@ -73,10 +76,47 @@ const ViewProperty = (props) => {
         <div className='my-3 text-center'>
           <img className='view-property-img' src={sample} />
         </div>
+
+        <div className='text-center'>
+          {
+            checkLikeData != 1 ? (
+            <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} disabled={!isAuthenticated}
+              onClick={handleLike} color="none">
+              <AiOutlineHeart className='viewicons buttonLike' />
+            </Button>) : (
+            <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} disabled={!isAuthenticated} 
+              onClick={handleUnlike} color="none">
+              <AiTwotoneHeart className='viewicons buttonLike text-danger' />
+            </Button>
+            )
+          }
+          <div>
+            <h5 className='text-muted likescountview'>
+              { 
+                likeData != 1 ? (`${likeData} Likes`) : (`${likeData} Like`)
+              }
+            </h5>
+          </div>
+        </div>
+
+        <div className='d-flex justify-content-between'>
+          <div>
+            <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
+            <h5 className='text-muted mt-2'>{ singlePublicData?.price }</h5>
+          </div>
+          <div></div>
+          <div>
+            <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
+            <h5 className='text-muted mt-2' style={{ marginRight:"2.8rem" }}>
+              { singlePublicData?.city }
+            </h5> 
+          </div>
+        </div>
+       
         {
           publicDataLoading ? (
             <div>
-              <div >
+              <div className="mx-5">
                 <Spinner style={{
                   position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"30",
                   width:"7rem", height:"7rem", color:"white"
@@ -88,50 +128,7 @@ const ViewProperty = (props) => {
               ></div>
             </div>
           ) : ( 
-          <div>
-            <div className='d-flex justify-content-between iconstop'>
-              <div className=''>
-                <BsCash className='viewicons firsticon' />
-                {/* <span className=''>
-                  <h4 className='text-muted' style={{ marginLeft:"15px" }}>Price</h4>
-                </span> */}
-              </div>
-
-              <div className=''>
-                {
-                  checkLikeData != 1 ? (
-                  <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} onClick={handleLike} color="none">
-                    <AiOutlineHeart className='viewicons buttonLike' />
-                  </Button>) : (
-                  <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} onClick={handleUnlike} color="none">
-                    <AiTwotoneHeart className='viewicons buttonLike text-danger' />
-                  </Button>
-                  )
-                }
-                
-              </div>
-              
-              <div>
-                <HiLocationMarker className='viewicons' />
-                {/* <h5 className='text-muted'>City Name</h5> */}
-              </div>
-            </div>
-            <div className='d-flex justify-content-between mx-4 undericons'>
-              <div><h5 className='text-muted text-center'>{ singlePublicData?.price }</h5></div>
-              <div>
-                <h5 className='text-muted text-center'>
-                  { 
-                    likeData != 1 ? (`${likeData} Likes`) : (`${likeData} Like`)
-                  }
-                </h5>
-              </div>
-              <div>
-                <h5 className='text-muted text-center' style={{ marginRight:"2.8rem" }}>
-                { singlePublicData?.city }
-                </h5>
-              </div>
-            </div>
-
+          <div className=''>
             <Row className='d-flex justify-content-between'>
               <Col className='mt-5 mb-3'>
                 <h2>Description</h2>
@@ -206,13 +203,24 @@ const ViewProperty = (props) => {
             }
           </div>
           <div>
-            <Button className='btn-lg' color="primary" type="submit"
-              disabled={commentCrud || Input.text.length < 5}
-            >
-              {
-                commentCrud ? "Posting":"Post"
-              }
-            </Button>
+            {
+              isAuthenticated ? 
+                (<Button className='btn-lg' color="primary" type="submit"
+                  disabled={commentCrud || Input.text.length < 5}
+                >
+                  {
+                    commentCrud ? "Posting":"Post"
+                  }
+                </Button>) :
+              (
+                <Button className='btn-lg' color="primary" type="submit"
+                  disabled
+                >
+                  Log in to Post
+                </Button>
+              ) 
+            }
+            
           </div>
         </Form>
       </Container>

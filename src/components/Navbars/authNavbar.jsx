@@ -21,7 +21,7 @@ export default class AuthNavbar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar className='shadow' fixed="top" light expand="md">
+        <Navbar className='shadow giveTopPadding' fixed="top" light expand="md">
           <NavbarBrand className='navLogo' href="/">
             <span className='navLogoFirst'>Deal</span><span className='navLogoSecond'>Estate</span>
           </NavbarBrand>
@@ -29,8 +29,13 @@ export default class AuthNavbar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ms-auto" navbar>
               <NavItem class="nav-item">
-                <NavLink to={ROUTE.HOME} id='nav-linkk' tag={RRNavLink}
+                <NavLink to={ROUTE.HOME} id='nav-linkk'
                 >Home</NavLink>
+              </NavItem>
+              <NavItem class="nav-item">
+                <NavLink id="nav-linkk" activeClassName="active"
+                  tag={RRNavLink} to={ROUTE.ALL_PROPERTIES}
+                >Properties</NavLink>
               </NavItem>
               <NavItem class="nav-item">
                 <NavLink id='nav-linkk' tag={RRNavLink} activeClassName="active" to={ROUTE.LOGIN}
@@ -41,7 +46,7 @@ export default class AuthNavbar extends React.Component {
                 >Register</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className='nav-linkk fw-bold text-black' 
+                <NavLink id='nav-linkk' 
                   href="https://github.com/reactstrap/reactstrap"
                 >GitHub</NavLink>
               </NavItem>

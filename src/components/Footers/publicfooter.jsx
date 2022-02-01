@@ -99,55 +99,28 @@ function Publicfooter() {
           <footer>
             <div className="container">
               <div className="row">
-                <div className="col-md-12 text-center mt-4">
+                <div className="col-md-12 text-center mt-1">
                   <nav className="nav-footer">
                     <ul className="list-inline footertext">
-                      <li className="list-inline-item">
+                      <li className="list-inline-item" style={{ fontWeight:"600" }}>
                         <a href="#">Home</a>
                       </li>
-                      <li className="list-inline-item">
-                        <a href="#">About</a>
-                      </li>
-                      <li className="list-inline-item">
+                     
+                      <li className="list-inline-item" style={{ fontWeight:"600" }}>
                         <a href="#">Property</a>
                       </li>
-                      <li className="list-inline-item">
-                        <a href="#">Blog</a>
-                      </li>
-                      <li className="list-inline-item">
+                     
+                      <li className="list-inline-item" style={{ fontWeight:"600" }}>
                         <a href="#">Contact</a>
                       </li>
                     </ul>
                   </nav>
-                  <div className="socials-a">
-                    <ul className="list-inline">
-                      <li className="list-inline-item">
-                        <a href="#">
-                          <i className="bi bi-facebook" aria-hidden="true" />
-                        </a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">
-                          <i className="bi bi-twitter" aria-hidden="true" />
-                        </a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">
-                          <i className="bi bi-instagram" aria-hidden="true" />
-                        </a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">
-                          <i className="bi bi-linkedin" aria-hidden="true" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  
                   <div className="copyright-footer">
-                    <p className="copyright color-text-a">
+                    <div className="copyright color-text-a">
                       © Copyright
                       <span className="color-a"> EstateAgency</span> All Rights Reserved.
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>

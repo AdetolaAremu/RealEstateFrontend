@@ -1,4 +1,5 @@
 import React from 'react'
+import  { Link } from 'react-router-dom'
 import { Button, Input, InputGroup } from 'reactstrap';
 import LandingNavbar from '../../components/Navbars/LandingNavbar';
 import PublicFooter from "../../components/Footers/publicfooter"
@@ -6,7 +7,7 @@ import './landing.css';
 import sample from "../../components/Images/sample.jpg";
 import sample2 from "../../components/Images/post-3.jpg"
 import landingbg from "../../components/Images/landingbg.webp"
-import { Row, Col, Card, Container } from 'reactstrap';
+import { Row, Col, Card, Container} from 'reactstrap';
 import { BsPeopleFill, BsArrowRight, BsFillCartCheckFill, BsCheckCircleFill, BsChevronRight} from 'react-icons/bs';
 import { HiLocationMarker } from "react-icons/hi";
 import { Carousel, CarouselItem, CarouselIndicators } from 'reactstrap';
@@ -188,10 +189,10 @@ const Landing= () => {
                 <div class="title-box">
                   <h2 class="title-a">Latest Properties</h2>
                 </div>
-                <div class="title-link">
-                  <a href="/">All Property</a>
+                <Link to="/all-properties" class="title-link">
+                  <span href="/">All Property</span>
                   <span className='ml-4'><BsArrowRight className='arrowAll' /></span>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

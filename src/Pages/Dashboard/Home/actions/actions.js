@@ -14,6 +14,21 @@ export const getUserPosts = () => {
       dispatch({type: GET_INDEX_DATA, payload:response.data})
     } catch (error) {
       dispatch({type: GET_INDEX_ERROR, payload:error})
+      if (error.response) {
+        if (error.response.status === 422) {
+          dispatch({type: GET_INDEX_ERROR, payload:error.response})
+          return notify('There are errors in your input', 'error')
+        } else if(error.response.status === 400){
+          dispatch({type: GET_INDEX_ERROR, payload:error.response})
+          return notify('Email and password do not match', 'error')
+        } else if(error.response.status === 401) {
+          return notify('You are not authorized, please login again') 
+        } else if (error.response.status === 500) {
+          return notify('An internal error occured, we are working on it!')
+        } else {
+          return notify('Sorry, something went wrong!', 'error')
+        }
+      }
     }
   }
 }
@@ -27,6 +42,21 @@ export const getEachUserPosts = (id) => {
       dispatch({type: GET_INDEX_DATA, payload:response.data})
     } catch (error) {
       dispatch({type: GET_INDEX_ERROR, payload:error})
+      if (error.response) {
+        if (error.response.status === 422) {
+          dispatch({type: GET_INDEX_ERROR, payload:error.response})
+          return notify('There are errors in your input', 'error')
+        } else if(error.response.status === 400){
+          dispatch({type: GET_INDEX_ERROR, payload:error.response})
+          return notify('Email and password do not match', 'error')
+        } else if(error.response.status === 401) {
+          return notify('You are not authorized, please login again') 
+        } else if (error.response.status === 500) {
+          return notify('An internal error occured, we are working on it!')
+        } else {
+          return notify('Sorry, something went wrong!', 'error')
+        }
+      }
     }
   }
 }
@@ -40,6 +70,21 @@ export const getMyLikedPosts = () => {
       dispatch({type: GET_MY_LIKED_DATA, payload:response.data})
     } catch (error) {
       dispatch({type: GET_INDEX_ERROR, payload:error})
+      if (error.response) {
+        if (error.response.status === 422) {
+          dispatch({type: GET_INDEX_ERROR, payload:error.response})
+          return notify('There are errors in your input', 'error')
+        } else if(error.response.status === 400){
+          dispatch({type: GET_INDEX_ERROR, payload:error.response})
+          return notify('Email and password do not match', 'error')
+        } else if(error.response.status === 401) {
+          return notify('You are not authorized, please login again')
+        } else if (error.response.status === 500) {
+          return notify('An internal error occured, we are working on it!')
+        } else {
+          return notify('Sorry, something went wrong!', 'error')
+        }
+      }
     }
   }
 }

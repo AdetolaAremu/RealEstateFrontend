@@ -16,13 +16,10 @@ import { HiLocationMarker } from "react-icons/hi";
 
 const Index = () => {
   const [searchInput, setSearchInput] = useState('');
-  const { publicPosts: { publicDataLoading , publicData, cityData, typeData } } = useSelector(state => state)
+  const { publicPosts: { publicDataLoading , publicData, cityData, typeData } } = 
+    useSelector(state => state)
 
   const dispatch = useDispatch()
-
-  // const handleSearch = (value) => {
-  //   dispatch(searchPost(value))
-  // }
 
   const handleSearch = _debounce(function(value) {
     dispatch(searchPost(value))
@@ -122,7 +119,7 @@ const Index = () => {
                     <div class="item explode" style={{ position:"relative" }}>
                       <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
                       <div class="overlay text-white" style={{ position:"absolute", top:"49%", left:"10%" }}>
-                        <div className='mb-3'>
+                        <div className='mb-3 text-capitalize'>
                           <HiLocationMarker style={{ color:"#2eca6a" }} /> { item?.city }
                         </div>
                         <div className='text-uppercase latest-header'>

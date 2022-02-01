@@ -39,6 +39,8 @@
   font-size: 1.2rem;
   font-weight: 300;
   padding-top: 1.2rem;
+  text-decoration: none !important;
+  color: #313131;
 }
 
 .title-link a {

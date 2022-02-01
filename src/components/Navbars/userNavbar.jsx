@@ -31,7 +31,7 @@ class UserNav extends Component {
 
     return (
       <div>
-        <Navbar color="light" fixed='top' light expand="lg" className='p-3'>
+        <Navbar className='shadow giveTopPadding' color="light" fixed='top' light expand="lg">
           <NavbarBrand className='navLogo' href="/">
             <span className='navLogoFirst'>Deal</span><span className='navLogoSecond'>Estate</span>
           </NavbarBrand>
@@ -51,6 +51,11 @@ class UserNav extends Component {
                 >
                   Profile
                 </NavLink>
+              </NavItem>
+              <NavItem class="nav-item">
+                <NavLink id="nav-linkk" activeClassName="active"
+                  tag={RRNavLink} to={ROUTE.ALL_PROPERTIES}
+                >Properties</NavLink>
               </NavItem>
               <NavItem>
                 {/* <Form role='submit' onSubmit={handleLogout}> */}

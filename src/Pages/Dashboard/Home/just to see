@@ -1,0 +1,44 @@
+import React, { useEffect, useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+const cities = [
+  {'name':"lagos"},
+  {'name':"delhi"},
+  {'name':'London'},
+  {'name':'Francisco'}
+]
+
+function App() {
+
+  const [searchInput, setsearchInput] = useState('');
+  const [filtered, setfiltered] = useState('')
+
+  const handleSearch = (e) => {
+    setsearchInput(e.target.value)
+  }
+
+  useEffect(() => (
+    setfiltered(cities.filter(city => city.name === city.searchInput))
+  ) [searchInput])
+
+  return (
+    <>
+      <div className="App">
+        <input onChange={handleSearch} />
+      </div>
+        <div>
+          {
+            filtered.map((city) => (
+              <div key={city.name}>
+                <div>{ city.name }</div>
+              </div>
+            ))
+          }
+        </div>
+      
+    </>
+  );
+}
+
+export default App;

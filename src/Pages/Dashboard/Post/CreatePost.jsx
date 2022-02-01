@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText } from 'reactstrap';
 import isEmpty from "../../../utils/isEmpty";
 import { ToastContainer } from 'react-toastify';
@@ -23,7 +24,7 @@ const CreatePost = () => {
   const [Inputs, setInputs] = useState(initialState)
   const [types, settypes] = useState([])
 
-  const { errors, propertyDataLoading } = useSelector(state => state.posts)
+  const { posts: {errors, propertyDataLoading}, stats } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
@@ -39,12 +40,16 @@ const CreatePost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(createRealEstatePost())
+    dispatch(createRealEstatePost(Inputs))
   }
 
   useEffect(() => {
     getTypes()
   }, [])
+
+  if (stats?.redirectTo) {
+    return <Redirect to={stats?.redirectTo} />
+  }
 
   return (
     <>
@@ -147,6 +152,12 @@ const CreatePost = () => {
               <Row>
                 <Col>
                   <FormGroup>
+                    <Label for="exampleFile">Address</Label>
+                    <Input type="text" name="address" onChange={handleChange} />
+                  </FormGroup>
+                </Col>
+                <Col>
+                  <FormGroup>
                     <Label for="exampleFile">File</Label>
                     <Input type="file" name="file" id="exampleFile" />
                     <FormText color="muted">
@@ -156,17 +167,17 @@ const CreatePost = () => {
                 </Col>
               </Row>
               <Row>
-              <FormGroup>
-                <Label for="exampleText">Description</Label>
-                <Input onChange={handleChange} value={Inputs.text} type="textarea" name="text" 
-                  className={`form-control-alternative ${isEmpty(errors.data?.errors?.text) ? "" : "border border-danger"}`}
-                />
-                <div className="text-danger text-sm">
-                  {
-                    isEmpty(errors?.data?.errors?.text) ? null : errors?.data?.errors?.text
-                  }
-                </div>
-              </FormGroup>
+                <FormGroup>
+                  <Label for="exampleText">Description</Label>
+                  <Input onChange={handleChange} value={Inputs.text} type="textarea" name="text" 
+                    className={`form-control-alternative ${isEmpty(errors.data?.errors?.text) ? "" : "border border-danger"}`}
+                  />
+                  <div className="text-danger text-sm">
+                    {
+                      isEmpty(errors?.data?.errors?.text) ? null : errors?.data?.errors?.text
+                    }
+                  </div>
+                </FormGroup>
               </Row>
               <div className="text-center">
                 <Button className="my-4" color="primary" type="submit" disabled={propertyDataLoading}>

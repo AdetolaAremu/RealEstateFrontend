@@ -3,6 +3,7 @@ import jwtdecode from 'jwt-decode';
 import ROUTE from "../../../Helpers/routes.json";
 import { notify } from '../../../utils/notify';
 import { REDIRECT_TO } from "../../../Helpers/stats/types"
+import { clearNetworkStats } from "../../../Helpers/stats/actions";
 import setAuthToken from '../../../utils/setAuthToken';
 import process from '../../../env'
 import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, GET_AUTH_ERROR, SET_CURRENT_USER } from './types';
@@ -55,6 +56,7 @@ export const registerNewUser = (userData) => dispatch =>{
     dispatch({ type: AUTH_LOADING_ENDS })
     // notify("Registration successful, you can now login");
     dispatch({type: REDIRECT_TO, payload: ROUTE.LOGIN_SUCCESS })
+    dispatch(clearNetworkStats())
   }).catch((error) => {
     dispatch({type: AUTH_LOADING_ENDS});
     if (error.response) {
