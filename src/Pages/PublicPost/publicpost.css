@@ -55,7 +55,25 @@
 
 /* media queries starts */
 
-@media only screen and (max-width: 600px) {
+@media  only screen and (max-width: 300px) { 
+  .contactdetials {
+    font-size: 10px !important;
+    margin-left: 2px;
+  }
+
+  .agentcol {
+    margin-left: 0px !important;
+    margin-top: 1rem !important;
+  }
+
+  .view-property-img {
+    height: 15rem;
+    width: 15rem;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 600px) {
   .view-property-img {
     height: 20rem;
     width: 20rem;
@@ -66,20 +84,10 @@
     display: flex;
   }
 
-  /* .viewicons {
-    width: 2rem !important;
-    margin-left: -4rem;
-  } */
 
   .firsticon {
     margin-left: 2rem !important;
   }
-
-  /* .undericons {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-  } */
 
   .agentcol {
     margin-left: 0px !important;

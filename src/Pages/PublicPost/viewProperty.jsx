@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import NumberFormat from 'react-number-format';
 import { getSinglePublicPost, getSinglePublicCommentPost, postComment, likeCount, likePost, 
   checkLiked, unlikeAPost } from './actions/action';
 import isEmpty from '../../utils/isEmpty';
@@ -9,7 +10,7 @@ import Publicfooter from '../../components/Footers/publicfooter';
 import LandingNavbar from "../../components/Navbars/LandingNavbar";
 import { ToastContainer } from 'react-toastify';
 import { Container, Row, Col, Form, Button, Spinner } from 'reactstrap';
-import { BsCash, BsPeopleFill, BsFillCartCheckFill, BsCheckCircleFill } from "react-icons/bs";
+import { BsFillPersonCheckFill } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiTwotoneMail, AiTwotonePhone, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import './publicpost.css';
@@ -102,7 +103,9 @@ const ViewProperty = (props) => {
         <div className='d-flex justify-content-between'>
           <div>
             <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
-            <h5 className='text-muted mt-2'>{ singlePublicData?.price }</h5>
+            <h5 className='text-muted mt-2' thousandSeparator={true}>
+              <NumberFormat value={ singlePublicData?.price } thousandSeparator={true} prefix={'#'} className="" displayType={'text'} />
+            </h5>
           </div>
           <div></div>
           <div>
@@ -143,7 +146,7 @@ const ViewProperty = (props) => {
                   <div className='contactdetials'>
                     <h3>{ singlePublicData?.user?.first_name } { singlePublicData?.user?.last_name }</h3>
                     <div className="mb-1"><AiTwotoneMail /> { singlePublicData?.user?.email }</div>
-                    <div className="mb-1"><HiLocationMarker /> { singlePublicData?.user?.username }</div>
+                    <div className="mb-1"><BsFillPersonCheckFill /> { singlePublicData?.user?.username }</div>
                     <div><AiTwotonePhone /> { singlePublicData?.user?.phone_number }</div>
                   </div>
                 </div>
