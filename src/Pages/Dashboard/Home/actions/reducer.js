@@ -1,9 +1,10 @@
-import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS, GET_MY_LIKED_DATA, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS } from './types'
+import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS, GET_MY_LIKED_DATA, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS, CRUD_OPERATION_STARTS, CRUD_OPERATION_ENDS, DELETE_USER_POST } from './types'
 
 const init =  {
   indexData:[],
   indexLoading:false,
   indexEachLoading:false,
+  crudLoading:false,
   errors: {},
   myLikedLoading:false,
   myLikedData:[]
@@ -55,6 +56,21 @@ export default function(state = init, action){
       return {
         ...state,
         myLikedLoading:false
+      }
+    case CRUD_OPERATION_STARTS:
+      return {
+        ...state,
+        crudLoading:true
+      }
+    case CRUD_OPERATION_ENDS:
+      return {
+        ...state,
+        crudLoading:false
+      }
+    case DELETE_USER_POST:
+      return{
+        ...state,
+        indexData: state.indexData.filter(item => item.id !== action.payload)
       }
     default:
       return state

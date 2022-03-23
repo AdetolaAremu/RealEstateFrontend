@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText } from 'reactstrap';
+import $ from 'jquery';
 import isEmpty from "../../../utils/isEmpty";
 import { ToastContainer } from 'react-toastify';
 import process from '../../../env';
@@ -16,7 +17,8 @@ const initialState = {
   address:"",
   price:"",
   type:"",
-  city:""
+  city:"",
+  images:null
 }
 
 const CreatePost = () => {
@@ -29,7 +31,13 @@ const CreatePost = () => {
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
-    setInputs({...Inputs, [e.target.name]:e.target.value })
+    setInputs({...Inputs, [e.target.name]:e.target.value})
+  }
+
+  const handleImageChange = (e) => {
+    const images = e.target.files[0]
+    console.log(images, 'img')
+    setInputs({...Inputs, images })
   }
 
   const getTypes = () => {
@@ -40,7 +48,9 @@ const CreatePost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(createRealEstatePost(Inputs))
+    const form = $("#post-form")[0];
+    let formData = new FormData(form);
+    dispatch(createRealEstatePost(formData))
   }
 
   useEffect(() => {
@@ -62,7 +72,7 @@ const CreatePost = () => {
       <div className='mb-3'>
         <Card className="bg-light shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} id="post-form" encType="multipart/form-data">
               <Row>
                 <Col>
                   <Label>
@@ -136,6 +146,7 @@ const CreatePost = () => {
                     value={Inputs.type}
                     onChange={handleChange}
                     type="select"
+                    // className="text-capitalize"
                   >
                     <option defaultValue>Choose type</option>
                     {types?.map((item) => (
@@ -159,7 +170,7 @@ const CreatePost = () => {
                 <Col>
                   <FormGroup>
                     <Label for="exampleFile">File</Label>
-                    <Input type="file" name="file" id="exampleFile" />
+                    <Input type="file" name="images" onChange={handleImageChange} />
                     <FormText color="muted">
                       You can upload a maximum of 2 images, not more than 300kb.
                     </FormText>

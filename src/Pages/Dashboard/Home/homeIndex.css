@@ -1,3 +1,7 @@
+body {
+  padding-right: 0 !important;
+}
+
 .card-block {
   min-height: 215px;
   border-radius: 4% !important;

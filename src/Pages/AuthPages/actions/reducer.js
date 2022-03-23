@@ -1,11 +1,12 @@
 import isEmpty from '../../../utils/isEmpty'
-import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, SET_CURRENT_USER, GET_AUTH_ERROR } from './types'
+import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, SET_CURRENT_USER, GET_AUTH_ERROR, GET_LOGIN_ERROR } from './types'
 
 const init = {
   isAuthenticated:false,
   user:{},
   authLoading:false,
-  errors: {}  
+  errors: {},
+  loginError: {}
 }
 
 export default function(state = init, action){
@@ -30,6 +31,11 @@ export default function(state = init, action){
       return {
         ...state,
         errors:action.payload
+      }
+    case GET_LOGIN_ERROR:
+      return {
+        ...state,
+        loginError:action.payload
       }
     default:
       return state;

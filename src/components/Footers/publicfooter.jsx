@@ -1,5 +1,7 @@
-import React from 'react'
-import '../css/style.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ROUTE from '../../Helpers/routes.json';
+import '../css/style.css';
 import { BsChevronRight } from 'react-icons/bs';
 
 function Publicfooter() {
@@ -17,17 +19,17 @@ function Publicfooter() {
                     </div>
                     <div className="w-body-a">
                       <p className="w-text-a color-text-a">
-                        Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                        sed aute irure.
+                        You get the best estate deals here, you are guaranateed all the satisfaction you 
+                        can ever imagine, trust us to give the best deals.
                       </p>
                     </div>
                     <div className="w-footer-a">
                       <ul className="list-unstyled">
                         <li className="color-a">
-                          <span className="color-text-a">Phone .</span> contact@example.com
+                          <span className="color-text-a">Phone .</span> aremutola@gmail.com
                         </li>
                         <li className="color-a">
-                          <span className="color-text-a">Email .</span> +54 356 945234
+                          <span className="color-text-a">Email .</span> +234 8050 6765 20
                         </li>
                       </ul>
                     </div>
@@ -42,22 +44,16 @@ function Publicfooter() {
                       <div className="w-body-a">
                         <ul className="list-unstyled">
                           <li className="item-list-a">
-                            <BsChevronRight /> <a href="#">Site Map</a>
+                            <BsChevronRight /> <Link to={ROUTE.HOME}>Home</Link>
                           </li>
                           <li className="item-list-a">
-                            <BsChevronRight /> <a href="#">Legal</a>
+                            <BsChevronRight /> <Link to={ROUTE.ALL_PROPERTIES}>Properties</Link>
                           </li>
                           <li className="item-list-a">
-                            <BsChevronRight /> <a href="#">Agent Admin</a>
+                            <BsChevronRight /> <Link to={ROUTE.LOGIN}>Login</Link>
                           </li>
                           <li className="item-list-a">
-                            <BsChevronRight /> <a href="#">Careers</a>
-                          </li>
-                          <li className="item-list-a">
-                            <BsChevronRight /> <a href="#">Affiliate</a>
-                          </li>
-                          <li className="item-list-a">
-                            <BsChevronRight /> <a href="#">Privacy Policy</a>
+                            <BsChevronRight /> <Link to={ROUTE.REGISTER}>Register</Link>
                           </li>
                         </ul>
                       </div>
@@ -72,22 +68,16 @@ function Publicfooter() {
                     <div className="w-body-a">
                       <ul className="list-unstyled">
                         <li className="item-list-a">
-                          <BsChevronRight /> <a href="#">Venezuela</a>
+                          <BsChevronRight /> <Link to={ROUTE.HOME}>USA</Link>
                         </li>
                         <li className="item-list-a">
-                          <BsChevronRight /> <a href="#">China</a>
+                          <BsChevronRight /> <Link to={ROUTE.HOME}>Canada</Link>
                         </li>
                         <li className="item-list-a">
-                          <BsChevronRight /> <a href="#">Hong Kong</a>
+                          <BsChevronRight /> <Link to={ROUTE.HOME}>Germany</Link>
                         </li>
                         <li className="item-list-a">
-                          <BsChevronRight /> <a href="#">Argentina</a>
-                        </li>
-                        <li className="item-list-a">
-                          <BsChevronRight /> <a href="#">Singapore</a>
-                        </li>
-                        <li className="item-list-a">
-                          <BsChevronRight /> <a href="#">Philippines</a>
+                          <BsChevronRight /> <Link to={ROUTE.HOME}>UK</Link>
                         </li>
                       </ul>
                     </div>
@@ -103,15 +93,15 @@ function Publicfooter() {
                   <nav className="nav-footer">
                     <ul className="list-inline footertext">
                       <li className="list-inline-item" style={{ fontWeight:"600" }}>
-                        <a href="#">Home</a>
+                        <Link to={ROUTE.HOME} >Home</Link>
                       </li>
                      
                       <li className="list-inline-item" style={{ fontWeight:"600" }}>
-                        <a href="#">Property</a>
+                        <Link to={ROUTE.ALL_PROPERTIES}>Properties</Link>
                       </li>
                      
                       <li className="list-inline-item" style={{ fontWeight:"600" }}>
-                        <a href="#">Contact</a>
+                        <a href="https://github.com/AdetolaAremu" target="_blank">Github</a>
                       </li>
                     </ul>
                   </nav>

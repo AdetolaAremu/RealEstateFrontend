@@ -19,6 +19,8 @@ const Index = () => {
   const { publicPosts: { publicDataLoading , publicData, cityData, typeData } } = 
     useSelector(state => state)
 
+    // console.log('publicdata',publicData[0].images[0])
+
   const dispatch = useDispatch()
 
   const handleSearch = _debounce(function(value) {
@@ -117,13 +119,14 @@ const Index = () => {
                 publicData?.map((item) => (
                   <Col key={item.id}>
                     <div class="item explode" style={{ position:"relative" }}>
-                      <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
+                      {/* {console.log('inside',item?.images[0].url)} */}
+                      <img className='home-img' src={item?.images[0].url} style={{ width:"100%", height:"100%" }}  alt="image" />
                       <div class="overlay text-white" style={{ position:"absolute", top:"49%", left:"10%" }}>
                         <div className='mb-3 text-capitalize'>
                           <HiLocationMarker style={{ color:"#2eca6a" }} /> { item?.city }
                         </div>
                         <div className='text-uppercase latest-header'>
-                          { 
+                          {
                             item?.title?.length > 25 ? `${item?.title?.slice(0,22)}...` : item?.title 
                           }
                         </div>
@@ -131,7 +134,7 @@ const Index = () => {
                           <a href="#"><span className="price-latest">{ item?.type?.name } | # { item?.price }</span></a>
                         </p>
                         <p className='clicktoview'>
-                          <Link to={`${ROUTE.VIEW_PROPERTY}/${item.id}`}>Click to view <BsChevronRight /></Link>
+                          <Link to={`${ROUTE.VIEW_PROPERTY}/${item?.slug}`}>Click to view <BsChevronRight /></Link>
                         </p>
                       </div>
                     </div>

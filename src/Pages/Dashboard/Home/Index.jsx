@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import ROUTE from "../../../Helpers/routes.json"
 import { Table, Card, CardBody , Spinner, Modal, ModalBody, ModalHeader, Button, Row, Col} from 'reactstrap';
-import { getEachUserPosts, getUserPosts, getMyLikedPosts } from './actions/actions';
+import { getEachUserPosts, getUserPosts, getMyLikedPosts, deleteDashboardPropertiesPost } from './actions/actions';
 import { BsEyeFill, BsPencilSquare, BsTrashFill, BsFillTrashFill, BsPlusSquare, BsArrowRight } from "react-icons/bs";
 import { ToastContainer } from 'react-toastify';
 import './homeIndex.css'
@@ -11,6 +11,7 @@ import './homeIndex.css'
 const  Index = () => {
 
   const [viewModal, setviewModal] = useState(false)
+  const [currentID, setCurrentID] = useState(null)
 
   const  { dashboard: { indexData, indexLoading, myLikedLoading, myLikedData }, stats } 
     = useSelector(state => state)
@@ -18,8 +19,14 @@ const  Index = () => {
   const dispatch = useDispatch()
 
   const toggleModal = (id) => {
+    setCurrentID(id)
     setviewModal(!viewModal)
-    getEachUserPosts(id)
+    // getEachUserPosts(currentID)
+  }
+
+  const handleDeletePost = () => {
+    dispatch(deleteDashboardPropertiesPost(currentID))
+    setviewModal(false)
   }
   
   useEffect(() => {
@@ -28,14 +35,14 @@ const  Index = () => {
   }, [])
 
   return (
-    <>
+    <div style={{ overflow:"hidden !important" }}>
       <ToastContainer />
       <div className='mt-5 mb-3'>
         <h2>My Liked Posts</h2>
         <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
       </div>
 
-      <div class="container-fluid" style={{ overflow:"auto", background:"#eaeef6" }}>
+      <div className="container-fluid" style={{ overflow:"auto", background:"#eaeef6" }}>
         {
           myLikedLoading ? (<Spinner className='m-auto d-flex justify-content-center my-5' animation="border" 
             style={{ minWidth:"4rem", minHeight:"4rem", color:"#2eca6a" }} />) : myLikedData.length ? (
@@ -70,71 +77,6 @@ const  Index = () => {
         }
       </div>
       
-      {/* <div class="container" style={{ overflow:"auto", background:"#eaeef6" }}>
-        <div class="row flex-nowrap my-2">
-          <div class="col-3">
-            <div class="card card-block p-2">
-              <div className='text-center fw-bold'>Title: SO LETS SEE</div>
-              <div className='mt-4'>
-                Description will be here just to check bla bla bla bla bla bla
-              </div>
-              <div className='mt-3 fw-bold text-center'>5000</div>
-              <div className='mt-2 viewLikedPost rounded-md text-center' 
-                style={{fontWeight:"500", color:"#159957"}}
-              >
-                View Post <span><BsArrowRight style={{ marginLeft:"9px" }} /></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-              <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-              <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-              <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-              <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-              <div className="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block">Card</div>
-          </div>
-        </div>
-      </div> */}
-      
-      
       <div className='text-center mt-5'>
         <Link to={ROUTE.CREATE_POST}>
           <button className='border border-none bg-none'>
@@ -150,7 +92,7 @@ const  Index = () => {
       </div>
 
       <div className='mb-3 fixed'>
-        <Card className="bg-light shadow border-0">
+        <Card style={{ overflow:"hidden !important" }} className="bg-light shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
           {
             indexLoading ? (
@@ -204,7 +146,7 @@ const  Index = () => {
           </CardBody>
         </Card>
       </div>
-      <Modal isOpen={viewModal} id='create_loan' style={{ overflow:"hidden !important" }}>
+      <Modal isOpen={viewModal} id='create_loan'>
         <ModalHeader toggle={toggleModal}>Delete Post</ModalHeader>
         <ModalBody>
           <div className='text-center mb-4'>
@@ -213,7 +155,7 @@ const  Index = () => {
           <div className="pl-lg-4">
             <div>Are you sure you want to delete this post?</div>
             <div className='text-center mt-4'>
-              <Button color='success'>Delete</Button>
+              <Button onClick={(e, id) => handleDeletePost(id)} color='success'>Delete</Button>
               <Button color='danger' style={{ marginLeft:"5px" }} onClick={toggleModal}
               >
                 Cancel
@@ -222,7 +164,7 @@ const  Index = () => {
           </div>
         </ModalBody>
       </Modal>
-    </>
+    </div>
   )
 }
 

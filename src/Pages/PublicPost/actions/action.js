@@ -3,7 +3,8 @@ import { PUBLIC_POST_GET_DATA, PUBLIC_POST_LOADING_ENDS, PUBLIC_POST_LOADING_STA
    GET_PUBLIC_POST_COMMENTS_DATA, PUBLIC_POST_COMMENT_CRUD_STARTS, PUBLIC_POST_COMMENT_CRUD_ENDS, 
    LIKE_POST_LOADING_STARTS, LIKE_POST_LOADING_ENDS, LIKE_POST_DATA, CRUD_LIKE_LOADING_STARTS, 
    CRUD_LIKE_LOADING_ENDS, CHECK_LIKE_DATA, FILTER_POST_LOADING_STARTS, FILTER_POST_LOADING_ENDS, 
-   GET_CITIES_IN_DB, RESET_SEARCH_DATA, GET_TYPES_IN_DB } from './types'
+   GET_CITIES_IN_DB, RESET_SEARCH_DATA, GET_TYPES_IN_DB 
+} from './types'
 import axios from 'axios';
 import process from '../../../env';
 import { notify } from '../../../utils/notify';
@@ -91,7 +92,7 @@ export const postComment = (data) => {
       .then((res) => {
         dispatch({type: PUBLIC_POST_COMMENT_CRUD_ENDS})
         notify(res?.data?.message)
-        dispatch(getSinglePublicCommentPost(data.post_id))
+        dispatch(getSinglePublicCommentPost(data.slug))
       })
     } catch (error) {
       dispatch({type: PUBLIC_POST_COMMENT_CRUD_ENDS, payload:error.response})

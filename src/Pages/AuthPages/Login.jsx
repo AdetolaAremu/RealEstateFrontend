@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from './actions/action';
 import isEmpty from '../../utils/isEmpty';
+import { ToastContainer } from 'react-toastify';
 
 const initialState = {
   username:"",
@@ -15,7 +16,7 @@ const initialState = {
 function Login() {
   const [Inputs, setInputs] = useState(initialState)
 
-  const { errors } = useSelector(state => state.allAuths)
+  const { errors, authLoading } = useSelector(state => state.allAuths)
 
   const dispatch = useDispatch()
 
@@ -30,6 +31,7 @@ function Login() {
 
   return (
     <div >
+      <ToastContainer />
       <div className='vh-100 d-flex justify-content-center align-items-center'>
         <Col lg="5" md="7">
           <Card className="bg-light shadow border-0">
@@ -80,8 +82,9 @@ function Login() {
                   </div>
                 </FormGroup>
                 <div className="text-center">
-                  <Button className="my-4" color="primary" type="submit">
-                    Sign in
+                  <Button className="my-4" disabled={authLoading === true} color="primary" type="submit">
+                    {authLoading === false && 'Sign in'}
+                    {authLoading === true && 'Signing in'}
                   </Button>
                 </div>
               </Form>

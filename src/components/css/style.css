@@ -22,6 +22,10 @@ body {
   transition: 0.3s color;
 }
 
+.navLogoFirst {
+  color: black;
+}
+
 .navLogoSecond {
   color: #2eca6a !important;
 }

@@ -17,20 +17,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 if (localStorage.jwtToken) {
-  // Set auth token header auth
   setAuthToken(localStorage.jwtToken);
-  // Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
-  // Set user and isAuthenticated
   Store.dispatch(setCurrentUser(decoded));
 
-  // Check for expired token
-  const currentTime = Date.now() / 1000;
-  if (decoded.exp < currentTime) {
-    // Logout user
+  const { exp } = jwt_decode(localStorage.jwtToken)
+  const expirationTime = (exp * 1000) - 60000
+
+  if (Date.now() >= expirationTime) {
     Store.dispatch(logoutUser());
-    // Redirect to login
-    // window.location.href = CONSTANTS.LOGIN;
+    localStorage.clear()
+    window.location.href = ROUTE.LOGIN;
   }
 }
 

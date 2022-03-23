@@ -37,9 +37,9 @@ class Example extends React.Component {
     return (
       <div>
         <Navbar className='shadow giveTopPadding' fixed="top" light expand="md">
-          <NavbarBrand className='navLogo' href="/">
-            <span className='navLogoFirst'>Deal</span><span className='navLogoSecond'>Estate</span>
-          </NavbarBrand>
+          <Link to={ROUTE.HOME} className='navLogo' style={{ textDecoration:"none" }}>
+            <span className='navLogoFirst' style={{ color:"black" }}>Deal</span><span className='navLogoSecond'>Estate</span>
+          </Link>
           <NavbarToggler onClick={this.toggle} />
           {
             allAuths.isAuthenticated != true ? (

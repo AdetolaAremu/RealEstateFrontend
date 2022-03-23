@@ -11,7 +11,6 @@ import LandingNavbar from "../../components/Navbars/LandingNavbar";
 import { ToastContainer } from 'react-toastify';
 import { Container, Row, Col, Form, Button, Spinner } from 'reactstrap';
 import { BsFillPersonCheckFill } from "react-icons/bs";
-import { HiLocationMarker } from "react-icons/hi";
 import { AiTwotoneMail, AiTwotonePhone, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import './publicpost.css';
 
@@ -45,7 +44,7 @@ const ViewProperty = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = {
-      post_id:props.match.params.id,
+      slug:props.match.params.id,
       text:Input.text
     }
     dispatch(postComment(data))
@@ -110,7 +109,7 @@ const ViewProperty = (props) => {
           <div></div>
           <div>
             <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
-            <h5 className='text-muted mt-2' style={{ marginRight:"2.8rem" }}>
+            <h5 className='text-muted mt-2 text-capitalize' style={{ marginRight:"2.8rem" }}>
               { singlePublicData?.city }
             </h5> 
           </div>

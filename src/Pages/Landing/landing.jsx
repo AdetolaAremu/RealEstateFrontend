@@ -1,22 +1,26 @@
-import React from 'react'
-import  { Link } from 'react-router-dom'
-import { Button, Input, InputGroup } from 'reactstrap';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import  { Link } from 'react-router-dom';
 import LandingNavbar from '../../components/Navbars/LandingNavbar';
 import PublicFooter from "../../components/Footers/publicfooter"
 import './landing.css';
 import sample from "../../components/Images/sample.jpg";
-import sample2 from "../../components/Images/post-3.jpg"
-import landingbg from "../../components/Images/landingbg.webp"
+import sample2 from "../../components/Images/post-3.jpg";
+import landingbg from "../../components/Images/landingbg.webp";
 import { Row, Col, Card, Container} from 'reactstrap';
 import { BsPeopleFill, BsArrowRight, BsFillCartCheckFill, BsCheckCircleFill, BsChevronRight} from 'react-icons/bs';
 import { HiLocationMarker } from "react-icons/hi";
 import { Carousel, CarouselItem, CarouselIndicators } from 'reactstrap';
 
 const Landing= () => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const { publicData } = useSelector(state => state.publicPosts)
+
+  const slicedData = publicData.slice(0,3)
+  console.log('slicedlanding', slicedData)
   
     // State for Animation
-  const [animating, setAnimating] = React.useState(false);
+  const [animating, setAnimating] = useState(false);
   
     // Sample items for Carousel
   const items = [
@@ -122,14 +126,13 @@ const Landing= () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Affordable</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Affordability</h2>
                   </div>
                 </div>
                 <div className="mt-3">
                   <p className="content-c">
-                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                    convallis a pellentesque
-                    nec, egestas non nisi.
+                    Real esate might seem like a price over-kill but you can still get the most affordable deal here
+                    ,be at rest and know that you will get the best here
                   </p>
                 </div>
               </div>
@@ -143,14 +146,13 @@ const Landing= () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Lifestyle</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Comfortability</h2>
                   </div>
                 </div>
                 <div className="mt-3">
                   <p className="content-c">
-                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                    convallis a pellentesque
-                    nec, egestas non nisi.
+                    Your comfort should always be a priority for you and so it is for us too, your house
+                    should be your home and that is our driving force.
                   </p>
                 </div>
               </div>
@@ -170,9 +172,8 @@ const Landing= () => {
                 </div>
                 <div className="mt-3">
                   <p className="content-c">
-                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                    convallis a pellentesque
-                    nec, egestas non nisi.
+                    We go the extra link to make sure our agents are credible, you will always get the best
+                    agents from all over the world, be at ease, we are credible.
                   </p>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS, GET_MY_LIKED_DATA } from './types'
+import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS, GET_MY_LIKED_DATA, CRUD_OPERATION_STARTS, CRUD_OPERATION_ENDS, DELETE_USER_POST } from './types'
 import axios from 'axios';
 import { notify } from '../../../../utils/notify';
 import process from '../../../../env';
@@ -84,6 +84,33 @@ export const getMyLikedPosts = () => {
         } else {
           return notify('Sorry, something went wrong!', 'error')
         }
+      }
+    }
+  }
+}
+
+export const deleteDashboardPropertiesPost = (id) => {
+  return async(dispatch) => {
+    try {
+      dispatch({type: CRUD_OPERATION_STARTS})
+      const res = await axios.delete(`${service_url}/post/${id}`)
+      dispatch(getUserPosts())
+      dispatch({type: DELETE_USER_POST, payload:id})
+      notify(res?.data?.message);
+      dispatch({type: CRUD_OPERATION_ENDS})
+    } catch (error) {
+      dispatch({type: CRUD_OPERATION_ENDS, payload:error})
+      if (error.response) {
+        if (error.response.status === 422) {
+          dispatch({type: GET_INDEX_ERROR, payload:error})
+          return notify('There are errors in your input', 'error')
+        } else if (error.response.status === 500) {
+          dispatch({type: GET_INDEX_ERROR, payload:error.response})
+        } else {
+          return notify('Sorry, something went wrong!', 'error')
+        }
+      } else {
+        return notify('Sorry, something went wrong! Check your network', 'error')
       }
     }
   }
