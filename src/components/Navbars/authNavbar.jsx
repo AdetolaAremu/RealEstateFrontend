@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink as RRNavLink } from 'react-router-dom';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import ROUTE from '../../Helpers/routes.json';
 import '../css/style.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
@@ -28,20 +28,20 @@ export default class AuthNavbar extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ms-auto" navbar>
-              <NavItem class="nav-item">
+              <NavItem className="nav-item">
                 <NavLink to={ROUTE.HOME} id='nav-linkk'
                 >Home</NavLink>
               </NavItem>
-              <NavItem class="nav-item">
+              <NavItem className="nav-item">
                 <NavLink id="nav-linkk" activeClassName="active"
                   tag={RRNavLink} to={ROUTE.ALL_PROPERTIES}
                 >Properties</NavLink>
               </NavItem>
-              <NavItem class="nav-item">
+              <NavItem className="nav-item">
                 <NavLink id='nav-linkk' tag={RRNavLink} activeClassName="active" to={ROUTE.LOGIN}
                 >Login</NavLink>
               </NavItem>
-              <NavItem class="nav-item">
+              <NavItem className="nav-item">
                 <NavLink id='nav-linkk' tag={RRNavLink} activeClassName="active" to={ROUTE.REGISTER}
                 >Register</NavLink>
               </NavItem>
@@ -50,7 +50,6 @@ export default class AuthNavbar extends React.Component {
                   href="https://github.com/reactstrap/reactstrap"
                 >GitHub</NavLink>
               </NavItem>
-              
             </Nav>
           </Collapse>
         </Navbar>

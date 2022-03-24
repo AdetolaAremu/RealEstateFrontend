@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Link, NavLink as RRNavLink } from 'react-router-dom';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import ROUTE from "../../Helpers/routes.json"
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import { logoutUser } from '../../Pages/AuthPages/actions/action';
@@ -52,35 +52,16 @@ class UserNav extends Component {
                   Profile
                 </NavLink>
               </NavItem>
-              <NavItem class="nav-item">
+              <NavItem className="nav-item">
                 <NavLink id="nav-linkk" activeClassName="active"
                   tag={RRNavLink} to={ROUTE.ALL_PROPERTIES}
                 >Properties</NavLink>
               </NavItem>
               <NavItem>
-                {/* <Form role='submit' onSubmit={handleLogout}> */}
-                  <Button type="submit" onClick={handleLogout} className='bg-danger py-2 px-2 rounded text-white'>
-                    Logout
-                  </Button>
-                {/* </Form> */}
+                <Button type="submit" onClick={handleLogout} className='bg-danger py-2 px-2 rounded text-white'>
+                  Logout
+                </Button>
               </NavItem>
-              {/* <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Name
-                </DropdownToggle>
-                <DropdownMenu right="5">
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </Navbar>
@@ -88,11 +69,6 @@ class UserNav extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-  };
-};
 
 const mapDispatchToProps = (dispatch) => {
   return {

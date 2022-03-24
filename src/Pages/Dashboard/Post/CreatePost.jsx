@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
+import { getUserPosts } from '../Home/actions/actions';
 import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText } from 'reactstrap';
 import $ from 'jquery';
 import isEmpty from "../../../utils/isEmpty";
@@ -26,7 +27,7 @@ const CreatePost = () => {
   const [Inputs, setInputs] = useState(initialState)
   const [types, settypes] = useState([])
 
-  const { posts: {errors, propertyDataLoading}, stats } = useSelector(state => state)
+  const { posts: {errors, propertyDataLoading}, dashboard: { indexData }, stats } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
@@ -36,7 +37,6 @@ const CreatePost = () => {
 
   const handleImageChange = (e) => {
     const images = e.target.files[0]
-    console.log(images, 'img')
     setInputs({...Inputs, images })
   }
 
@@ -55,7 +55,8 @@ const CreatePost = () => {
 
   useEffect(() => {
     getTypes()
-  }, [])
+    dispatch(getUserPosts())
+  }, [dispatch])
 
   if (stats?.redirectTo) {
     return <Redirect to={stats?.redirectTo} />
@@ -190,8 +191,9 @@ const CreatePost = () => {
                   </div>
                 </FormGroup>
               </Row>
+              {console.log('seee', indexData.length)}
               <div className="text-center">
-                <Button className="my-4" color="primary" type="submit" disabled={propertyDataLoading}>
+                <Button className="my-4" color="primary" type="submit" disabled={propertyDataLoading || indexData.length >= 2}>
                   {
                     !propertyDataLoading ? "Submit":"Submitting"
                   }

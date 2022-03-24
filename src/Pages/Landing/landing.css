@@ -102,6 +102,11 @@
   font-size: 20px;
 }
 
+.blog-header {
+  font-weight: 600;
+  font-size: 15px;
+}
+
 .price-latest {
   color: #ffffff;
   padding: 0.3rem 0.3rem;

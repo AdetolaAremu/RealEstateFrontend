@@ -11,8 +11,6 @@ import { notify } from '../../../utils/notify';
 
 const service_url = process.env.SERVICE_URL
 
-let searchedTimes = 0
-
 //reset filter
 export const resetFilter =()=>dispatch=> dispatch({type:RESET_SEARCH_DATA})
 

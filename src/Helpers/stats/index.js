@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     redirectTo: null,
 }
 
-export default (state = INITIAL_STATE, action) => {
+const helperReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case REDIRECT_TO:
             return {
@@ -28,3 +28,5 @@ export default (state = INITIAL_STATE, action) => {
             return state
     }
 }
+
+export default helperReducer;

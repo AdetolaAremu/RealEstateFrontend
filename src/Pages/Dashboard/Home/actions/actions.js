@@ -1,4 +1,4 @@
-import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS, GET_MY_LIKED_DATA, CRUD_OPERATION_STARTS, CRUD_OPERATION_ENDS, DELETE_USER_POST } from './types'
+import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS, GET_MY_LIKED_DATA, CRUD_OPERATION_STARTS, CRUD_OPERATION_ENDS, DELETE_USER_POST, ADMIN_LOADING_STARTS, ADMIN_LOADING_ENDS, GET_ADMIN_DATA, GET_ALL_USERS_DATA } from './types'
 import axios from 'axios';
 import { notify } from '../../../../utils/notify';
 import process from '../../../../env';
@@ -111,6 +111,50 @@ export const deleteDashboardPropertiesPost = (id) => {
         }
       } else {
         return notify('Sorry, something went wrong! Check your network', 'error')
+      }
+    }
+  }
+}
+
+export const getAdminStats = () => {
+  return async(dispatch) => {
+    try {
+      dispatch({type: ADMIN_LOADING_STARTS})
+      const response = await axios.get(`${service_url}/admin-stats`)
+      dispatch({type: ADMIN_LOADING_ENDS})
+      dispatch({type: GET_ADMIN_DATA, payload:response.data})
+    } catch (error) {
+      dispatch({type: GET_INDEX_ERROR, payload:error})
+      if (error.response) {
+        if(error.response.status === 401) {
+          return notify('You are not authorized, please login again') 
+        } else if (error.response.status === 500) {
+          return notify('An internal error occured, we are working on it!')
+        } else {
+          return notify('Sorry, something went wrong!', 'error')
+        }
+      }
+    }
+  }
+}
+
+export const getAllUsers = () => {
+  return async(dispatch) => {
+    try {
+      dispatch({type: ADMIN_LOADING_STARTS})
+      const response = await axios.get(`${service_url}/user`)
+      dispatch({type: ADMIN_LOADING_ENDS})
+      dispatch({type: GET_ALL_USERS_DATA, payload:response.data})
+    } catch (error) {
+      dispatch({type: GET_INDEX_ERROR, payload:error})
+      if (error.response) {
+        if(error.response.status === 401) {
+          return notify('You are not authorized, please login again') 
+        } else if (error.response.status === 500) {
+          return notify('An internal error occured, we are working on it!')
+        } else {
+          return notify('Sorry, something went wrong!', 'error')
+        }
       }
     }
   }

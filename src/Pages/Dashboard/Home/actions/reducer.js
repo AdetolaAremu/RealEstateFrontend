@@ -1,4 +1,4 @@
-import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS, GET_MY_LIKED_DATA, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS, CRUD_OPERATION_STARTS, CRUD_OPERATION_ENDS, DELETE_USER_POST } from './types'
+import { GET_INDEX_DATA, GET_INDEX_ERROR, INDEX_LOADING_ENDS, INDEX_LOADING_STARTS, INDEX_EACH_POST_LOADING_STARTS, INDEX_EACH_POST_LOADING_ENDS, GET_MY_LIKED_DATA, MY_LIKED_POST_LOADING_STARTS, MY_LIKED_POST_LOADING_ENDS, CRUD_OPERATION_STARTS, CRUD_OPERATION_ENDS, DELETE_USER_POST, ADMIN_LOADING_STARTS, ADMIN_LOADING_ENDS, GET_ADMIN_DATA, GET_ALL_USERS_DATA } from './types'
 
 const init =  {
   indexData:[],
@@ -7,10 +7,13 @@ const init =  {
   crudLoading:false,
   errors: {},
   myLikedLoading:false,
-  myLikedData:[]
+  myLikedData:[],
+  adminData:[],
+  adminUsers:[],
+  adminLoading:false
 }
 
-export default function(state = init, action){
+const dashboardHomeReducer = (state = init, action) => {
   switch (action.type) {
     case INDEX_LOADING_STARTS:
       return {
@@ -72,7 +75,29 @@ export default function(state = init, action){
         ...state,
         indexData: state.indexData.filter(item => item.id !== action.payload)
       }
+    case ADMIN_LOADING_STARTS:
+      return {
+        ...state,
+        adminLoading:true
+      }
+    case ADMIN_LOADING_ENDS:
+      return {
+        ...state,
+        adminLoading:false
+      }
+    case GET_ADMIN_DATA:
+      return {
+        ...state,
+        adminData:action.payload
+      }
+    case GET_ALL_USERS_DATA:
+      return {
+        ...state,
+        adminUsers:action.payload
+      }
     default:
       return state
   }
 }
+
+export default dashboardHomeReducer;

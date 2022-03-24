@@ -2,26 +2,41 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import ROUTE from "../../../Helpers/routes.json"
-import { Table, Card, CardBody , Spinner, Modal, ModalBody, ModalHeader, Button, Row, Col} from 'reactstrap';
-import { getEachUserPosts, getUserPosts, getMyLikedPosts, deleteDashboardPropertiesPost } from './actions/actions';
+import { Table, Card, CardBody , Spinner, Modal, ModalBody, ModalHeader, Button, Row, Col } from 'reactstrap';
+import { getUserPosts, getMyLikedPosts, deleteDashboardPropertiesPost, getAdminStats, getAllUsers } from './actions/actions';
 import { BsEyeFill, BsPencilSquare, BsTrashFill, BsFillTrashFill, BsPlusSquare, BsArrowRight } from "react-icons/bs";
 import { ToastContainer } from 'react-toastify';
-import './homeIndex.css'
+import './homeIndex.css';
 
 const  Index = () => {
 
-  const [viewModal, setviewModal] = useState(false)
-  const [currentID, setCurrentID] = useState(null)
+  const [viewModal, setviewModal] = useState(false);
+  const [viewAdminStatsModal, setviewAdminStatsModal] = useState(false);
+  const [viewAllUsersModal, setviewAllUsersModal] = useState(false);
+  const [currentID, setCurrentID] = useState(null);
 
-  const  { dashboard: { indexData, indexLoading, myLikedLoading, myLikedData }, stats } 
-    = useSelector(state => state)
+  const  { dashboard: { indexData, indexLoading, myLikedLoading, myLikedData, adminData, adminUsers }, 
+    layouts: { layoutData } } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
   const toggleModal = (id) => {
     setCurrentID(id)
     setviewModal(!viewModal)
-    // getEachUserPosts(currentID)
+  }
+
+  const toggleAdminStatsModal = () => {
+    setviewAdminStatsModal(!viewAdminStatsModal)
+    if (viewAdminStatsModal === false) {
+      dispatch(getAdminStats())
+    }
+  }
+
+  const toggleUsersTable = () => {
+    setviewAllUsersModal(!viewAllUsersModal)
+    if(viewAllUsersModal === false){
+      dispatch(getAllUsers())
+    }
   }
 
   const handleDeletePost = () => {
@@ -32,7 +47,7 @@ const  Index = () => {
   useEffect(() => {
     dispatch(getUserPosts())
     dispatch(getMyLikedPosts())
-  }, [])
+  }, [dispatch])
 
   return (
     <div style={{ overflow:"hidden !important" }}>
@@ -77,14 +92,28 @@ const  Index = () => {
         }
       </div>
       
-      <div className='text-center mt-5'>
-        <Link to={ROUTE.CREATE_POST}>
-          <button className='border border-none bg-none'>
-            <BsPlusSquare style={{ fontSize:"7rem" }} />
-          </button>
-        </Link>
-        <div className='text-muted mt-2'>Create Post</div>
-      </div>
+      {
+        indexData.length >= 2 ? (
+          <div className='text-center mt-5'>
+            <button className='border border-none bg-none'>
+              <BsPlusSquare style={{ fontSize:"7rem" }} />
+            </button>
+            <div className='text-muted mt-2'>Create Post</div>
+            <div className='mt-2 text-danger'>Sorry, due to limited storage, you can not have more than two posts</div>
+          </div>
+        ):(
+          <div className='text-center mt-5'>
+            <Link to={ROUTE.CREATE_POST}>
+              <button className='border border-none bg-none'>
+                <BsPlusSquare style={{ fontSize:"7rem" }} />
+              </button>
+            </Link>
+            <div className='text-muted mt-2'>Create Post</div>
+            <div className='mt-2 text-danger'>Sorry, due to limited storage, you can not have more than two posts!</div>
+          </div>
+        )
+      }
+      
       
       <div className='my-3'>
         <h2>All Posts</h2>
@@ -126,7 +155,7 @@ const  Index = () => {
                         }
                       </td>
                       <td>
-                        <Link to={`${ROUTE.VIEW_PROPERTY}/${posts.id}`}>
+                        <Link to={`${ROUTE.VIEW_PROPERTY}/${posts?.slug}`}>
                           <button style={{ border:"1px solid #EBECED"}}>
                             <BsEyeFill style={{ fontSize:"20px" }} />
                           </button>
@@ -146,7 +175,30 @@ const  Index = () => {
           </CardBody>
         </Card>
       </div>
-      <Modal isOpen={viewModal} id='create_loan'>
+      
+      {
+        layoutData?.role === 'admin' &&
+        <div>
+          <div className='my-3'>
+            <h2>Admin Section</h2>
+            <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
+          </div>
+
+          <div>
+            <Row>
+              <Col md={4}>
+                <Button onClick={toggleAdminStatsModal} color='info'>See Admin Stats</Button>
+              </Col>
+              <Col md={4}>
+                <Button onClick={toggleUsersTable} color='info'>See All Users</Button>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      }
+      
+
+      <Modal isOpen={viewModal} >
         <ModalHeader toggle={toggleModal}>Delete Post</ModalHeader>
         <ModalBody>
           <div className='text-center mb-4'>
@@ -159,6 +211,65 @@ const  Index = () => {
               <Button color='danger' style={{ marginLeft:"5px" }} onClick={toggleModal}
               >
                 Cancel
+              </Button>
+            </div>
+          </div>
+        </ModalBody>
+      </Modal>
+
+
+      <Modal isOpen={viewAdminStatsModal} id='create_loan'>
+        <ModalHeader toggle={toggleAdminStatsModal}>Admin Stats</ModalHeader>
+        <ModalBody>
+          <div>
+            <Row>
+              <Col md={6}>Count of Users: { adminData?.userCount }</Col>
+              <Col md={6}>Count of All Posts: { adminData?.allPosts }</Col>
+              <Col md={6}>Count of All Likes: { adminData?.allLikes }</Col>
+              <Col md={6}>Count of All Comments: { adminData?.allComments }</Col>
+            </Row>
+          </div>
+
+          <div className="pl-lg-4">
+            <div className='text-center mt-4'>
+              <Button color='danger' style={{ marginLeft:"5px" }} onClick={toggleAdminStatsModal}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </ModalBody>
+      </Modal>
+
+      <Modal isOpen={viewAllUsersModal} id='create_loan'>
+        <ModalHeader toggle={toggleUsersTable}>Admin Stats</ModalHeader>
+        <ModalBody>
+        <Table className="align-items-center table-flush" responsive striped>
+          <thead className='bg-secondary text-white border border-2 border-white'>
+            <tr>
+              <th>S/N</th>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {adminUsers?.map((user, index) => (
+              <tr key={user.id}>
+                <th scope="row">{ index + 1 }</th>
+                <td>
+                  { user?.first_name } { user?.last_name }
+                </td>
+                <td>
+                  { user?.email }
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+          <div className="pl-lg-4">
+            <div className='text-center mt-4'>
+              <Button color='danger' style={{ marginLeft:"5px" }} onClick={toggleUsersTable}
+              >
+                Close
               </Button>
             </div>
           </div>

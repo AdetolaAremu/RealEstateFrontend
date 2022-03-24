@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { Router } from "react-router-dom";
-import { GET_A_PROPERTY_DATA, GET_PROPERTY_DATA, GET_PROPERTY_ERROR, PROPERTY_POST_DATA_LOADING_ENDS, PROPERTY_POST_DATA_LOADING_STARTS } from './types';
+import { GET_A_PROPERTY_DATA, GET_PROPERTY_ERROR, PROPERTY_POST_DATA_LOADING_ENDS, PROPERTY_POST_DATA_LOADING_STARTS } from './types';
 import { getUserStats } from '../../../../layouts/actions/action';
 import process from "../../../../env";
 import { getUserPosts } from "../../Home/actions/actions";
@@ -8,9 +7,6 @@ import { notify } from "../../../../utils/notify";
 import { REDIRECT_TO } from "../../../../Helpers/stats/types"
 import { clearNetworkStats } from "../../../../Helpers/stats/actions"
 import ROUTE from "../../../../Helpers/routes.json";
-import { createBrowserHistory } from 'history';
-
-let history = createBrowserHistory();
 
 const service_url = process.env.SERVICE_URL
 

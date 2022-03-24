@@ -23,7 +23,7 @@ const INITIAL_STATE = {
   checkLikeData:undefined
 }
  
-export default (state = INITIAL_STATE, action) => {
+const publicPostReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case PUBLIC_POST_LOADING_STARTS:
       return {
@@ -134,3 +134,5 @@ export default (state = INITIAL_STATE, action) => {
       return state
   }
 }
+
+export default publicPostReducer;

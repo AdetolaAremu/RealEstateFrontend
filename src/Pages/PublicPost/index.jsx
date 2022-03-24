@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {useCallback} from 'react';
-import _ from "lodash";
 import _debounce from 'lodash/debounce';
-import { ToastContainer } from 'react-toastify';
 import { getAllPosts, getCitiesInTheDB, searchPost, filterByCity, getAllTypes, filterByType } from './actions/action';
 import LandingNavBar from "../../components/Navbars/LandingNavbar";
 import ROUTE from '../../Helpers/routes.json';
-import { Container, Row, Col, FormGroup, Input, Spinner, Card, InputGroupText } from 'reactstrap';
-import sample from "../../components/Images/sample.jpg";
+import { Container, Row, Col, FormGroup, Input, Spinner } from 'reactstrap';
 import Publicfooter from '../../components/Footers/publicfooter';
 import { BsChevronRight} from 'react-icons/bs';
 import { HiLocationMarker } from "react-icons/hi";
 
 const Index = () => {
-  const [searchInput, setSearchInput] = useState('');
-  const { publicPosts: { publicDataLoading , publicData, cityData, typeData } } = 
-    useSelector(state => state)
-
-    // console.log('publicdata',publicData[0].images[0])
+  const { publicPosts: { publicDataLoading , publicData, cityData, typeData } } = useSelector(state => state)
 
   const dispatch = useDispatch()
 
@@ -39,7 +31,7 @@ const Index = () => {
     dispatch(getAllPosts());
     dispatch(getCitiesInTheDB());
     dispatch(getAllTypes());
-  }, [])
+  }, [dispatch])
   
   return (
     <>
@@ -89,7 +81,7 @@ const Index = () => {
                   type="select"
                   onChange={e => handleTypeFilter(e.target.value)}
                 >
-                  <option defaultValue value={''}>Filter by type</option>
+                  <option defaultValue value={""}>Filter by category</option>
                   {typeData.map((item) => (
                     <option key={item.id} value={item.name}>{ item.name }</option>
                   ))}
@@ -118,10 +110,9 @@ const Index = () => {
               {
                 publicData?.map((item) => (
                   <Col key={item.id}>
-                    <div class="item explode" style={{ position:"relative" }}>
-                      {/* {console.log('inside',item?.images[0].url)} */}
-                      <img className='home-img' src={item?.images[0].url} style={{ width:"100%", height:"100%" }}  alt="image" />
-                      <div class="overlay text-white" style={{ position:"absolute", top:"49%", left:"10%" }}>
+                    <div className="item explode" style={{ position:"relative" }}>
+                      <img className='home-img' src={item?.images[0].url} style={{ width:"100%", height:"100%" }}  alt="home" />
+                      <div className="overlay text-white" style={{ position:"absolute", top:"49%", left:"10%" }}>
                         <div className='mb-3 text-capitalize'>
                           <HiLocationMarker style={{ color:"#2eca6a" }} /> { item?.city }
                         </div>
@@ -130,8 +121,8 @@ const Index = () => {
                             item?.title?.length > 25 ? `${item?.title?.slice(0,22)}...` : item?.title 
                           }
                         </div>
-                        <p class="tolatest mt-3">
-                          <a href="#"><span className="price-latest">{ item?.type?.name } | # { item?.price }</span></a>
+                        <p className="tolatest mt-3">
+                          <span className="price-latest">{ item?.type?.name } | # { item?.price }</span>
                         </p>
                         <p className='clicktoview'>
                           <Link to={`${ROUTE.VIEW_PROPERTY}/${item?.slug}`}>Click to view <BsChevronRight /></Link>

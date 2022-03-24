@@ -7,7 +7,7 @@ const init =  {
   errors: {}
 }
 
-export default function(state = init, action){
+const layoutReducer = (state = init, action) => {
   switch (action.type) {
     case LAYOUT_LOADING_STARTS:
       return {
@@ -38,3 +38,5 @@ export default function(state = init, action){
       return state
   }
 }
+
+export default layoutReducer;

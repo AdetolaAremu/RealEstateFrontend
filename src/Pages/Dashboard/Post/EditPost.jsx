@@ -34,6 +34,7 @@ const EditPost = (props) => {
 
   useEffect(() => {
     getPostToUpdate()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (stats?.redirectTo) {

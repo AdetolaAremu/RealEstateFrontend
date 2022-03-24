@@ -12,10 +12,7 @@ import NavUser from "../components/Navbars/userNavbar";
 import UserFooter from '../components/Navbars/userFooter';
 import { AiOutlineAlignLeft, AiOutlineLike, AiOutlineComment } from "react-icons/ai";
 import { getLoggedInUser, getUserStats } from './actions/action';
-
 import './layouts.css'
-import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
 
 const Admin = () => {
   const { layoutData, layoutLoading, layoutsUserStats } = useSelector(state => state.layouts)
@@ -25,7 +22,7 @@ const Admin = () => {
   useEffect(() => {
     dispatch(getLoggedInUser())
     dispatch(getUserStats())
-  }, [])
+  }, [dispatch])
 
   return (
     <div style={{ overflow:"hidden" }}>

@@ -9,7 +9,7 @@ const init = {
   loginError: {}
 }
 
-export default function(state = init, action){
+const authReducer = (state = init, action) => {
   switch (action.type) {
     case SET_CURRENT_USER: 
       return {
@@ -41,3 +41,5 @@ export default function(state = init, action){
       return state;
   }
 }
+
+export default authReducer;

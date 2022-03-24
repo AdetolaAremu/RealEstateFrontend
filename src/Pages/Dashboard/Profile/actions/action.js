@@ -4,7 +4,7 @@ import { notify } from "../../../../utils/notify";
 import { REDIRECT_TO } from "../../../../Helpers/stats/types";
 import { clearNetworkStats } from "../../../../Helpers/stats/actions";
 import ROUTE from "../../../../Helpers/routes.json";
-import { GET_PROFILE_DATA, GET_PROFILE_ERROR, PROFILE_LOADING_ENDS, PROFILE_LOADING_STARTS } from './types';
+import { GET_PROFILE_ERROR, PROFILE_LOADING_ENDS, PROFILE_LOADING_STARTS } from './types';
 import { getLoggedInUser } from '../../../../layouts/actions/action';
 
 

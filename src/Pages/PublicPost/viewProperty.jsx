@@ -5,7 +5,6 @@ import { getSinglePublicPost, getSinglePublicCommentPost, postComment, likeCount
   checkLiked, unlikeAPost } from './actions/action';
 import isEmpty from '../../utils/isEmpty';
 import pix from "../../components/Images/author-2.jpg";
-import sample from "../../components/Images/sample.jpg";
 import Publicfooter from '../../components/Footers/publicfooter';
 import LandingNavbar from "../../components/Navbars/LandingNavbar";
 import { ToastContainer } from 'react-toastify';
@@ -56,7 +55,7 @@ const ViewProperty = (props) => {
     dispatch(getSinglePublicCommentPost(props.match.params.id));
     dispatch(likeCount((props.match.params.id)));
     dispatch(checkLiked(props.match.params.id));
-  }, [])
+  }, [dispatch, props])
 
   return (
     <div style={{ overflow:"hidden" }}>
@@ -72,14 +71,14 @@ const ViewProperty = (props) => {
             </div>
           </div>
         </div>
-        
+
         <div className='my-3 text-center'>
-          <img className='view-property-img' src={sample} />
+          <img className='view-property-img' alt='Property' src={singlePublicData?.images?.[0]?.url} />
         </div>
 
         <div className='text-center'>
           {
-            checkLikeData != 1 ? (
+            checkLikeData !== 1 ? (
             <Button style={{ borderRadius:'.2rem', boxShadow:'none' }} disabled={!isAuthenticated}
               onClick={handleLike} color="none">
               <AiOutlineHeart className='viewicons buttonLike' />
@@ -93,7 +92,7 @@ const ViewProperty = (props) => {
           <div>
             <h5 className='text-muted likescountview'>
               { 
-                likeData != 1 ? (`${likeData} Likes`) : (`${likeData} Like`)
+                likeData !== 1 ? (`${likeData} Likes`) : (`${likeData} Like`)
               }
             </h5>
           </div>
@@ -102,8 +101,8 @@ const ViewProperty = (props) => {
         <div className='d-flex justify-content-between'>
           <div>
             <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
-            <h5 className='text-muted mt-2' thousandSeparator={true}>
-              <NumberFormat value={ singlePublicData?.price } thousandSeparator={true} prefix={'#'} className="" displayType={'text'} />
+            <h5 className='text-muted mt-2'>
+              <NumberFormat value={ singlePublicData?.price } thousandSeparator={true} thousandsGroupStyle="thousand" prefix={'#'} displayType={'text'} />
             </h5>
           </div>
           <div></div>

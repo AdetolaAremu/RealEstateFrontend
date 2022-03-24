@@ -101,7 +101,7 @@ function Publicfooter() {
                       </li>
                      
                       <li className="list-inline-item" style={{ fontWeight:"600" }}>
-                        <a href="https://github.com/AdetolaAremu" target="_blank">Github</a>
+                        <a href="https://github.com/AdetolaAremu" rel="noopener noreferrer" target="_blank">Github</a>
                       </li>
                     </ul>
                   </nav>

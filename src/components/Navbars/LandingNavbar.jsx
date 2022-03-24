@@ -6,7 +6,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -32,8 +31,6 @@ class Example extends React.Component {
 
     const { allAuths } = this.props;
 
-    const { location } = this.props
-
     return (
       <div>
         <Navbar className='shadow giveTopPadding' fixed="top" light expand="md">
@@ -42,25 +39,25 @@ class Example extends React.Component {
           </Link>
           <NavbarToggler onClick={this.toggle} />
           {
-            allAuths.isAuthenticated != true ? (
+            allAuths.isAuthenticated !== true ? (
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ms-auto" navbar>
-                  <NavItem class="nav-item">
+                  <NavItem className="nav-item">
                     <NavLink id='nav-linkk'
                       to={ROUTE.HOME} tag={RRNavLink} exact activeClassName="active"
                     >Home</NavLink>
                   </NavItem>
-                  <NavItem class="nav-item">
+                  <NavItem className="nav-item">
                     <NavLink id="nav-linkk" 
                      to={ROUTE.ALL_PROPERTIES} tag={RRNavLink} exact activeClassName="active"
                     >Properties</NavLink>
                   </NavItem>
-                  <NavItem class="nav-item">
+                  <NavItem className="nav-item">
                     <NavLink id='nav-linkk' 
                       tag={Link} to={ROUTE.LOGIN}
                     >Login</NavLink>
                   </NavItem>
-                  <NavItem class="nav-item">
+                  <NavItem className="nav-item">
                     <NavLink id='nav-linkk' 
                       tag={Link} to={ROUTE.REGISTER}
                     >Register</NavLink>
@@ -75,17 +72,17 @@ class Example extends React.Component {
             ) : (
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ms-auto" navbar>
-                  <NavItem class="nav-item">
+                  <NavItem className="nav-item">
                     <NavLink id="nav-linkk" 
                       to="/" tag={RRNavLink} exact activeClassName="active"
                     >Home</NavLink>
                   </NavItem>
-                  <NavItem class="nav-item">
+                  <NavItem className="nav-item">
                     <NavLink id="nav-linkk" className='' 
                       tag={Link} to={ROUTE.DASHBOARD_HOME}
                     >Dashboard</NavLink>
                   </NavItem>
-                  <NavItem class="nav-item">
+                  <NavItem className="nav-item">
                     <NavLink id="nav-linkk" activeClassName="active"
                       tag={RRNavLink} to={ROUTE.ALL_PROPERTIES}
                     >Properties</NavLink>

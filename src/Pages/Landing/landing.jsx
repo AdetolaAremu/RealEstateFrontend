@@ -1,43 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import  { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import LandingNavbar from '../../components/Navbars/LandingNavbar';
-import PublicFooter from "../../components/Footers/publicfooter"
+import PublicFooter from "../../components/Footers/publicfooter";
 import './landing.css';
-import sample from "../../components/Images/sample.jpg";
-import sample2 from "../../components/Images/post-3.jpg";
-import landingbg from "../../components/Images/landingbg.webp";
-import { Row, Col, Card, Container} from 'reactstrap';
+import { getAllPosts } from '../PublicPost/actions/action';
+import ROUTE from '../../Helpers/routes.json';
+import firstBlog from '../../components/Images/blog1.webp';
+import secondBlog from '../../components/Images/blog2.webp';
+import thirdBlog from '../../components/Images/blog3.webp';
+import { Row, Col, Container} from 'reactstrap';
 import { BsPeopleFill, BsArrowRight, BsFillCartCheckFill, BsCheckCircleFill, BsChevronRight} from 'react-icons/bs';
 import { HiLocationMarker } from "react-icons/hi";
-import { Carousel, CarouselItem, CarouselIndicators } from 'reactstrap';
+import { Carousel, CarouselItem, CarouselIndicators, Spinner } from 'reactstrap';
 
-const Landing= () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const { publicData } = useSelector(state => state.publicPosts)
-
-  const slicedData = publicData.slice(0,3)
-  console.log('slicedlanding', slicedData)
-  
-    // State for Animation
+const Landing = () => {
+  const [activeIndex, setActiveIndex] = useState(0)
   const [animating, setAnimating] = useState(false);
+
+  const { publicData, publicDataLoading } = useSelector(state => state.publicPosts)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, [dispatch])  
   
     // Sample items for Carousel
   const items = [
         {
-          src:landingbg,
+          // src:landingbg,
           city:"ikorodu",
           title:"two bed room flat",
           price:"12,000"
         },
         {
-          src: sample2,
+          // src: sample2,
           city:"Lagos Island",
           title:"Self Contain",
           price:"150,000"
         },
         {
-          src: sample,
+          // src: sample,
           city:"Idumota",
           title:"Two rooms",
           price:"100,000"
@@ -45,44 +50,45 @@ const Landing= () => {
     ];
   
     // Items array length
-    const itemLength = items.length - 1
+    const slicedTopCarousel = publicData.slice(3,6)
+    const slicedTopCarouselLength = slicedTopCarousel.length - 1
   
     // Previous button for Carousel
     const previousButton = () => {
         if (animating) return;
         const nextIndex = activeIndex === 0 ?
-            itemLength : activeIndex - 1;
+        slicedTopCarouselLength : activeIndex - 1;
         setActiveIndex(nextIndex);
     }
   
     // Next button for Carousel
     const nextButton = () => {
         if (animating) return;
-        const nextIndex = activeIndex === itemLength ?
+        const nextIndex = activeIndex === slicedTopCarouselLength ?
             0 : activeIndex + 1;
         setActiveIndex(nextIndex);
     }
   
     // Carousel Item Data
-    const carouselItemData = items.map((item) => {
+    const carouselItemData = publicData.slice(3,6).map((item) => {
         return (
           <CarouselItem
-              key={item.src}
+              key={item.id}
               onExited={() => setAnimating(false)}
               onExiting={() => setAnimating(true)}
           >
-            <img src={item.src} style={{ height:"45rem", width:"100%", minHeight: "600px", }} />
+            <img src={item?.images[0].url} alt="featured" style={{ height:"45rem", width:"100%", minHeight: "600px", }} />
             <div className='text-white' 
               style={{ position:"absolute", top:"40%", left:"10%" }}
             >
               <div className='mb-5 h4 text-capitalize'>
-                <HiLocationMarker style={{ color:"#2eca6a" }} /> { item.city }
+                <HiLocationMarker style={{ color:"#2eca6a" }} /> { item?.city }
               </div>
               <div className='text-uppercase mb-5' style={{ fontSize:"50px", fontWeight:"bolder" }}>
                 { item.title }
               </div>
-              <p class="intro-subtitle intro-price">
-                <a href="#"><span class="price-a">rent | # { item.price }</span></a>
+              <p className="intro-subtitle intro-price">
+                <span className="price-a">{ item?.type?.name } | # { item?.price }</span>
               </p>
             </div>
           </CarouselItem>
@@ -92,18 +98,35 @@ const Landing= () => {
   return (
     <div style={{ overflow:"hidden" }}>
       <LandingNavbar />
-      <div style={{ position:"relative" }}>
-        <Carousel previous={previousButton} next={nextButton}
-            activeIndex={activeIndex}>
-            <CarouselIndicators items={items}
-                activeIndex={activeIndex}
-                onClickHandler={(newIndex) => {
-                    if (animating) return;
-                    setActiveIndex(newIndex);
-                }} />
-            {carouselItemData}
-        </Carousel>
-      </div>
+      {
+        publicDataLoading ? (
+          <div>
+              <div >
+                <Spinner style={{
+                  position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"30",
+                  width:"7rem", height:"7rem", color:"white"
+                  }} 
+                />
+              </div>
+              <div style={{ zIndex:"0", height:"100%", width:"100%", position:"fixed", 
+                top:"0", left:"0", background:"gray", opacity:"50%"}}
+              ></div>
+            </div>
+          ):(
+          <div style={{ position:"relative" }}>
+            <Carousel previous={previousButton} next={nextButton}
+                activeIndex={activeIndex}>
+                <CarouselIndicators items={items}
+                    activeIndex={activeIndex}
+                    onClickHandler={(newIndex) => {
+                        if (animating) return;
+                        setActiveIndex(newIndex);
+                    }} />
+                {carouselItemData}
+            </Carousel>
+          </div>
+          )
+        }
 
       <section className="section-services section-t8 pt-5">
         <Container>
@@ -146,7 +169,7 @@ const Landing= () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Comfortability</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Blissfullness</h2>
                   </div>
                 </div>
                 <div className="mt-3">
@@ -183,14 +206,14 @@ const Landing= () => {
       </section>
 
       <Container>
-        <div class="container mt-5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="title-wrap d-flex justify-content-between">
-                <div class="title-box">
-                  <h2 class="title-a">Latest Properties</h2>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="title-wrap d-flex justify-content-between">
+                <div className="title-box">
+                  <h2 className="title-a">Featured Properties</h2>
                 </div>
-                <Link to="/all-properties" class="title-link">
+                <Link to="/all-properties" className="title-link">
                   <span href="/">All Property</span>
                   <span className='ml-4'><BsArrowRight className='arrowAll' /></span>
                 </Link>
@@ -201,61 +224,37 @@ const Landing= () => {
        
         <div className='mt-2'>
           <Row>
-            <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase latest-header'>two bedroom flat</div>
-                  <p class="tolatest mt-3">
-                    <a href="#"><span className="price-latest">rent | # 12.000</span></a>
-                  </p>
-                  <p className='clicktoview'>
-                    <a href="#">Click to view <BsChevronRight /></a>
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase latest-header'>two bedroom flat</div>
-                  <p class="tolatest mt-3">
-                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
-                  </p>
-                  <p className='clicktoview'>
-                    <a href="#">Click to view <BsChevronRight /></a>
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img className='home-img' src={sample} style={{ width:"100%", height:"100%" }}  alt="image" />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase latest-header'>two bedroom flat</div>
-                  <p class="tolatest mt-3">
-                    <a href="#"><span class="price-latest">rent | # 12.000</span></a>
-                  </p>
-                  <p className='clicktoview'>
-                    <a href="#">Click to view <BsChevronRight /></a>
-                  </p>
-                </div>
-              </div>
-            </Col>
+            {
+              publicData.slice(0,3).map((secondSliced) => (
+                <Col key={secondSliced.id}>
+                  <div className="item explode" style={{ position:"relative" }}>
+                    <img className='home' src={secondSliced?.images[0].url} style={{ width:"100%", height:"100%" }}  alt="real-estate" />
+                    <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                      <div className='text-uppercase latest-header'>{ secondSliced?.title }</div>
+                      <p className="tolatest mt-3">
+                        <span className="price-latest">{ secondSliced?.type?.name } | # { secondSliced?.price }</span>
+                      </p>
+                      <p className='clicktoview'>
+                        <Link to={`${ROUTE.VIEW_PROPERTY}/${secondSliced?.slug}`}>Click to view <BsChevronRight /></Link>
+                      </p>
+                    </div>
+                  </div>
+                </Col>
+              ))
+            }
           </Row>
         </div>
       </Container>
 
       <Container>
-        <div class="container mt-5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="title-wrap d-flex justify-content-between">
-                <div class="title-box">
-                  <h2 class="title-a">Latest News</h2>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="title-wrap d-flex justify-content-between">
+                <div className="title-box">
+                  <h2 className="title-a">Latest News</h2>
                 </div>
-                <div class="title-link">
+                <div className="title-link">
                   <a href="/">All News</a>
                   <span className='ml-4'><BsArrowRight className='arrowAll' /></span>
                 </div>
@@ -267,31 +266,31 @@ const Landing= () => {
         <div className='mt-2'>
           <Row>
             <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample2} alt="image" className='home-img' />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase genre-header'>travel</div>
-                  <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
+              <div className="item explode" style={{ position:"relative" }}>
+                <img src={firstBlog} alt="blogs" className='home-img' />
+                <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase genre-header'>Savings</div>
+                  <div className='text-uppercase blog-header mt-2'>Make house penny wise deicision</div>
                   <div className='text-white mt-2'>18, December, 2022</div>
                 </div>
               </div>
             </Col>
             <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample2} alt="image" className='home-img' />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase genre-header'>tourism</div>
-                  <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
+              <div className="item explode" style={{ position:"relative" }}>
+                <img src={secondBlog} alt="blogs" className='home-img' />
+                <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase genre-header'>Estate</div>
+                  <div className='text-uppercase blog-header mt-2'>types of real estate in nigeria</div>
                   <div className='text-white mt-2'>18, December, 2022</div>
                 </div>
               </div>
             </Col>
             <Col>
-              <div class="item explode" style={{ position:"relative" }}>
-                <img src={sample2} alt="image" className='home-img' />
-                <div class="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
-                  <div className='text-uppercase genre-header'>park</div>
-                  <div className='text-uppercase latest-header mt-2'>two bedroom flat</div>
+              <div className="item explode" style={{ position:"relative" }}>
+                <img src={thirdBlog} alt="blogs" className='home-img' />
+                <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
+                  <div className='text-uppercase genre-header'>Houses</div>
+                  <div className='text-uppercase blog-header mt-2'>Looks of semi-detached houses</div>
                   <div className='text-white mt-2'>18, December, 2022</div>
                 </div>
               </div>
@@ -299,47 +298,6 @@ const Landing= () => {
           </Row>
         </div>
       </Container>
-      {/* <Row className="justify-content-md-center mt-4 mx-5">
-        <Col className='text-center my-3'>
-          <div className='bg-info text-center emojis' style={{ width:"62px", height:"50px", borderRadius:"10%", 
-            border:"1px solid white", color:"white" }}
-          >
-            <BsFillEmojiSunglassesFill style={{ fontSize:"35px", marginTop:"5px" }} />
-          </div>
-          <div className='fw-bold h5'>The price will make smile</div>
-          <div>lorem ipsum facto lorem ipsum</div>
-        </Col>
-        <Col className='text-center my-3'>
-          <div className='bg-warning text-center emojis' style={{ width:"62px", height:"50px", borderRadius:"10%", 
-            border:"1px solid white", color:"white" }}
-          >
-            <BsCreditCardFill style={{ fontSize:"35px", marginTop:"5px" }} />
-          </div>
-          <div className='fw-bold h5'>You save money</div>
-          <div>lorem ipsum facto lorem ipsum</div>
-        </Col>
-        <Col className='text-center my-3'>
-          <div className='bg-primary text-center emojis' style={{ width:"62px", height:"50px", borderRadius:"10%", 
-            border:"1px solid white", color:"white" }}
-          >
-            <BsPersonFill style={{ fontSize:"35px", marginTop:"5px" }} />
-          </div>
-          <div className='fw-bold h5'>Puts you in charge</div>
-          <div>lorem ipsum facto lorem ipsum</div>
-        </Col>
-        <Col className='text-center my-3'>
-          <div className='bg-danger text-center emojis' style={{ width:"62px", height:"50px", borderRadius:"10%", 
-            border:"1px solid white", color:"white" }}
-          >
-            <BsFillEyeFill style={{ fontSize:"35px", marginTop:"5px" }} />
-          </div>
-          <div className='fw-bold h5'>You get what you see</div>
-          <div>lorem ipsum facto lorem ipsum</div>
-        </Col>
-      </Row>
-      
-       */} 
-     
       <PublicFooter />
     </div>
   )
