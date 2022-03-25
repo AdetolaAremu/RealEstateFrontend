@@ -228,7 +228,7 @@ const Landing = () => {
               publicData.slice(0,3).map((secondSliced) => (
                 <Col key={secondSliced.id}>
                   <div className="item explode" style={{ position:"relative" }}>
-                    <img className='home' src={secondSliced?.images[0].url} style={{ width:"100%", height:"100%" }}  alt="real-estate" />
+                    <img className='home' src={secondSliced?.images[0].url} style={{ width:"100%", height:"100%", filter: 'brightness(0.45)' }}  alt="real-estate" />
                     <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                       <div className='text-uppercase latest-header'>{ secondSliced?.title }</div>
                       <p className="tolatest mt-3">
