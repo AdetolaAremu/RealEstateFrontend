@@ -96,12 +96,12 @@ const Index = () => {
               <div >
                 <Spinner style={{
                   position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"30",
-                  width:"7rem", height:"7rem", color:"white"
+                  width:"7rem", height:"7rem", color:"green"
                   }} 
                 />
               </div>
               <div style={{ zIndex:"0", height:"100%", width:"100%", position:"fixed", 
-                top:"0", left:"0", background:"gray", opacity:"50%"}}
+                top:"0", left:"0", background:"whitesmoke", opacity:"95%"}}
               ></div>
             </div>
           ) : (

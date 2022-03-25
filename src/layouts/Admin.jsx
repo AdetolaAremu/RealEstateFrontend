@@ -34,9 +34,11 @@ const Admin = () => {
               {
                 layoutLoading ? (<Spinner animation="border" 
                 style={{ width:"4rem", height:"4rem", color:"#2eca6a" }} />) : (
-                <div>
-                  <h3 className=''>{ layoutData?.first_name } { layoutData?.last_name }</h3>
-                  <div className='text-muted'>@{ layoutData?.username }</div>
+                <div className=''>
+                  <div>
+                    <h3 className=''>{ layoutData?.first_name } { layoutData?.last_name }</h3>
+                    <div className='text-muted'>@{ layoutData?.username }</div>
+                  </div>
                 </div>)
               }
             </div>

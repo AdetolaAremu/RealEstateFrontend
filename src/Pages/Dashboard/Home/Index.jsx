@@ -61,10 +61,10 @@ const  Index = () => {
         {
           myLikedLoading ? (<Spinner className='m-auto d-flex justify-content-center my-5' animation="border" 
             style={{ minWidth:"4rem", minHeight:"4rem", color:"#2eca6a" }} />) : myLikedData.length ? (
-            <div class="row flex-nowrap my-2 thelikecards">
+            <div className="row flex-nowrap my-2 thelikecards">
               { myLikedData.map((item) => (
-                  <div class="col-3" key={item.id}>
-                    <div class="card card-block p-2">
+                  <div className="col-3" key={item.id}>
+                    <div className="card card-block p-2">
                       <div className='text-center text-capitalize' style={{fontWeight:"500"}}>
                         { item?.title.length > 30 ? (`${item.title.slice(0,20)}...`):item?.title }
                       </div>

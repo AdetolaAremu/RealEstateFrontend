@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format';
 import { getSinglePublicPost, getSinglePublicCommentPost, postComment, likeCount, likePost, 
   checkLiked, unlikeAPost } from './actions/action';
 import isEmpty from '../../utils/isEmpty';
-import pix from "../../components/Images/author-2.jpg";
+import pixplaceholder from "../../components/Images/dp.webp";
 import Publicfooter from '../../components/Footers/publicfooter';
 import LandingNavbar from "../../components/Navbars/LandingNavbar";
 import { ToastContainer } from 'react-toastify';
@@ -117,15 +117,15 @@ const ViewProperty = (props) => {
         {
           publicDataLoading ? (
             <div>
-              <div className="mx-5">
+              <div >
                 <Spinner style={{
-                  position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"30",
-                  width:"7rem", height:"7rem", color:"white"
+                  position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"80",
+                  width:"7rem", height:"7rem", color:"green"
                   }} 
                 />
               </div>
-              <div style={{ zIndex:"0", height:"100%", width:"100%", position:"fixed", 
-                top:"0", left:"0", background:"gray", opacity:"50%"}}
+              <div style={{ height:"100%", width:"100%", position:"fixed", 
+                top:"0", left:"0", background:"whitesmoke", opacity:"95%", zIndex:"20"}}
               ></div>
             </div>
           ) : ( 
@@ -140,7 +140,7 @@ const ViewProperty = (props) => {
                 <h2>Agent Details</h2>
                 <div style={{ borderBottom:"4px solid #2eca6a", width:"4rem" }}></div>
                 <div className='d-flex justify-content-between mt-2' >
-                  <img className='mr-4' src={pix} alt="..." />
+                  <img className='mr-4 agentimg' src={pixplaceholder} style={{ width:"145px", height:"118px" }} alt="..." />
                   <div className='contactdetials'>
                     <h3>{ singlePublicData?.user?.first_name } { singlePublicData?.user?.last_name }</h3>
                     <div className="mb-1"><AiTwotoneMail /> { singlePublicData?.user?.email }</div>

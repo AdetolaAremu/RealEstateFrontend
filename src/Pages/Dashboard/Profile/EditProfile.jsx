@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import  { editPassword, editProfile } from './actions/action'
-import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText, Spinner } from 'reactstrap';
+// import $ from 'jquery';
+import { Form, Button, Card, CardBody, Input, Col, Row, Label, Spinner } from 'reactstrap';
 import process from "../../../env";
 import { ToastContainer } from 'react-toastify';
 import isEmpty from "../../../utils/isEmpty";
@@ -12,8 +13,8 @@ const service_url = process.env.SERVICE_URL
 
 const EditProfile = () => {
 
-  const [Inputs, setInputs] = useState({})
-  const [passwordInputs, setpasswordInputs] = useState({})
+  const [Inputs, setInputs] = useState('')
+  const [passwordInputs, setpasswordInputs] = useState('')
 
   const { profile: { errors, profileDataLoading  }, stats } = useSelector(state => state)
 
@@ -31,6 +32,8 @@ const EditProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // const form = $("#edit-form")[0];
+    // let formData = new FormData(form);
     dispatch(editProfile(Inputs))
   }
 
@@ -70,7 +73,7 @@ const EditProfile = () => {
                   />
                 </div>
               ) : (
-                  <Form role='submit' onSubmit={handleSubmit}>
+                  <Form id="edit-form" role='submit' onSubmit={handleSubmit}>
                     <Row>
                       <Col>
                         <Label>
@@ -81,7 +84,7 @@ const EditProfile = () => {
                           type="text"
                           name='first_name'
                           onChange={handleChange}
-                          value={Inputs.first_name}
+                          value={Inputs.first_name === null?'':Inputs.first_name}
                         />
                       <div className="text-danger text-sm">
                         {
@@ -98,7 +101,7 @@ const EditProfile = () => {
                           type="text"
                           name='last_name'
                           onChange={handleChange}
-                          value={Inputs.last_name}
+                          value={Inputs.last_name === null ? '':Inputs.last_name}
                         />
                         <div className="text-danger text-sm">
                           {
@@ -117,7 +120,7 @@ const EditProfile = () => {
                         type="text"
                         name='middle_name'
                         onChange={handleChange}
-                        value={Inputs.middle_name}
+                        value={Inputs.middle_name === null ? '':Inputs.middle_name}
                         />
                       <div className="text-danger text-sm">
                         {
@@ -135,7 +138,7 @@ const EditProfile = () => {
                           autoComplete="new-email"
                           name='email'
                           onChange={handleChange}
-                          value={Inputs.email}
+                          value={Inputs.email === null ? '':Inputs.email}
                           />
                         <div className="text-danger text-sm">
                           {/* {
@@ -154,7 +157,7 @@ const EditProfile = () => {
                           type="text"
                           name='phone_number'
                           onChange={handleChange}
-                          value={Inputs.phone_number}
+                          value={Inputs.phone_number === null ? '':Inputs.phone_number}
                           />
                         <div className="text-danger text-sm">
                           {/* {
@@ -163,16 +166,16 @@ const EditProfile = () => {
                         </div>
                       </Col>
                       <Col>
-                        <FormGroup>
-                          <Label for="exampleFile">Upload Avatar</Label>
-                          <Input type="file" name="file" id="exampleFile" />
+                        {/* <FormGroup>
+                          <Label>Upload Avatar</Label>
+                          <Input type="file" name="image_file_name" />
                           <FormText color="muted">
                             The image should not be more than 300kb.
                           </FormText>
-                        </FormGroup>
+                        </FormGroup> */}
                       </Col>
                     </Row>
-                    <div className="text-center">
+                    <div className="text-center mt-3">
                       <Button className="" color="primary" type="submit" disabled={profileDataLoading}>
                         {
                           profileDataLoading ? 'Submitting' : 'Submit'

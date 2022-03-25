@@ -71,6 +71,26 @@
     width: 15rem;
     margin-top: 10px;
   }
+
+  .item {
+    width: 260px;
+  }
+
+  .price-a {
+    font-size: 15px;
+  }
+
+  .firsttopcarouseltext {
+    font-size: 38px !important;
+  }
+
+  .title-c {
+    font-size: 1.65rem;
+  }
+
+  .first-header, .second-header, .third-header {
+    width: 16rem;
+  }
 }
 
 @media (min-width: 301px) and (max-width: 600px) {
@@ -107,5 +127,12 @@
   .agentcol {
     margin-left: 0px !important;
     margin-top: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .agentimg{
+    width: 99px !important;
+    height: 118px;
   }
 }

@@ -84,7 +84,7 @@ const Landing = () => {
               <div className='mb-5 h4 text-capitalize'>
                 <HiLocationMarker style={{ color:"#2eca6a" }} /> { item?.city }
               </div>
-              <div className='text-uppercase mb-5' style={{ fontSize:"50px", fontWeight:"bolder" }}>
+              <div className='text-uppercase mb-5 firsttopcarouseltext' style={{ fontSize:"50px", fontWeight:"bolder" }}>
                 { item.title }
               </div>
               <p className="intro-subtitle intro-price">
@@ -103,15 +103,15 @@ const Landing = () => {
           <div>
               <div >
                 <Spinner style={{
-                  position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"30",
-                  width:"7rem", height:"7rem", color:"white"
+                  position:"absolute", inset:"0", display:"flex", margin:"auto", zIndex:"100",
+                  width:"7rem", height:"7rem", color:"green"
                   }} 
                 />
               </div>
-              <div style={{ zIndex:"0", height:"100%", width:"100%", position:"fixed", 
-                top:"0", left:"0", background:"gray", opacity:"50%"}}
+              <div style={{ height:"100%", width:"100%", position:"fixed", 
+                top:"0", left:"0", background:"whitesmoke", opacity:"95%", zIndex:"50" }}
               ></div>
-            </div>
+          </div>
           ):(
           <div style={{ position:"relative" }}>
             <Carousel previous={previousButton} next={nextButton}
@@ -270,7 +270,7 @@ const Landing = () => {
                 <img src={firstBlog} alt="blogs" className='home-img' />
                 <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase genre-header'>Savings</div>
-                  <div className='text-uppercase blog-header mt-2'>Make house penny wise deicision</div>
+                  <div className='text-uppercase blog-header mt-2'>Make house penny wise decision</div>
                   <div className='text-white mt-2'>18, December, 2022</div>
                 </div>
               </div>

@@ -24,6 +24,7 @@ export const editProfile = (data) => {
       })
     } catch (error) {
       dispatch({type: GET_PROFILE_ERROR, payload:error.response})
+      dispatch({type: PROFILE_LOADING_ENDS})
       if (error.response) {
         if (error.response.status === 422) {
           dispatch({type: GET_PROFILE_ERROR, payload:error})

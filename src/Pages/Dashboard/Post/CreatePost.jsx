@@ -175,6 +175,11 @@ const CreatePost = () => {
                     <FormText color="muted">
                       You can upload a maximum of 2 images, not more than 300kb.
                     </FormText>
+                    <div className="text-danger text-sm">
+                      {
+                        isEmpty(errors?.data?.errors?.images) ? null : errors?.data?.errors?.images
+                      }
+                    </div>
                   </FormGroup>
                 </Col>
               </Row>
