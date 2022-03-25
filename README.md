@@ -11,4 +11,4 @@ iii. **React icons** for all icons.
 iv. **React-Toastify** for the notification.
 
 ## See a preview of this project below:
-!(./components/images/homepreview.PNG)
+![preview](https://raw.githubusercontent.com/AdetolaAremu/RealEstateFrontend/master/./components/images/homepreview.PNG)
