@@ -3,10 +3,10 @@ const process = {
     NODE_ENV: "development",
     
     // Local Server
-    SERVICE_URL:"http://localhost:8000/api",
+    // SERVICE_URL:"http://localhost:8000/api",
 
     // Heroku live server
-    // SERVICE_URL: "https://loaney.herokuapp.com/api"
+    SERVICE_URL: "https://deal-estate.herokuapp.com/api"
   }
 }
 
