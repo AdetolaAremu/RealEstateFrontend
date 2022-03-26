@@ -43,7 +43,7 @@ const ViewProperty = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = {
-      slug:props.match.params.id,
+      post_id:props.match.params.id,
       text:Input.text
     }
     dispatch(postComment(data))
