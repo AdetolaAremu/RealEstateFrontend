@@ -196,7 +196,6 @@ const CreatePost = () => {
                   </div>
                 </FormGroup>
               </Row>
-              {console.log('seee', indexData.length)}
               <div className="text-center">
                 <Button className="my-4" color="primary" type="submit" disabled={propertyDataLoading || indexData.length >= 2}>
                   {

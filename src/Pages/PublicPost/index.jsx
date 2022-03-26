@@ -125,7 +125,7 @@ const Index = () => {
                           <span className="price-latest">{ item?.type?.name } | # { item?.price }</span>
                         </p>
                         <p className='clicktoview'>
-                          <Link to={`${ROUTE.VIEW_PROPERTY}/${item?.slug}`}>Click to view <BsChevronRight /></Link>
+                          <Link to={`${ROUTE.VIEW_PROPERTY}/${item?.id}`}>Click to view <BsChevronRight /></Link>
                         </p>
                       </div>
                     </div>

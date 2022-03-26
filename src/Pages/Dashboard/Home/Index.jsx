@@ -155,7 +155,7 @@ const  Index = () => {
                         }
                       </td>
                       <td>
-                        <Link to={`${ROUTE.VIEW_PROPERTY}/${posts?.slug}`}>
+                        <Link to={`${ROUTE.VIEW_PROPERTY}/${posts?.id}`}>
                           <button style={{ border:"1px solid #EBECED"}}>
                             <BsEyeFill style={{ fontSize:"20px" }} />
                           </button>
