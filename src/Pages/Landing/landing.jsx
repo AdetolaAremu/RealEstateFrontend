@@ -235,7 +235,7 @@ const Landing = () => {
                         <span className="price-latest">{ secondSliced?.type?.name } | # { secondSliced?.price }</span>
                       </p>
                       <p className='clicktoview'>
-                        <Link to={`${ROUTE.VIEW_PROPERTY}/${secondSliced?.slug}`}>Click to view <BsChevronRight /></Link>
+                        <Link to={`${ROUTE.VIEW_PROPERTY}/${secondSliced?.id}`}>Click to view <BsChevronRight /></Link>
                       </p>
                     </div>
                   </div>
