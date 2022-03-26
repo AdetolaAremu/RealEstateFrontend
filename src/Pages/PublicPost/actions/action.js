@@ -90,7 +90,7 @@ export const postComment = (data) => {
       .then((res) => {
         dispatch({type: PUBLIC_POST_COMMENT_CRUD_ENDS})
         notify(res?.data?.message)
-        dispatch(getSinglePublicCommentPost(data.slug))
+        dispatch(getSinglePublicCommentPost(data.id))
       })
     } catch (error) {
       dispatch({type: PUBLIC_POST_COMMENT_CRUD_ENDS, payload:error.response})
