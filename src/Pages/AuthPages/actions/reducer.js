@@ -6,7 +6,7 @@ const init = {
   user:{},
   authLoading:false,
   errors: {},
-  loginError: {}
+  loginError: {},
 }
 
 const authReducer = (state = init, action) => {
@@ -37,6 +37,11 @@ const authReducer = (state = init, action) => {
         ...state,
         loginError:action.payload
       }
+    // case GET_REGISTER_ERROR:
+    //   return{
+    //     ...state,
+    //     registerError:action.payload
+    //   }
     default:
       return state;
   }
