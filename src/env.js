@@ -1,6 +1,6 @@
 const process = {
   env: {
-    NODE_ENV: "development",
+    NODE_ENV: "production",
     
     // Local Server
     // SERVICE_URL:"http://localhost:8000/api",

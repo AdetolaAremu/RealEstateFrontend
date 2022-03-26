@@ -142,7 +142,7 @@ const ViewProperty = (props) => {
                 <div className='d-flex justify-content-between mt-2' >
                   <img className='mr-4 agentimg' src={pixplaceholder} style={{ width:"145px", height:"118px" }} alt="..." />
                   <div className='contactdetials'>
-                    <h3>{ singlePublicData?.user?.first_name } { singlePublicData?.user?.last_name }</h3>
+                    <h4>{ singlePublicData?.user?.first_name } { singlePublicData?.user?.last_name }</h4>
                     <div className="mb-1"><AiTwotoneMail /> { singlePublicData?.user?.email }</div>
                     <div className="mb-1"><BsFillPersonCheckFill /> { singlePublicData?.user?.username }</div>
                     <div><AiTwotonePhone /> { singlePublicData?.user?.phone_number }</div>
