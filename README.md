@@ -1,5 +1,5 @@
 # This project is hosted on:
-.netlify.app
+https://deal-estate.netlify.app
 
 ## This is the frontend repository of the real estate project.
 
