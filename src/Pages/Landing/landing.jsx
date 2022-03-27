@@ -149,7 +149,7 @@ const Landing = () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Affordability</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Affordable</h2>
                   </div>
                 </div>
                 <div className="mt-3">
@@ -169,7 +169,7 @@ const Landing = () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Blissfullness</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Comfort</h2>
                   </div>
                 </div>
                 <div className="mt-3">
@@ -190,7 +190,7 @@ const Landing = () => {
                     </span>
                   </div>
                   <div className="card-title-c align-self-center">
-                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Credibility</h2>
+                    <h2 className="title-c" style={{ marginLeft:"-2.2rem" }}>Credible</h2>
                   </div>
                 </div>
                 <div className="mt-3">

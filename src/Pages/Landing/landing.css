@@ -158,6 +158,9 @@
   color: #2eca6a;
 }
 
-@media (min-width: 640px) and (max-width: 840px) {
-  
+@media screen and (max-width: 600px) {
+  .intro-subtitle {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
 }

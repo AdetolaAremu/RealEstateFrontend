@@ -2,6 +2,10 @@
   max-height: 40rem;
 }
 
+.noflow {
+  overflow: hidden !important;
+}
+
 .viewicons {
   width: 13rem; 
   height: 4rem; 

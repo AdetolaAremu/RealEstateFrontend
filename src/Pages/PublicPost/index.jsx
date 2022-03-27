@@ -34,7 +34,7 @@ const Index = () => {
   }, [dispatch])
   
   return (
-    <>
+    <div className='noflow'>
       <LandingNavBar />
       <Container>
         <div style={{ marginTop:"6rem" }}>
@@ -138,7 +138,7 @@ const Index = () => {
       </Container>
       
       <Publicfooter />
-    </>
+    </div>
   )
 }
 
