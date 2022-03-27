@@ -249,6 +249,7 @@ const  Index = () => {
               <th>S/N</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Username</th>
             </tr>
           </thead>
           <tbody>
@@ -260,6 +261,9 @@ const  Index = () => {
                 </td>
                 <td>
                   { user?.email }
+                </td>
+                <td>
+                  { user?.username }
                 </td>
               </tr>
             ))}
