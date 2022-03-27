@@ -2,7 +2,7 @@
   "HOME":"/",
   "LOGIN":"/auth/login",
   "LOGIN_SUCCESS":"/auth/login-success",
-  "REGISTER":"/auth/register",
+  "REGISTER":"/auth/sign-up",
   "ALL_PROPERTIES":"/all-properties",
   "VIEW_PROPERTY":"/view-property",
   "DASHBOARD_HOME":"/user/dashboard",

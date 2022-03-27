@@ -173,7 +173,7 @@ const CreatePost = () => {
                     <Label for="exampleFile">File</Label>
                     <Input type="file" name="images" onChange={handleImageChange} />
                     <FormText color="muted">
-                      You can upload a maximum of 2 images, not more than 300kb.
+                      Image can not be more than 300kb.
                     </FormText>
                     <div className="text-danger text-sm">
                       {

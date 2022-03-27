@@ -143,7 +143,7 @@ function Register() {
                   </InputGroup>
                   <div className="text-danger text-sm">
                     {
-                      isEmpty(errors?.data?.errors?.email) ? null : errors?.data?.errors?.email
+                      isEmpty(errors?.data?.errors?.phone_number) ? null : errors?.data?.errors?.phone_number
                     }
                   </div>
                 </FormGroup>
