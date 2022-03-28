@@ -16,7 +16,7 @@ const initialState = {
 function Login() {
   const [Inputs, setInputs] = useState(initialState)
 
-  const { errors, authLoading } = useSelector(state => state.allAuths)
+  const { loginError, authLoading } = useSelector(state => state.allAuths)
 
   const dispatch = useDispatch()
 
@@ -46,7 +46,7 @@ function Login() {
                       @
                     </InputGroupText>
                     <Input
-                      className={`form-control-alternative ${isEmpty(errors.data?.errors?.username) ? "" : "border border-danger"}`}
+                      className={`form-control-alternative ${isEmpty(loginError.data?.errors?.username) ? "" : "border border-danger"}`}
                       placeholder="username"
                       type="text"
                       autoComplete="new-email"
@@ -57,7 +57,7 @@ function Login() {
                   </InputGroup>
                   <div className="text-danger text-sm">
                     {
-                      isEmpty(errors?.data?.errors?.username) ? null : errors?.data?.errors?.username
+                      isEmpty(loginError?.data?.errors?.username) ? null : loginError?.data?.errors?.username
                     }
                   </div>
                 </FormGroup>
@@ -67,7 +67,7 @@ function Login() {
                       <MdPassword />
                     </InputGroupText>
                     <Input
-                      className={`form-control-alternative ${isEmpty(errors.data?.errors?.password) ? "" : "border border-danger"}`}  
+                      className={`form-control-alternative ${isEmpty(loginError.data?.errors?.password) ? "" : "border border-danger"}`}  
                       placeholder="Password"
                       type="password"
                       name='password'
@@ -77,7 +77,7 @@ function Login() {
                   </InputGroup>
                   <div className="text-danger text-sm">
                     {
-                      isEmpty(errors?.data?.errors?.password) ? null : errors?.data?.errors?.password
+                      isEmpty(loginError?.data?.errors?.password) ? null : loginError?.data?.errors?.password
                     }
                   </div>
                 </FormGroup>

@@ -5,6 +5,7 @@ import isEmpty from '../../utils/isEmpty'
 import { Button, Card, CardBody, FormGroup, Form, Input, InputGroupText,InputGroup, Col, Spinner } from "reactstrap";
 import { BsFillPersonBadgeFill, BsEnvelopeFill, BsPersonBoundingBox, BsLockFill, BsFillTelephoneFill } from "react-icons/bs"
 import { registerNewUser } from './actions/action';
+import { ToastContainer } from 'react-toastify';
 
 const initialState = {
   first_name:"",
@@ -39,7 +40,8 @@ function Register() {
 
   return (
     <>
-       <div className='vh-100 d-flex justify-content-center align-items-center' style={{ marginTop:"8rem", marginBottom:"3rem" }}>
+      <ToastContainer />
+      <div className='vh-100 d-flex justify-content-center align-items-center' style={{ marginTop:"8rem", marginBottom:"3rem" }}>
         <Col lg="5" md="7">
           <Card className="bg-light shadow border-0 mb-5">
             <CardBody className="px-lg-5 py-lg-5">

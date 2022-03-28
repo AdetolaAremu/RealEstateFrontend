@@ -97,7 +97,11 @@ export const postComment = (data) => {
       if (error.response) {
         if (error.response.status === 500) {
            dispatch({type: PUBLIC_POST_GET_ERROR, payload:error.response})
-         } else {
+         } 
+         if (error.response.status === 422) {
+          dispatch({type: PUBLIC_POST_GET_ERROR, payload:error.response})
+        }
+         else {
            return notify('Sorry, something went wrong!', 'error')
          }
        } else {

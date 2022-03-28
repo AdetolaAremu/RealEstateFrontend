@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Deal Estate",
+  "name": "A real estate website, post your property and get the best offers",
   "icons": [
     {
       "src": "favicon.ico",

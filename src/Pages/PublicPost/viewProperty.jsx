@@ -203,6 +203,7 @@ const ViewProperty = (props) => {
               isEmpty(publicDataError?.data?.errors?.text) ? null : publicDataError?.data?.errors?.text
             }
           </div>
+          
           <div>
             {
               isAuthenticated ? 

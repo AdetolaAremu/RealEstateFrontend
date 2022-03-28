@@ -6,7 +6,7 @@ import { REDIRECT_TO } from "../../../Helpers/stats/types"
 import { clearNetworkStats } from "../../../Helpers/stats/actions";
 import setAuthToken from '../../../utils/setAuthToken';
 import process from '../../../env'
-import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, GET_AUTH_ERROR, SET_CURRENT_USER } from './types';
+import { AUTH_LOADING_ENDS, AUTH_LOADING_STARTS, GET_AUTH_ERROR, SET_CURRENT_USER, GET_LOGIN_ERROR } from './types';
 
 const service_url = process.env.SERVICE_URL
 
@@ -34,10 +34,10 @@ export const loginUser = (userData) => {
       dispatch({type: AUTH_LOADING_ENDS});
       if (error.response) {
         if (error.response.status === 422) {
-          dispatch({type: GET_AUTH_ERROR, payload:error.response})
+          dispatch({type: GET_LOGIN_ERROR, payload:error.response})
           return notify('There are errors in your input', 'error')
         } else if(error.response.status === 400){
-          dispatch({type: GET_AUTH_ERROR, payload:error.response})
+          dispatch({type: GET_LOGIN_ERROR, payload:error.response})
           return notify('Email and password do not match', 'error')
         } else if (error.response.status === 500) {
           return notify('An internal error occured, we are working on it!')
@@ -54,7 +54,6 @@ export const registerNewUser = (userData) => dispatch =>{
   axios.post(`${service_url}/register`, userData)
   .then(()=>{
     dispatch({ type: AUTH_LOADING_ENDS })
-    // notify("Registration successful, you can now login");
     dispatch({type: REDIRECT_TO, payload: ROUTE.LOGIN_SUCCESS })
     dispatch(clearNetworkStats())
   }).catch((error) => {
@@ -62,7 +61,7 @@ export const registerNewUser = (userData) => dispatch =>{
     if (error.response) {
       if (error.response.status === 422) {
         dispatch({type: GET_AUTH_ERROR, payload:error.response})
-        return notify('There are errors in your input', 'error')
+        notify('There are errors in your input', 'error')
       } else if (error.response.status === 500) {
         dispatch({type: GET_AUTH_ERROR, payload:error.response})
       } else {

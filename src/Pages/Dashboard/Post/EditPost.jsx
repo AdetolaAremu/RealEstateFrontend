@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, FormText, Spinner } from 'reactstrap';
+import { Form, Button, Card, CardBody, FormGroup, Input, Col, Row, Label, Spinner } from 'reactstrap';
 import { editUserEachPost } from './actions/action';
 import { ToastContainer } from 'react-toastify';
 import process from "../../../env";
@@ -136,17 +136,6 @@ const EditPost = (props) => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
-                        <FormGroup>
-                          <Label for="exampleFile">Change Image</Label>
-                          <Input type="file" name="file" id="exampleFile" />
-                          <FormText color="muted">
-                            Maximum size 300kb, accepted format(png,jpeg,jpg).
-                          </FormText>
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
                     <FormGroup>
                       <Label for="exampleText">Description</Label>
                       <Input onChange={handleChange} value={Inputs?.text} type="textarea" name="text" id="exampleText" />
@@ -160,7 +149,6 @@ const EditPost = (props) => {
                   </Form>
                 )
             }
-            
           </CardBody>
         </Card>
       </div>
