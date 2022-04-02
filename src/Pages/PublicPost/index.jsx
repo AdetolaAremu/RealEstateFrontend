@@ -23,10 +23,6 @@ const Index = () => {
     dispatch(filterByCity(value));
   }
 
-  const getAllposts = () => {
-    dispatch(getAllPosts())
-  }
-
   const handleTypeFilter = (value) => {
     dispatch(filterByType(value))
   }
