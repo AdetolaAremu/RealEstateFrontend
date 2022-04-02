@@ -90,6 +90,9 @@ const Landing = () => {
               <p className="intro-subtitle intro-price">
                 <span className="price-a">{ item?.type?.name } | # { item?.price }</span>
               </p>
+              <p className='clickview mt-5'>
+                <Link to={`${ROUTE.VIEW_PROPERTY}/${item?.id}`} className="">Click to view <BsChevronRight /></Link>
+              </p>
             </div>
           </CarouselItem>
         );
@@ -255,7 +258,7 @@ const Landing = () => {
                   <h2 className="title-a">Latest News</h2>
                 </div>
                 <div className="title-link">
-                  <a href="/">All News</a>
+                  <Link to="/">All News</Link>
                   <span className='ml-4'><BsArrowRight className='arrowAll' /></span>
                 </div>
               </div>
@@ -271,7 +274,7 @@ const Landing = () => {
                 <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase genre-header'>Savings</div>
                   <div className='text-uppercase blog-header mt-2'>Make house penny wise decision</div>
-                  <div className='text-white mt-2'>18, December, 2022</div>
+                  <div className='text-white mt-2'>18, February, 2022</div>
                 </div>
               </div>
             </Col>
@@ -281,7 +284,7 @@ const Landing = () => {
                 <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase genre-header'>Estate</div>
                   <div className='text-uppercase blog-header mt-2'>types of real estate in nigeria</div>
-                  <div className='text-white mt-2'>18, December, 2022</div>
+                  <div className='text-white mt-2'>3, March, 2022</div>
                 </div>
               </div>
             </Col>
@@ -291,7 +294,7 @@ const Landing = () => {
                 <div className="overlay text-white" style={{ position:"absolute", top:"65%", left:"10%" }}>
                   <div className='text-uppercase genre-header'>Houses</div>
                   <div className='text-uppercase blog-header mt-2'>Looks of semi-detached houses</div>
-                  <div className='text-white mt-2'>18, December, 2022</div>
+                  <div className='text-white mt-2'>31, January, 2022</div>
                 </div>
               </div>
             </Col>

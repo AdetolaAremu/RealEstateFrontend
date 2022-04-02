@@ -23,6 +23,10 @@ const Index = () => {
     dispatch(filterByCity(value));
   }
 
+  const getAllposts = () => {
+    dispatch(getAllPosts())
+  }
+
   const handleTypeFilter = (value) => {
     dispatch(filterByType(value))
   }
@@ -40,8 +44,8 @@ const Index = () => {
         <div style={{ marginTop:"6rem" }}>
           <div className='' style={{ borderLeft:"3px solid #2eca6a" }}>
             <div className='p-3'>
-              <h3 className=''>All Properties Page</h3>
-              <div className='text-muted'>All Properties</div>
+              <h3 className=''>All Properties</h3>
+              {/* <div className='text-muted'>All Properties</div> */}
             </div>
           </div>
         </div>
@@ -66,6 +70,7 @@ const Index = () => {
                   onChange={e => handleCityFilter(e.target.value)}
                 >
                   <option defaultValue value={''}>Filter by city</option>
+                  <option value={"All"}>All</option>
                   {
                     cityData.map((item) => (
                       <option key={item.id} value={item.city}>{ item.city }</option>
@@ -82,6 +87,7 @@ const Index = () => {
                   onChange={e => handleTypeFilter(e.target.value)}
                 >
                   <option defaultValue value={""}>Filter by category</option>
+                  <option value={"All"}>All</option>
                   {typeData.map((item) => (
                     <option key={item.id} value={item.name}>{ item.name }</option>
                   ))}
