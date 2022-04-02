@@ -19,6 +19,9 @@
   margin-left: 1rem;
 }
 
+.firsttopimg {
+  filter: brightness(0.95);
+}
 
 .carouselslidetext {
   width: 100%;

@@ -29,7 +29,7 @@ export default class AuthNavbar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ms-auto" navbar>
               <NavItem className="nav-item">
-                <NavLink to={ROUTE.HOME} id='nav-linkk'
+                <NavLink to={ROUTE.HOME} tag={RRNavLink} exact id='nav-linkk'
                 >Home</NavLink>
               </NavItem>
               <NavItem className="nav-item">

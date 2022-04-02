@@ -41,7 +41,7 @@ function Register() {
   return (
     <>
       <ToastContainer />
-      <div className='vh-100 d-flex justify-content-center align-items-center' style={{ marginTop:"8rem", marginBottom:"3rem" }}>
+      <div className='vh-100 d-flex justify-content-center align-items-center' style={{ marginTop:"15rem", marginBottom:"3rem" }}>
         <Col lg="5" md="7">
           <Card className="bg-light shadow border-0 mb-5">
             <CardBody className="px-lg-5 py-lg-5">

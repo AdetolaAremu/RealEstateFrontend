@@ -77,7 +77,7 @@ const Landing = () => {
               onExited={() => setAnimating(false)}
               onExiting={() => setAnimating(true)}
           >
-            <img src={item?.images[0].url} alt="featured" style={{ height:"45rem", width:"100%", minHeight: "600px", }} />
+            <img src={item?.images[0].url} className="firsttopimg" alt="featured" style={{ height:"45rem", width:"100%", minHeight: "600px", objectFit:"cover"}} />
             <div className='text-white' 
               style={{ position:"absolute", top:"40%", left:"10%" }}
             >

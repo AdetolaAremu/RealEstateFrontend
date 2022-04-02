@@ -19,8 +19,7 @@ const Auths = () => {
     <div className='' 
       style={{ overflow:"hidden", backgroundImage:
         "url(" + require("../components/Images/2314950.webp").default + ")",
-      backgroundSize: "cover", }}
-    >
+      backgroundSize: "cover", backgroundRepeat: "no-repeat", width:"100%", height:"100%" }}>
       <AuthNavbar />
         <Row>
           <Switch>
