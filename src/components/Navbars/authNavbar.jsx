@@ -46,8 +46,8 @@ export default class AuthNavbar extends React.Component {
                 >Register</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink id='nav-linkk' 
-                  href="https://github.com/reactstrap/reactstrap"
+                <NavLink id='nav-linkk' target="_blank"
+                  href="https://github.com/AdetolaAremu/RealEstateFrontend"
                 >GitHub</NavLink>
               </NavItem>
             </Nav>

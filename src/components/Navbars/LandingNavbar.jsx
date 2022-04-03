@@ -88,7 +88,7 @@ class Example extends React.Component {
                     >Properties</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink id="nav-linkk" className='' 
+                    <NavLink id="nav-linkk" className='' target="_blank"
                       href="https://github.com/AdetolaAremu/RealEstateFrontend"
                     >GitHub</NavLink>
                   </NavItem>
