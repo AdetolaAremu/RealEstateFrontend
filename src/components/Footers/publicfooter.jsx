@@ -26,10 +26,10 @@ function Publicfooter() {
                     <div className="w-footer-a">
                       <ul className="list-unstyled">
                         <li className="color-a">
-                          <span className="color-text-a">Phone:</span> aremutola@gmail.com
+                          <span className="color-text-a">Email:</span> aremutola@gmail.com
                         </li>
                         <li className="color-a">
-                          <span className="color-text-a">Email:</span> +234 8050 6765 20
+                          <span className="color-text-a">Phone:</span> +234 8050 6765 20
                         </li>
                       </ul>
                     </div>
