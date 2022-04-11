@@ -10,7 +10,7 @@ import ROUTE from '../../Helpers/routes.json';
 import firstBlog from '../../components/Images/blog1.webp';
 import secondBlog from '../../components/Images/blog2.webp';
 import thirdBlog from '../../components/Images/blog3.webp';
-import { Row, Col, Container} from 'reactstrap';
+import { Row, Col, Container, Modal, ModalHeader, ModalBody, Button} from 'reactstrap';
 import { BsPeopleFill, BsArrowRight, BsFillCartCheckFill, BsCheckCircleFill, BsChevronRight} from 'react-icons/bs';
 import { HiLocationMarker } from "react-icons/hi";
 import { Carousel, CarouselItem, CarouselIndicators, Spinner } from 'reactstrap';
@@ -18,8 +18,13 @@ import { Carousel, CarouselItem, CarouselIndicators, Spinner } from 'reactstrap'
 const Landing = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [animating, setAnimating] = useState(false);
+  const [modal, setModal] = useState(true);
 
   const { publicData, publicDataLoading } = useSelector(state => state.publicPosts)
+
+  const closeModal = () => {
+    setModal(!modal)
+  }
 
   const dispatch = useDispatch()
 
@@ -302,6 +307,26 @@ const Landing = () => {
         </div>
       </Container>
       <PublicFooter />
+
+      <Modal isOpen={modal} className="modal-dialog-centered">
+        <ModalHeader toggle={closeModal}>Please Read</ModalHeader>
+        <ModalBody>
+          <div className="pl-lg-4">
+            <div className='text-center'>
+              <p className='fw-bold'>I am currently having issues with my AWS S3 account, that is why images aren't showing.</p>
+              <p>I am sorry for this bad experience as this project is suppose <span className='fw-bold'>to showcase my skills to potential employers, it is making me feel sad.</span></p>
+              <p>I am working with the <span className='fw-bold'>AWS support team to resolve the issue. Thank you for your patience and understading.</span></p>
+              <p>This project is available on my github repository, <a href='https://github.com/AdetolaAremu' rel="noreferrer"  target='_blank'>Click me</a></p>
+            </div>
+            <div className='text-center mt-4'>
+              <Button color='danger' style={{ marginLeft:"5px" }} onClick={closeModal}
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+        </ModalBody>
+      </Modal>
     </div>
   )
 }
