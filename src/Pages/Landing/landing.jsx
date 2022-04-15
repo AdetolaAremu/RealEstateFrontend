@@ -18,7 +18,7 @@ import { Carousel, CarouselItem, CarouselIndicators, Spinner } from 'reactstrap'
 const Landing = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [animating, setAnimating] = useState(false);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const { publicData, publicDataLoading } = useSelector(state => state.publicPosts)
 
